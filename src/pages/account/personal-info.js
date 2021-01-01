@@ -19,6 +19,8 @@ import { useState } from "react";
 
 import axios from "axios";
 import Swal from "sweetalert2";
+import { NotificationManager } from "react-notifications";
+import { showLoader, hideLoader } from "../../helper/loader";
 
 export default function Browse({ history }) {
   const {
@@ -62,8 +64,69 @@ export default function Browse({ history }) {
   const [newpassword ,  setNewPassword] = useState("");
   const [confirmpassword , setConfirmPassword] = useState("");
   const [passwordmatched , setPasswordMatched] = useState(false);
+  const [states, setStates] = useState([]);
+
+  
+  const [lag, setUserLga] = useState([]);
+  const [selected , setSelected] = useState("");
+
+  const [selectedlga , setSelectedlga] = useState("");
+
+  const [address , setAddress] = useState("");
+
+  //previous details
+
+  const [prestate , setPreState] = useState("");
+  const [prelga , setPreLga] = useState("");
+  const [preaddress , setPreAddress] = useState("");
 
 //password Toggle 
+
+//hanndle update click 
+
+function handleUpdateClick(e){
+  e.preventDefault();
+  //alert('Working')
+
+  if(selected == "" || selectedlga == "" || address == ""){
+    return NotificationManager.error("Complete the necessary Fields");
+  }
+
+  else{
+    
+    showLoader();
+    axios.post(`${process.env.REACT_APP_API_URL}profile/update/address`,{
+          
+      //request body here to complete appointment process
+  state : selected ,
+  lga : selectedlga ,
+  address : address
+  
+
+      }).then(response => {
+          console.log(response)
+          hideLoader();
+          console.log(response.data)
+          
+          if(response.data.noerror == true){
+            //return NotificationManager.success("Contact Address Updated Successfully");
+            Swal.fire(
+              'Address Updated Successfully',
+             
+              'success'
+            )
+            window.location.reload(false);
+            
+             
+          }
+
+
+      }).catch(error => {
+          console.log(error)
+      })
+
+  }
+}
 
 function passwordToggle(e){
   let myinput = document.getElementById("passwordInput");
@@ -116,6 +179,33 @@ function passwordToggle(e){
     }
   }
 
+
+  function handleSelected(e){
+    e.preventDefault()
+
+    console.log(e.target.value)
+
+    
+   
+
+    // console.log(`http://locationsng-api.herokuapp.com/api/v1/states/${userstate}/lgas`)
+//     axios.get(`http://locationsng-api.herokuapp.com/api/v1/states/${userstate}/lgas`, {
+     
+//     }).then(response => {
+//     console.log(response.data)
+
+//     //setUserLga(response.data)
+
+    
+
+   
+
+
+// }).catch(error => {
+//     console.log(error)
+// })
+
+  }
   function onFormSubmit(e){
     e.preventDefault();
 
@@ -159,7 +249,123 @@ function passwordToggle(e){
   React.useEffect(() => {
     //console.log(userData, 'userData..')
     //setValue([{ name: userData.name }, { phone: userData.phone }]);
+    //console.log(userData)
   }, [userData]);
+
+  React.useEffect(() => {
+    
+    var token = localStorage.getItem('token');
+
+    if(token){
+      axios.get(`${process.env.REACT_APP_API_URL}auth/user`, {
+     
+      }).then(response => {
+      console.log('uservalue',response.data.user.address)
+
+      console.log('user',response.data.user)
+
+      setPreState(response.data.user.state);
+      setPreLga(response.data.user.city);
+      setPreAddress(response.data.user.address)
+  
+     
+  
+     
+  
+  
+  }).catch(error => {
+      console.log(error)
+  })
+    }
+
+
+
+
+
+    
+  }, []);
+
+
+  React.useEffect(() => {
+    
+    if(selected == "Federal Capital Territory"){
+      axios.get(`http://locationsng-api.herokuapp.com/api/v1/states/abuja/lgas`, {
+     
+      }).then(response => {
+      console.log(response.data)
+
+      setUserLga(response.data)
+
+     
+
+
+  }).catch(error => {
+      console.log(error)
+  })
+    }
+
+    else{
+      axios.get(`http://locationsng-api.herokuapp.com/api/v1/states/${selected}/lgas`, {
+     
+      }).then(response => {
+      console.log(response.data)
+
+      setUserLga(response.data)
+
+     
+
+
+  }).catch(error => {
+      console.log(error)
+  })
+    }
+
+
+  }, [selected]);
+
+
+
+  React.useEffect(() => {
+    
+    axios.get('http://locationsng-api.herokuapp.com/api/v1/states', {
+     
+      }).then(response => {
+      console.log(response.data)
+
+      setStates(response.data)
+
+     
+
+
+  }).catch(error => {
+      console.log(error)
+  })
+
+
+
+
+
+
+
+
+
+  }, []);
+
+
+
+
+  React.useEffect(() => {
+    
+   
+
+
+
+
+
+
+
+  }, [preaddress]);
+
 
   /* User data */
   /* useQuery('user-data', benefitTypesList, {
@@ -323,6 +529,120 @@ function passwordToggle(e){
 
         <hr />
 
+        <span
+         
+          class="font-weight-bold text-primary font-size-md cursor-pointer"
+        >
+          Contact Addreess
+        </span>
+
+       {preaddress ? <div>
+         <p style={{
+           fontSize : "16px",
+         }}>Address : {preaddress}, {prelga}, {prestate} <span className="ml-5">      <button  onClick={function(e){
+          e.preventDefault()
+        }} data-toggle="modal" data-target="#exampleModal" className="btn btn-sm btn-warning">
+          Edit
+          </button></span></p>
+
+       </div> :  <div className="py-3 text-center">
+          <p>Contact Address not Available </p>
+
+          <button  onClick={function(e){
+            e.preventDefault()
+          }} data-toggle="modal" data-target="#exampleModal" className="btn btn-sm btn-secondary">
+            Add Address
+            </button>
+        </div>}
+
+
+       
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contact Address</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      <label>State</label>
+        <select className="form-control"onChange={function(e){
+          e.preventDefault()
+          //console.log(e.target.value)
+
+
+          setSelected(e.target.value)
+          console.log(selected);
+
+
+          
+          
+
+       
+
+        
+        }}>
+          <option value="">Select State</option>
+
+          {states.map(function(state,i){
+            return (
+              <option value={state["name"]}>{state["name"]}</option>
+            );
+          })}
+
+        </select>
+
+        <label>L.G.A</label>
+        <select className="form-control"onChange={function(e){
+          e.preventDefault()
+          //console.log(e.target.value)
+
+
+          setSelectedlga(e.target.value)
+          console.log(selectedlga);
+
+
+          
+          
+
+       
+
+        
+        }}>
+          <option value="">Select L.G.A</option>
+
+          {lag.map(function(city,i){
+            return (
+              <option value={city}>{city}</option>
+            );
+          })}
+        </select>
+
+        <hr/>
+
+        <label>Address</label>
+
+        <textarea className="form-control" id="address" onChange={function(e){
+          //console.log(e.target.value)
+
+          setAddress(e.target.value);
+        }} />
+         
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onClick={handleUpdateClick}>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+            <hr />
         <div class="row">
           <div class="col-md-6">
             <button

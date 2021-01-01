@@ -323,7 +323,7 @@ const config = {
                         fontWeight:"bold",
                         fontStyle:"italic"
                     }}>
-                     Complete checkout to secured <br/> 
+                     Complete checkout to secure <br/> 
                      an appointment with the Doctor.
                      
                     </p>
@@ -350,7 +350,8 @@ const config = {
 
                                                 <tr>
                                                     <td>Appointment Time</td>
-                                                    <td>{location.state.time}</td>
+                                                    <td>{moment(location.state.time, 'h:mm a').format('h:mm a')}</td>
+                                                    
                                                 </tr>
 
                                                 

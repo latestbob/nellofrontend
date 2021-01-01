@@ -219,7 +219,7 @@ export const RenderUserMsg = ({ data, index }) => {
           {data}
 
           <div className="botDefaultMsgCol1 ongoingImgImg">
-            <img src={nelloImg} alt="" />
+          <i class="fa fa-2x fa-user"></i>
           </div>
         </div>
       )}

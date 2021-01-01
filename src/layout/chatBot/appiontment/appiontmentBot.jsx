@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { showLoader } from "../../../helper/loader";
 import { hideLoader } from "../../../helper/loader";
+import { NotificationManager } from "react-notifications";
 
 
 export const RenderBotMsg = ({
@@ -66,14 +67,95 @@ export const RenderBotMsg = ({
 
   //handle time picker for appointment doctor
   function handleTimeInpuChange(e){
-    console.log(e.target.value);
+    // console.log(e.target.value);
 
-    setAppiontMentDetails({
+    // setAppiontMentDetails({
+    //   ...appiontMentDetails,
+    //   time: `${e.target.value}`,
+      
+    // });
+    // console.log(appiontMentDetails.time);
+
+
+    console.log('Working')
+    console.log(e.target.value)
+    console.log('date',appiontMentDetails.date)
+    var pickedate = moment(appiontMentDetails.date).format('dddd, MMMM DD, YYYY')
+    var todaydated = moment().format('dddd, MMMM DD, YYYY')
+
+    console.log(todaydated)
+    console.log(pickedate)
+
+
+    if(pickedate == todaydated){
+      console.log(moment().format('HH:mm:ss a'))
+  var valuedate = moment().format('HH:mm:ss a');
+  var mytimeselected = moment(e.target.value, 'h:mm a').format('HH:mm:ss a')
+  console.log(mytimeselected);
+  
+  
+  
+  var c = +moment().add(30, 'minutes').format('x');
+  var d = moment(e.target.value, 'h:mm a').format();
+  
+  var h = +moment(e.target.value, 'h:mm a').format('x')
+  var f = h / 60000
+  
+  var g = (h - c) / 60000
+  
+  // console.log(e)
+  // console.log(f)
+  console.log(parseInt(g))
+  
+  /// check if g is greater than 0
+  
+  if(g >= 1){
+    console.log('appointment Available')
+
+    // setAppiont({
+    //   ...appiont,
+    //   time: `${e.target.value}`,
+    // });
+
+        setAppiontMentDetails({
       ...appiontMentDetails,
       time: `${e.target.value}`,
       
     });
-    console.log(appiontMentDetails.time);
+    
+      return NotificationManager.success("Valid,, click send to continue");
+
+  }
+  else{
+      
+    console.log('appointment not available')
+     
+          return NotificationManager.error("Select at least 30 mins after the current time");
+          
+      
+  }
+  
+  
+  }
+  else {
+      console.log('Appointment Available')
+    //  setAppiont({
+    //   ...appiont,
+    //   time: `${e.target.value}`,
+    // });
+        setAppiontMentDetails({
+      ...appiontMentDetails,
+      time: `${e.target.value}`,
+      
+    });
+      return NotificationManager.success("Valid,, click send to continue");
+  }
+  
+  
+
+
+
+
 
   }
 
@@ -563,6 +645,7 @@ const componentProps = {
                   <option value="13:30:00">1:30 pm</option>
                   <option value="14:00:00">2:00 pm</option>
                   <option value="16:00:00">4:00 pm</option>
+                  <option value="19:00:00">7:00 pm</option>
                   
                 </select>
               </div>
@@ -697,7 +780,7 @@ export const RenderUserMsg = ({ data, index }) => {
           {data}
 
           <div className="botDefaultMsgCol1 ongoingImgImg">
-            <img src={nelloImg} alt="" />
+          <i class="fa fa-2x fa-user"></i>
           </div>
         </div>
       )}

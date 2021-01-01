@@ -405,6 +405,9 @@ input {
 .ongoingImgImg {
   margin-right: 0;
   margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .msgBotUserReply {
@@ -805,9 +808,26 @@ input {
   margin-right: 9px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
   .chatbox-main {
     width: 90%;
+  }
+
+  .chatBoxInputBox form textarea {
+    /* width: 75%;
+    height: 100%;
+    outline: none;
+    padding: 10px;
+    font-size: 13px;
+    border: none;
+    /* box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.15); */
+    /* padding-bottom: 30px;
+    padding-top: 10px;
+    color: rgba(14, 86, 118, 0.4);  */
+
+    margin-bottom: 50px;
+    flex:1;
+
   }
 
   .msgBotUserReplyRev {

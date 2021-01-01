@@ -71,6 +71,22 @@ export default function Shipping({ tsDelivery, currentIndex, locations, checkout
                         </div>
 
                         <div class="form-group">
+                            <label>State</label>
+                            {/* <input type="text"
+                                {...register('shipping_address', {
+                                    required: 'Shipping address is required'
+                                })}
+                                class="form-control" placeholder="Shipping Address" /> */}
+
+                                <select  class="form-control">
+                                    <option value="Lagos">Lagos</option>
+
+                                </select>
+                            
+                        </div>
+
+
+                        <div class="form-group">
                             <label>Delivery Location</label>
                             <select class="form-control"
                                 {...register('location_id', {

@@ -750,11 +750,18 @@ export default function handleSubmitDocMsg(
   }
 
   if (index == 69) {
+    
+
     if (appiont.time == "") {
       return NotificationManager.error(
         "Appiontment time is required to continue"
       );
     }
+
+
+    
+    
+
 
     let active = speakDocActive;
     const userRes = {
@@ -784,17 +791,9 @@ export default function handleSubmitDocMsg(
       }, 1000);
 
 
-    // setChatInputDisable(true);
-    // setChatSubmitBtnDisable(true);
-    // let allMsgSpread = [...active, userRes];
-    // setSpeakToDocActive(allMsgSpread);
-    // setActiveDocMsg(71);
-    // submitBookDoctor(true);
-    // setTimeout(() => {
-    //   setactiveInputValue("");
-    //   setSpeakToDocActive([...allMsgSpread, allMsg[71]]);
-    //   window.location.href = "#showNewMsg";
-    // }, 1000);
+    
+
+
   }
 
   

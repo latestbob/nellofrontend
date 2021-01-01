@@ -17,6 +17,7 @@ import TimeSvg from './../../svg/time-svg';
 import Init from './appointment-start'
 import { useState } from 'react';
 import axios from 'axios';
+import { NotificationManager } from "react-notifications";
 
 export default function DoctorAppointment({ history }) {
     const { dispatch, baseUrl, errorResponse, userData, currentPath } = React.useContext(AppContext);
@@ -74,6 +75,104 @@ export default function DoctorAppointment({ history }) {
       const [userlastname, setLastName] = useState("");
       const [useremail, setEmail] = useState("");
       const [usergender, setGender] = useState("");
+
+
+
+      //HIDE BOTTON FOR PAYSTACK
+    const [hidebutton , setHideButton] = useState("");
+
+    const todaydate = new Date();
+
+
+    const [mydate , setMyDate] = useState("");
+
+    const [showbtn, setShowBtn] = useState(false);
+
+
+
+
+    React.useEffect(() => {
+        var pickedate = moment(selectedDate).format('dddd, MMMM DD, YYYY')
+        var todaydated = moment().format('dddd, MMMM DD, YYYY')
+        // console.log(moment(selectedDate).format('dddd, MMMM DD, YYYY'));
+        // console.log(moment().format('dddd, MMMM DD, YYYY'))
+
+        console.log(pickedate);
+        console.log(todaydated)
+
+        //console.log(moment(selectedTime, 'h:mm a').format('h:mm a'))
+
+        //
+        //console.log(moment().format('h:mm a'))
+        console.log(moment().format('HH:mm:ss a'))
+        var valuedate = moment().format('HH:mm:ss a');
+        var mytimeselected = moment(selectedTime, 'h:mm a').format('HH:mm:ss a')
+        console.log(mytimeselected);
+
+
+console.log(moment(selectedTime, 'h:mm a').format())
+
+var c = +moment().add(30, 'minutes').format('x');
+var d = moment(selectedTime, 'h:mm a').format();
+
+var e = +moment(selectedTime, 'h:mm a').format('x')
+var f = e / 60000
+
+var g = (e - c) / 60000
+
+console.log(e)
+console.log(f)
+console.log(g)
+    
+
+if(pickedate == todaydated){
+    console.log(moment().format('HH:mm:ss a'))
+var valuedate = moment().format('HH:mm:ss a');
+var mytimeselected = moment(selectedTime, 'h:mm a').format('HH:mm:ss a')
+console.log(mytimeselected);
+
+
+console.log(moment(selectedTime, 'h:mm a').format())
+
+var c = +moment().add(30, 'minutes').format('x');
+var d = moment(selectedTime, 'h:mm a').format();
+
+var e = +moment(selectedTime, 'h:mm a').format('x')
+var f = e / 60000
+
+var g = (e - c) / 60000
+
+// console.log(e)
+// console.log(f)
+console.log(parseInt(g))
+
+/// check if g is greater than 0
+
+if(g >= 1){
+    setShowBtn(true)
+}
+else{
+    setShowBtn(false)
+    // return NotificationManager.error("Select at least 30 mins after the current time");
+
+    if(selectedDate && selectedTime){
+        return NotificationManager.error("Select at least 30 mins after the current time");
+    }
+}
+
+
+}
+else {
+    setShowBtn(true)
+}
+
+
+
+
+
+    }, [selectedDate, selectedTime]);
+
+
 
       //get user details from Api
 
@@ -136,7 +235,8 @@ export default function DoctorAppointment({ history }) {
                 history.push({
                     pathname: '/appointment/pay',state:{
                         date: moment(selectedDate).format('dddd, MMMM DD, YYYY'),
-                        time: moment(selectedTime, 'h:mm a').format('h:mm a'),
+                       // time: moment(selectedTime, 'h:mm a').format('h:mm a'),
+                       time: selectedTime,
                        
                         
                         username: `${userfirstname} ${userlastname}`,
@@ -291,9 +391,9 @@ export default function DoctorAppointment({ history }) {
                                 <i class="fal fa-long-arrow-left"></i> Back
                             </button>
 
-                            <button type="submit" class="btn btn-primary btn-arrow btn-lg btn-main">
+                            {showbtn ?  <button type="submit" class="btn btn-primary btn-arrow btn-lg btn-main">
                                 Schedule Appointment
-                            </button>
+                            </button> : <div></div>}
                         </div>
                     </form>
                 </div>) : (

@@ -59,7 +59,7 @@ export default function Appointments() {
             Authorization: 'Bearer' + token,
         }
 
-    }).then(response => {
+        }).then(response => {
        // console.log(response)
 
         if (response.data) {

@@ -132,6 +132,8 @@ export default function doctorHandleChange(
   }
 
   if (index == 69) {
+
+    console.log('Working')
     setAppiont({
       ...appiont,
       time: `${e.target.value}`,

@@ -16,6 +16,7 @@ import SquareRadiusSvg from './../../svg/square-radius-svg';
 import TimeSvg from './../../svg/time-svg';
 // import { PaystackButton } from 'react-paystack';
 import axios from 'axios';
+import { NotificationManager } from "react-notifications";
 
 import { useState } from 'react';
 
@@ -40,7 +41,9 @@ export default function DoctorAppointment({ history }) {
         { value: '13:30:00', label: '1:30 pm' },
         { value: '14:00:00', label: '2:00 pm' },
         { value: '16:00:00', label: '4:00 pm' },
-    
+        // { value: '18:00:00', label: '6:00 pm' },
+        // { value: '19:00:00', label: '7:00 pm' },
+        // { value: '20:00:00', label: '8:00 pm' },
     ]);
 
 
@@ -72,6 +75,9 @@ export default function DoctorAppointment({ history }) {
 
     const [mydate , setMyDate] = useState("");
 
+    const [showbtn, setShowBtn] = useState(false);
+
+
 
     
     // React.useEffect(()=>{
@@ -84,6 +90,86 @@ export default function DoctorAppointment({ history }) {
 
     //     console.log(mydate);
     // })
+    React.useEffect(() => {
+        var pickedate = moment(selectedDate).format('dddd, MMMM DD, YYYY')
+        var todaydated = moment().format('dddd, MMMM DD, YYYY')
+        // console.log(moment(selectedDate).format('dddd, MMMM DD, YYYY'));
+        // console.log(moment().format('dddd, MMMM DD, YYYY'))
+
+        console.log(pickedate);
+        console.log(todaydated)
+
+        //console.log(moment(selectedTime, 'h:mm a').format('h:mm a'))
+
+        //
+        //console.log(moment().format('h:mm a'))
+        console.log(moment().format('HH:mm:ss a'))
+        var valuedate = moment().format('HH:mm:ss a');
+        var mytimeselected = moment(selectedTime, 'h:mm a').format('HH:mm:ss a')
+        console.log(mytimeselected);
+
+
+console.log(moment(selectedTime, 'h:mm a').format())
+
+var c = +moment().add(30, 'minutes').format('x');
+var d = moment(selectedTime, 'h:mm a').format();
+
+var e = +moment(selectedTime, 'h:mm a').format('x')
+var f = e / 60000
+
+var g = (e - c) / 60000
+
+console.log(e)
+console.log(f)
+console.log(g)
+    
+
+if(pickedate == todaydated){
+    console.log(moment().format('HH:mm:ss a'))
+var valuedate = moment().format('HH:mm:ss a');
+var mytimeselected = moment(selectedTime, 'h:mm a').format('HH:mm:ss a')
+console.log(mytimeselected);
+
+
+console.log(moment(selectedTime, 'h:mm a').format())
+
+var c = +moment().add(30, 'minutes').format('x');
+var d = moment(selectedTime, 'h:mm a').format();
+
+var e = +moment(selectedTime, 'h:mm a').format('x')
+var f = e / 60000
+
+var g = (e - c) / 60000
+
+// console.log(e)
+// console.log(f)
+console.log(parseInt(g))
+
+/// check if g is greater than 0
+
+if(g >= 1){
+    setShowBtn(true)
+}
+else{
+    setShowBtn(false)
+    // return NotificationManager.error("Select at least 30 mins after the current time");
+
+    if(selectedDate && selectedTime){
+        return NotificationManager.error("Select at least 30 mins after the current time");
+    }
+}
+
+
+}
+else {
+    setShowBtn(true)
+}
+
+
+
+
+
+    }, [selectedDate, selectedTime]);
 
 
 
@@ -182,7 +268,7 @@ export default function DoctorAppointment({ history }) {
                 pathname: `/doctor/${uuid}/appointment/pay`, state: {
                  
                         date: moment(selectedDate).format('dddd, MMMM DD, YYYY'),
-                        time: moment(selectedTime, 'h:mm a').format('h:mm a'),
+                        time: selectedTime,
                         doctor: `DR. ${docfirstname} ${doclastname}`,
                         aos:aos,
                         doctormail: docemail,
@@ -445,9 +531,9 @@ export default function DoctorAppointment({ history }) {
 
                         <hr />
                         <div className="text-center">
-                            <button type="submit" class="btn btn-primary btn-arrow btn-lg btn-main">
+                           {showbtn ?  <button type="submit" class="btn btn-primary btn-arrow btn-lg btn-main">
                                 Schedule Appointment
-                            </button>
+                            </button> : <div></div>}
 
 
                             {/* {displayPay()} */}

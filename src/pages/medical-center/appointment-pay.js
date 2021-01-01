@@ -353,7 +353,7 @@ const config = {
                         fontWeight:"bold",
                         fontStyle:"italic"
                     }}>
-                     Complete checkout to secured <br/> 
+                     Complete checkout to secure <br/> 
                      an appointment with {center_name}.
                      
                     </p>
@@ -380,7 +380,7 @@ const config = {
 
                                                 <tr>
                                                     <td>Appointment Time</td>
-                                                    <td>{time}</td>
+                                                    <td>{moment(time, 'h:mm a').format('h:mm a')}</td>
                                                 </tr>
 
                                                 <tr>
