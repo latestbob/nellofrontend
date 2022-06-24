@@ -1,0 +1,353 @@
+#ermsBody {
+  padding-top: 50px;
+}
+
+#ermsBody p,
+h3,
+h2 {
+  color: #353535;
+  line-height: 167.6%;
+}
+
+#ermsBody h2 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+#ermsBody h3 {
+  font-size: 15px;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+#ermsBody p {
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.ermsBodyul li {
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+#faqtab {
+  width: 100%;
+  padding-top: 50px;
+}
+
+.faqHeader {
+  font-weight: 500;
+  font-size: 30px;
+  color: #324882;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.MuiAccordionDetails-root p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 32px;
+  color: #353535;
+}
+
+.MuiAccordionDetails-root ul {
+  list-style-type: disc;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.MuiAccordionDetails-root ol {
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.MuiAccordionDetails-root ul,
+ol li {
+  font-size: 14px;
+  line-height: 32px;
+  color: #353535;
+}
+
+.product-hero {
+  width: 100%;
+  height: 50vh;
+  background: linear-gradient(
+    360deg,
+    #82cff033 0%,
+    rgba(218, 225, 245, 0) 70.73%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.product-hero h2 {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 58px;
+  text-align: center;
+  color: #353535;
+  margin: 0;
+  margin-top: 40px;
+}
+
+.product-hero p {
+  font-size: 18px;
+  line-height: 32px;
+  text-align: center;
+  color: #191919;
+  padding-top: 15px;
+  margin: 0;
+}
+
+.heroSec2 {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #f8faff;
+}
+
+.heroSec2Col1 {
+  width: 30%;
+}
+
+.heroSec2Br {
+  height: 300px;
+  width: 0.9px;
+  background-color: #848199;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.heroSec2Col1 img {
+  width: 100%;
+  position: relative;
+  top: -90px;
+}
+
+.heroSec2Col2 {
+  width: 30%;
+}
+
+.heroSec2Col2 h2 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #5a6c9b;
+}
+
+.heroSec2Col2 p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #7c7d8d;
+  padding-top: 20px;
+}
+
+.heroSec2Col2 ul {
+  list-style-type: disc;
+  padding-top: 15px;
+  margin-left: 22px;
+}
+
+.heroSec2Col2 ul li {
+  font-size: 16px;
+  line-height: 22px;
+  color: #7c7d8d;
+  margin-bottom: 5px;
+}
+
+.productSeWrap {
+  width: 100%;
+  background-color: #f2f3f5;
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.productsSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.productsSectionTextCard {
+  width: 60%;
+  height: 350px;
+  background-color: white;
+  border-radius: 10px;
+  margin-right: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-left: 40px;
+  padding-bottom: 20px;
+}
+
+.productsSectionImageCard {
+  width: 28%;
+  height: 350px;
+  /* background-color: orange; */
+  border-radius: 10px;
+}
+
+.productsSectionImageCard img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* .pOverlay {
+  position: relative;
+} */
+
+.pOverlayTop {
+  position: absolute;
+  top: 0;
+  width: 270px;
+  right: 0;
+}
+
+.pOverlayBottom {
+  position: absolute;
+  width: 270px;
+  bottom: -80px;
+  left: -50px;
+}
+
+.productsSectionTextCard h2 {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 43px;
+  color: #5a6c9b;
+}
+
+.productsSectionTextCard p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7c7d8d;
+  padding-top: 10px;
+}
+
+.productsSectionTextCard .imgsrww {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  margin-top: 20px;
+}
+
+.productsSectionTextCard .imgsrww img {
+  width: 100px;
+  margin-right: 15px;
+}
+
+.imgr .productsSectionTextCard {
+  margin-right: 0;
+}
+
+.imgr .productsSectionImageCard {
+  margin-right: 40px;
+}
+
+.ulprodskdt {
+  display: flex;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.ulprodskdt ul:nth-of-type(1) {
+  margin-right: 40px;
+}
+
+.ulprodskdt ul li {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 22px;
+  color: #7c7d8d;
+  padding-top: 2px;
+}
+
+@media (max-width: 880px) {
+  .productsSection {
+    flex-direction: column;
+  }
+  .imgFirsghdj {
+    flex-direction: column-reverse;
+  }
+  .productsSectionImageCard {
+    width: 100%;
+  }
+  .productsSectionTextCard {
+    width: 100%;
+    padding-top: 50px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .productsSectionImageCard {
+    margin-bottom: 20px;
+  }
+  .productsSection {
+    margin-bottom: 20px;
+  }
+  /* .productsSectionTextCard */
+}
+
+@media (max-width: 770px) {
+  .heroSec2 {
+    flex-direction: column;
+  }
+  .heroSec2Col1 {
+    width: 50%;
+    height: 220px;
+  }
+  .heroSec2Col1 img {
+    height: 100%;
+  }
+  .heroSec2Br {
+    display: none;
+  }
+  .heroSec2Col2 {
+    width: 100%;
+    padding-bottom: 40px;
+    margin-top: -51px;
+  }
+  .product-hero p br {
+    display: none;
+  }
+}
+
+@media (max-width: 770px) {
+  .heroSec2Col1 {
+    width: 100%;
+    height: auto;
+  }
+  .productsSectionTextCard p {
+    padding-right: 10px;
+  }
+  .productsSectionTextCard p br {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .faqHeader {
+    font-size: 20px;
+  }
+  .dbehfaqf {
+    font-size: 18px !important;
+  }
+  #faqtab {
+    padding-top: 20px;
+  }
+}
+
+.ermsBodyH2 {
+  margin-bottom: 0;
+}

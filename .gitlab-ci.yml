@@ -1,0 +1,22 @@
+stages:
+  - deploy
+
+cache:
+  paths:
+  - node_modules/
+
+
+deploy:
+  type: deploy
+  stage: deploy
+  tags:
+    - new-nello-front-runner
+  script:
+    - sudo cp -r -u * $PROJECT_DIR
+    - cd $PROJECT_DIR
+    - sudo npm install
+    - sudo npm run build
+    
+  only:
+    - dev
+
