@@ -420,7 +420,7 @@ const Master = ({ children, history }) => {
                   <div className="sc-box">
                     <div className="sc-counter bg-danger">{cartItemsCount}</div>
                     <img
-                      src="http://asknello.com:5500//assets/images/shopping-cart.svg"
+                      src="https://asknello.com/assets/images/shopping-cart.svg"
                       alt="shopping-cart"
                     />
                   </div>
