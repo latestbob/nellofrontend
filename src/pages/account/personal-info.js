@@ -122,7 +122,7 @@ function passwordToggle(e){
     //change password Route
 
     
-    axios.post(`${process.env.REACT_APP_BASE_URL}api/auth/password`,{
+    axios.post(`${process.env.REACT_APP_API_URL}auth/password`,{
      'current_password':currentpassword,
      'password':newpassword
       

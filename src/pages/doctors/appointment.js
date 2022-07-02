@@ -254,7 +254,7 @@ export default function DoctorAppointment({ history }) {
         SetToken(localStorage.getItem("token"))
 
 
-        axios.get(`${process.env.REACT_APP_BASE_URL}api/auth/user`, {
+        axios.get(`${process.env.REACT_APP_API_URL}auth/user`, {
             'headers': {
                 Authorization: 'Bearer' + token,
             }
@@ -303,7 +303,7 @@ export default function DoctorAppointment({ history }) {
     React.useEffect(() => {
 
 
-        axios.get(`${process.env.REACT_APP_BASE_URL}api/doctor/${uuid}`, {
+        axios.get(`${process.env.REACT_APP_API_URL}doctor/${uuid}`, {
 
             'vendor':1,
 

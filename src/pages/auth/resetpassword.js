@@ -75,7 +75,7 @@ e.preventDefault();
      
 //reset the password
 showLoader();
-axios.post(`${process.env.REACT_APP_BASE_URL}api/auth/reset-password`,{
+axios.post(`${process.env.REACT_APP_API_URL}auth/reset-password`,{
   'email':myemail,
   'password':password,
   'code':code,

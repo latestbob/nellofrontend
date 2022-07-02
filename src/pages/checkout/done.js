@@ -48,7 +48,7 @@ class ComponentToPrint extends React.Component {
      console.log(this.props.order.id);
     // order/${id}/view
 
-     axios.get(`${process.env.REACT_APP_BASE_URL}api/order/${this.props.order.id}/view`)
+     axios.get(`${process.env.REACT_APP_API_URL}order/${this.props.order.id}/view`)
           .then(res => {
     
            //console.log(res.data);

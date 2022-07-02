@@ -46,7 +46,7 @@ e.preventDefault();
 
     showLoader();
 
-    axios.post(`${process.env.REACT_APP_BASE_URL}api/auth/forgot-password`,{
+    axios.post(`${process.env.REACT_APP_API_URL}auth/forgot-password`,{
       'email':forgotemail,
       
   }).then(response => {

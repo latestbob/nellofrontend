@@ -54,7 +54,7 @@ export default function Appointments() {
     setToken(localStorage.getItem("token"))
 
 
-    axios.get(`${process.env.REACT_APP_BASE_URL}api/auth/user`, {
+    axios.get(`${process.env.REACT_APP_API_URL}auth/user`, {
         'headers': {
             Authorization: 'Bearer' + token,
         }
@@ -65,7 +65,7 @@ export default function Appointments() {
         if (response.data) {
 
             //SET USER APPOINTMENT STATES HERE
-            console.log(`${process.env.REACT_APP_BASE_URL}api/auth/user`);
+           // console.log(`${process.env.REACT_APP_BASE_URL}api/auth/user`);
 
 
             

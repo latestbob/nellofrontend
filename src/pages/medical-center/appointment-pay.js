@@ -158,7 +158,7 @@ const config = {
 
             showLoader();
             
-    axios.get(`${process.env.REACT_APP_BASE_URL}api/appointments/verify/${reference.reference}`,{
+    axios.get(`${process.env.REACT_APP_API_URL}appointments/verify/${reference.reference}`,{
         
 
     }).then(response => {
@@ -178,7 +178,7 @@ const config = {
 
 
             
-                axios.post(`${process.env.REACT_APP_BASE_URL}api/appointments/hospital/completebook`,{
+                axios.post(`${process.env.REACT_APP_API_URL}appointments/hospital/completebook`,{
                         
                 //request body here to complete appointment process
             user_uuid : response.data.data.metadata.user_uuid,
