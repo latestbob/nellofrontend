@@ -61,6 +61,7 @@ export default function DoctorAppointment({ history }) {
     const [doclastname, setDocLastName] = useState("");
     const [docemail, setDocEmail] = useState("");
     const [aos, setDocAos] = useState("");
+    const [doctorfee, setDoctorFee]= useState(0);
 
 
     //HIDE BOTTON FOR PAYSTACK
@@ -108,7 +109,7 @@ export default function DoctorAppointment({ history }) {
     const config = {
         reference: (new Date()).getTime(),
         email: "user@example.com",
-        amount: 300000,
+        amount: 3000,
         publicKey: 'pk_test_02ce7d4340336726886f879f63b3b5fd13988f34',
 
         metadata: {
@@ -153,18 +154,19 @@ export default function DoctorAppointment({ history }) {
 
 
     const { isLoading: isLoadingSub, isFetching, refetch, isError: isErrorSub }
-        = useQuery(['doctor-appointment', uuid], () => subscriptionsWithDoctor(uuid), {
-            onError: (error) => errorResponse({ dispatch, error, history, state: { from: currentPath } }),
-            onSuccess: ({ service, doctorData }) => {
-                //console.log(service, doctorData, 'doctorData...');
+    = useQuery(['doctor-appointment', uuid], () => subscriptionsWithDoctor(uuid), {
+        onError: (error) => errorResponse({ dispatch, error, history, state: { from: currentPath } }),
+             
+        onSuccess: ({ service, doctorData }) => {
+            //console.log(service, doctorData, 'doctorData...');
 
-                setService(service?.doctor);
-                setDoctor(doctorData);
-                if (!service?.doctor) {
-                    history.push({ pathname: '/doctor-signup', state: { service: 'doctor', appointment: uuid } });
-                }
-            },
-        });
+            setService(service?.doctor);
+            setDoctor(doctorData);
+         /*   if (!service?.doctor) {
+                history.push({ pathname: '/doctor-signup', state: { service: 'doctor', appointment: uuid } });
+            }*/
+        },
+    });
 
     const onSubmit = (values) => {
         toggleFormState(true, 'submitting you in...');
@@ -190,6 +192,7 @@ export default function DoctorAppointment({ history }) {
                         usergender:usergender,
                         user_uuid:user_uuid,
                         doctor_id:doctor_id,
+                        doctorfee:doctorfee,
 
 
                     
@@ -251,7 +254,7 @@ export default function DoctorAppointment({ history }) {
         SetToken(localStorage.getItem("token"))
 
 
-        axios.get('http://127.0.0.1:8000/api/auth/user', {
+        axios.get(`${process.env.REACT_APP_BASE_URL}api/auth/user`, {
             'headers': {
                 Authorization: 'Bearer' + token,
             }
@@ -300,7 +303,7 @@ export default function DoctorAppointment({ history }) {
     React.useEffect(() => {
 
 
-        axios.get(`http://127.0.0.1:8000/api/doctor/${uuid}`, {
+        axios.get(`${process.env.REACT_APP_BASE_URL}api/doctor/${uuid}`, {
 
             'vendor':1,
 
@@ -321,6 +324,7 @@ export default function DoctorAppointment({ history }) {
                 setDocLastName(response.data.lastname);
                 setDocEmail(response.data.email);
                 setDocAos(response.data.aos);
+                setDoctorFee(response.data.fee);
 
                // console.log(response.data.aos);
 
@@ -347,7 +351,7 @@ export default function DoctorAppointment({ history }) {
             </div>)}
 
 
-            {!isErrorSub && service && (<>
+           <>
                 <div class="account-badge-container">
                     <div class="container-width-sm">
                         <h3>Schedule Appointment </h3>
@@ -453,7 +457,7 @@ export default function DoctorAppointment({ history }) {
                         </div>
                     </form>
                 </div>
-            </>)}
+            </>
 
         </>}
 

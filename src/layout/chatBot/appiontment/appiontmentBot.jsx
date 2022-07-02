@@ -83,7 +83,7 @@ export const RenderBotMsg = ({
 const config = {
   reference: (new Date()).getTime(),
   email: appiontMentDetails.useremail,
-  amount: appiontMentDetails.fee,
+  amount: appiontMentDetails.fee * 100,
   publicKey: 'pk_test_02ce7d4340336726886f879f63b3b5fd13988f34',
 
   metadata: {
@@ -125,9 +125,9 @@ const onSuccess = (reference) => {
   if(reference.message == "Approved"){
 
     console.log(reference.reference);
-
     
-axios.get(`http://127.0.0.1:8000/api/appointments/verify/${reference.reference}`,{
+    
+axios.get(`${process.env.REACT_APP_BASE_URL}api/appointments/verify/${reference.reference}`,{
 
 
 }).then(response => {
@@ -139,6 +139,7 @@ axios.get(`http://127.0.0.1:8000/api/appointments/verify/${reference.reference}`
 
 if(response.data.data.status == "success"){
 
+  console.log(response.data.data.amount);
     console.log(response.data.data.metadata);
     showLoader();
 
@@ -146,7 +147,7 @@ if(response.data.data.status == "success"){
     
 
     
-        axios.post('http://127.0.0.1:8000/api/appointments/hospital/completebook',{
+        axios.post(`${process.env.REACT_APP_BASE_URL}api/appointments/hospital/completebook`,{
                 
         //request body here to complete appointment process
         user_uuid : response.data.data.metadata.user_uuid,
@@ -162,6 +163,7 @@ if(response.data.data.status == "success"){
     center_address:response.data.data.metadata.center_address,
     center_uuid:response.data.data.metadata.center_uuid,
     reason:response.data.data.metadata.reason,
+    amount:response.data.data.amount / 100,
     
 
         }).then(response => {

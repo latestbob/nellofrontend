@@ -25,6 +25,5 @@ export default function medicationHandleChange(
   // if (index == 42) {
   //   setFitness({ ...fitness, dailyActivities: e.target.value });
   // }
-
-
 }
+

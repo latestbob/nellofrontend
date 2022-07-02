@@ -1,20 +1,85 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 import ReactToPrint from 'react-to-print';
 import { Modal } from 'react-bootstrap'
 import moment from 'moment'
 import { Currency } from './../../components';
+import axios from 'axios';
 
 //import IDCard from './../id-card';
 //import './../print.css';
 
+// function getDrugName(drug_id){
+//     let drugname;
+//    axios.get(`http://127.0.0.1:8000/api/drugname/${drug_id}`)
+//       .then(res => {
+
+//         drugname = JSON.stringify(res.data);
+       
+//        console.log("data", drugname);
+//       })
+
+//       return (<p>{drugname}</p>);
+
+      
+      
+// }
+
+
+
+
+
 class ComponentToPrint extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            itemss: [],
+          };
+
+        
+    }
+    // componentDidUpdate(){
+    //     this.forceUpdate();
+    // }
+    
+    componentDidMount(){
+
+     console.log(this.props.order.id);
+    // order/${id}/view
+
+     axios.get(`${process.env.REACT_APP_BASE_URL}api/order/${this.props.order.id}/view`)
+          .then(res => {
+    
+           //console.log(res.data);
+
+           this.setState({ itemss: res.data.items })
+           console.log(this.state.itemss);
+          })
+    }
+        
+    // getDrugName(drug_id){
+    // //     let drugname;
+    // //    axios.get(`http://127.0.0.1:8000/api/drugname/${drug_id}`)
+    // //       .then(res => {
+    
+    // //         drugname = JSON.stringify(res.data);
+           
+    // //        console.log("data", drugname);
+    // //       })
+    
+    // //       return drugname;
+    
+          
+          
+    // // }
+    
     render() {
         const order = this.props.order || {};
         //const order = state?.order;
         //const order = {};
         //console.log(state, 'state...')
+       
         return (
             <div class="container">
                 <div class="row">
@@ -32,7 +97,7 @@ class ComponentToPrint extends React.Component {
                                     <div class="row">
                                         <div class="col-12">
                                             <h2 className="font-weight-normal">invoice<br />
-                                                <span class="small">order #1082</span>
+                                                <span class="small">order ref - {order?.order_ref}</span>
                                             </h2>
                                         </div>
                                     </div>
@@ -71,25 +136,40 @@ class ComponentToPrint extends React.Component {
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h3>ORDER SUMMARY</h3>
+                                        <h3>ORDER SUMMARY </h3>
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr class="line">
                                                     <td width="1%"><strong>#</strong></td>
                                                     <td class="text-left" width="50%"><strong>Description</strong></td>
                                                     <td class="text-center" width="5%"><strong>Qty</strong></td>
-                                                    <td class="text-right" width="10%"><strong>Unit Rate</strong></td>
+                                                    {/* <td class="text-right" width="10%"><strong>Unit Rate</strong></td> */}
                                                     <td class="text-right" width="20%"><strong>Sub Total</strong></td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                {/* <tr>
                                                     <td>1</td>
                                                     <td><strong>Chelated Cal-mag With 500 Iu Vitamin D3</strong></td>
                                                     <td class="text-center">15</td>
                                                     <td class="text-right"><Currency value={1000} /></td>
                                                     <td class="text-right"><Currency value={15000} /></td>
-                                                </tr>
+                                                </tr> */}
+
+                                                {this.state.itemss.map(function(item, i){
+                                                    
+                                                   return  (<tr>
+                                                   <td>{i + 1}</td>
+                                                   {/* {getDrugName(item.drug_id)} */}
+                                                  
+                                                   
+                                                   <td class="text-center">{item?.drug.name}</td>
+                                                        {/* <td class="text-right">Drug</td> */}
+                                                   <td class="text-center">{item.quantity}</td>
+                                                   {/* <td class="text-right"><Currency value={1000} /></td> */}
+                                                   <td class="text-right"><Currency value={item.price} /></td>
+                                               </tr>);
+                                                })}
 
                                                 <tr>
                                                     <td colspan="3">
@@ -112,6 +192,8 @@ class ComponentToPrint extends React.Component {
 
 class PrintID extends React.Component {
 
+  
+
     render() {
         const order = this.props.location?.state?.order;
         //const order = state?.order;
@@ -121,7 +203,8 @@ class PrintID extends React.Component {
                 <div className="display-none">
                     <ComponentToPrint
                         order={order}
-                        ref={(el) => (this.componentRef = el)} />
+                        ref={(el) => (this.componentRef = el)}
+                        />
                 </div>
                 <div class="content-body container-done">
                     <div class="container-width-sm container-done-wrapper">

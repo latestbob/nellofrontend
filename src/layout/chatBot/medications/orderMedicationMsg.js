@@ -11,7 +11,12 @@ export const medicationMsgs = [
     id: 0,
     interval: 500,
     nextIndex: 1,
-    user: [],
+    user: [
+      <div className="ongoingMsgReplyText">
+        {" "}
+        <p>I want to order medication</p>
+      </div>,
+    ],
     userReject: [],
     bot: [],
     botReject: [],
@@ -177,37 +182,5 @@ export const medicationMsgs = [
     yes: [],
     no: [],
   },
-
-  {
-    id: 11,
-    interval: 500,
-    nextIndex: 1,
-    user: [],
-    userReject: [],
-    bot: [],
-    botReject: [],
-    type: "user",
-    yes: [],
-    no: [],
-  },
-
-  {
-    id: 12,
-    interval: 500,
-    nextIndex: 1,
-    user: [],
-    userReject: [],
-    bot: [
-      <div className="incomingMsgWrapMain">
-        {" "}
-        <p>Do you have an account? Login Or Create one</p>
-      </div>,
-    ],
-    botReject: [],
-    type: "bot",
-    yes: [],
-    no: [],
-  },
-
-  
 ];
+

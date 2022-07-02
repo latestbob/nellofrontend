@@ -8,7 +8,7 @@ import { ErrorMsg } from "../../components";
 import axios from "axios";
 import { useState } from "react";
 import Swal from 'sweetalert2';
-
+import { showLoader, hideLoader } from "../../helper/loader";
 
 import useFormState from "./../../hooks/useFormState";
 
@@ -74,8 +74,8 @@ function onSubmitReset(e){
 e.preventDefault();
      
 //reset the password
-
-axios.post('http://127.0.0.1:8000/api/auth/reset-password',{
+showLoader();
+axios.post(`${process.env.REACT_APP_BASE_URL}api/auth/reset-password`,{
   'email':myemail,
   'password':password,
   'code':code,
@@ -83,6 +83,7 @@ axios.post('http://127.0.0.1:8000/api/auth/reset-password',{
   
 }).then(response => {
   console.log(response)
+  hideLoader();
 
   if(response.data.status == true){
       Swal.fire(

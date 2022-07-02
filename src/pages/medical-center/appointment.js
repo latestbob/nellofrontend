@@ -52,9 +52,9 @@ export default function DoctorAppointment({ history }) {
             onSuccess: ({ service, medicalCenters, user }) => {
                 console.log(user, 'onSubmit...')
 
-                if (!user?.hasSub || !service?.doctor) {
-                    history.push({ pathname: '/doctor-signup', state: { service: 'doctor-md' } });
-                }
+                // if (!user?.hasSub || !service?.doctor) {
+                //     history.push({ pathname: '/doctor-signup', state: { service: 'doctor-md' } });
+                // }
                 setService(service?.doctor);
                 setMedicalCenters(medicalCenters);
             },
@@ -83,7 +83,7 @@ export default function DoctorAppointment({ history }) {
         SetToken(localStorage.getItem("token"))
 
 
-        axios.get('http://127.0.0.1:8000/api/auth/user', {
+        axios.get(`${process.env.REACT_APP_BASE_URL}api/auth/user`, {
             'headers': {
                 Authorization: 'Bearer' + token,
             }

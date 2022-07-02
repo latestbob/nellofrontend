@@ -19,6 +19,8 @@ import axios from 'axios';
 
 import { useState } from 'react';
 import { PaystackButton } from 'react-paystack';
+import Swal from 'sweetalert2';
+import { showLoader, hideLoader } from '../../helper/loader';
 
 export default function HealthAppointmentPay({ history }) {
     const { dispatch, baseUrl, errorResponse, userData, currentPath } = React.useContext(AppContext);
@@ -110,7 +112,7 @@ const config = {
     reference: (new Date()).getTime(),
     //email:useremail,
 
-    email:'testemail@gmail.com',
+    email:useremail,
     amount: center_fee * 100,
     publicKey: 'pk_test_02ce7d4340336726886f879f63b3b5fd13988f34',
 
@@ -154,8 +156,9 @@ const config = {
 
             console.log(reference.reference);
 
+            showLoader();
             
-    axios.get(`http://127.0.0.1:8000/api/appointments/verify/${reference.reference}`,{
+    axios.get(`${process.env.REACT_APP_BASE_URL}api/appointments/verify/${reference.reference}`,{
         
 
     }).then(response => {
@@ -168,13 +171,14 @@ const config = {
         if(response.data.data.status == "success"){
 
             console.log(response.data.data.metadata);
+            console.log(response.data.data.amount);
 
 
             // Add the Appoiment Meta Details to the database using a Post Request
 
 
             
-                axios.post('http://127.0.0.1:8000/api/appointments/hospital/completebook',{
+                axios.post(`${process.env.REACT_APP_BASE_URL}api/appointments/hospital/completebook`,{
                         
                 //request body here to complete appointment process
             user_uuid : response.data.data.metadata.user_uuid,
@@ -190,12 +194,28 @@ const config = {
         center_address:response.data.data.metadata.center_address,
         center_uuid:response.data.data.metadata.center_uuid,
         reason:response.data.data.metadata.reason,
+        amount:response.data.data.amount / 100,
     
                 
             
 
                 }).then(response => {
+
+                    hideLoader();
                     console.log(response)
+                    console.log(response.data.status);
+                    
+                    if(response.data.status == true){
+                        Swal.fire(
+                            'Appointment Scheduled',
+                            'Kindly Download Acknowledgement Slip',
+                            
+                            'success'
+                          )
+              
+              
+                          history.replace('/account/appointments');
+                    }
   
          
                 }).catch(error => {

@@ -52,7 +52,7 @@ function addUsers(){
                     We made our features easy and simple to help you achieve your desired goals.
                 </div>
                 <div className="row">
-                    <div className="col-lg-3 col-md-6">
+                    <div className="col-lg-4 col-md-6">
                     <Link to="/doctors">
                         <div className="ccard-4">
                             <div className="ccard-4-inner">
@@ -72,7 +72,7 @@ function addUsers(){
                         </Link>
                     </div>
 
-                    <div className="col-lg-3 col-md-6">
+                    <div className="col-lg-4 col-md-6">
                     <Link to="/drugs">
                         <div className="ccard-4">
                             <div className="ccard-4-inner">
@@ -91,7 +91,7 @@ function addUsers(){
                         </Link>
                     </div>
 
-                    <div className="col-lg-3 col-md-6">
+                    <div className="col-lg-4 col-md-6">
                     <Link to="/appointment">
                         <div className="ccard-4">
                             <div className="ccard-4-inner">
@@ -110,25 +110,27 @@ function addUsers(){
                         </Link>
                     </div>
 
-                    <div className="col-lg-3 col-md-6">
-                    <Link to="/fitness">
+                    {/* <div className="col-lg-3 col-md-6">
+                        <Link to="/fitness">
                         <div className="ccard-4">
                             <div className="ccard-4-inner">
                                 <i class="fal fa-heart ccard-4-ico"></i>
                                 {/* <img className="ccard-4-ico" src="./assets/images/home-heart.svg" alt="home-heart" /> */}
-                                <h4>Health & Fitness</h4>
+                                {/* <h4>Health & Fitness</h4>
                                 <p>
                                     Get latest health and fitness tips to help you stay healthy
                                 </p>
-                            </div>
-                            <Link to="/fitness" className="ccard-4-more">
+                            </div> */}
+                            {/* <Link to="/fitness" className="ccard-4-more">
                                 <span>Learn More</span>
                                 <img className="main" src="./assets/images/home-arrow-right.svg" alt="home-arrow-right" />
                                 <img className="alt" src="./assets/images/home-arrow-right-white.svg" alt="home-arrow-right-white" />
-                            </Link>
-                        </div>
+                            </Link> */}
+                        {/* </div>
                         </Link>
-                    </div>
+                    </div>  */}
+
+                    
                 </div>
             </div>
         </div>

@@ -42,9 +42,9 @@ export default function DoctorSubscription() {
     const { isLoading, isFetching, refetch, isError } = useQuery('subscriptions', subscriptions, {
         onSuccess: ({ fitness }) => {
             setService(fitness);
-            if (!fitness) {
-                history.push({ pathname: '/fitness-signup', state: { service: 'fitness' } });
-            }
+            // if (!fitness) {
+            //     history.push({ pathname: '/fitness-signup', state: { service: 'fitness' } });
+            // }
         },
         onError: (error) => errorResponse({
             dispatch, error, history,

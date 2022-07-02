@@ -31,9 +31,11 @@ export default function Checkout({ pathname, cartBackdrop, setCartBackdrop, hash
     const [summaryError, setSummaryError] = React.useState(false);
     const [checkoutError, setCheckoutError] = React.useState(false);
     const [paymentRef, setPaymentRef] = React.useState({});
-    const [paymentConfig, setPaymentConfig] = React.useState({
-        publicKey: process.env.REACT_APP_PAYSTACK_PK,
-    });
+    // const [paymentConfig, setPaymentConfig] = React.useState({
+    //     publicKey: "pk_test_02ce7d4340336726886f879f63b3b5fd13988f34"
+    // });
+
+    const [paymentConfig, setPaymentConfig] = React.useState([]);
 
     const { toggleFormState: tsDelivery } = useFormState('form-delivery');
     const { toggleFormState: tsCoupon } = useFormState('form-apply-coupon');
@@ -54,7 +56,8 @@ export default function Checkout({ pathname, cartBackdrop, setCartBackdrop, hash
         onSuccess: ({ order }) => {
             // alert(5)
             setBotPaymentSuc(true)
-            history.push({ pathname: '/checkout-completed', state: { order } });
+           
+             history.push({ pathname: '/checkout-completed', state: { order } });
         },
         onError: (error) => {
             //errorResponse({ error, dispatch });
@@ -103,7 +106,7 @@ export default function Checkout({ pathname, cartBackdrop, setCartBackdrop, hash
             setSummary(data);
             setPaymentConfig({
                 ...paymentConfig,
-                amount: parseInt(data?.total * 100)
+                amount: parseInt(data?.total)
             })
 
             setTimeout(() => initCheckoutPage('#checkout-payment'), 1000);
@@ -274,7 +277,7 @@ React.useEffect(() => {
         setPaymentConfig({
             ...paymentConfig,
             email: userData?.email,
-            //publicKey: process.env.REACT_APP_PAYSTACK_PK,
+            publicKey: "pk_test_02ce7d4340336726886f879f63b3b5fd13988f34",
             text: 'Proceed to Payment',
             onSuccess: (reference) => onPaymentSuccess(reference),
             onClose: onPaymentClose,

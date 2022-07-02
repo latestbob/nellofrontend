@@ -8,6 +8,7 @@ import { ErrorMsg } from "../../components";
 import axios from "axios";
 import { useState } from "react";
 import Swal from 'sweetalert2';
+import { showLoader, hideLoader } from "../../helper/loader";
 
 
 import useFormState from "./../../hooks/useFormState";
@@ -43,12 +44,14 @@ function onSubmitForgot(e){
 e.preventDefault();
     // alert(forgotemail);
 
+    showLoader();
 
-    axios.post('http://127.0.0.1:8000/api/auth/forgot-password',{
+    axios.post(`${process.env.REACT_APP_BASE_URL}api/auth/forgot-password`,{
       'email':forgotemail,
       
   }).then(response => {
       console.log(response)
+      hideLoader();
 
       if(response.data.status == true){
           Swal.fire(

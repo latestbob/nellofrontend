@@ -5,13 +5,12 @@ import { NotificationManager } from "react-notifications";
 export default function handleMedicationSubmit(
   e,
   index,
-  activeMedicationMsg,
-  medicationMsgs,
+  speakDoc,
   accountInfo,
-  medicationActiveMsg,
-  setMedicationActiveMsg,
+  speakDocActive,
+  setSpeakToDocActive,
   setactiveInputValue,
-  setActiveMedicationMsg,
+  setActiveDocMsg,
   setChatInputDisable,
   setChatSubmitBtnDisable,
   setLoadSubmitData,
@@ -25,90 +24,40 @@ export default function handleMedicationSubmit(
   getAllSpecalist,
   searchSpeacialistByName,
   appiont,
-  submitBookDoctor,
-  setAccountInfo,
-  
+  submitBookDoctor
 ) {
   e.preventDefault();
-  let allMsg = medicationMsgs;
+  let allMsg = speakDoc;
 
-
-
-
-  if(index == 1){
-    console.log("index is one");
-  }
-
-
-  if (index == 5) {
-    if (activeInputValue == "") {
+  if (index == 69) {
+    if (appiont.time == "") {
       return NotificationManager.error(
-        "Appiontment date is required to continue"
+        "Appiontment time is required to continue"
       );
     }
-    console.log(moment(activeInputValue).format("YYYY-MM-DD"));
-    let converDate = moment(activeInputValue).format("YYYY-MM-DD");
-    console.log(">>>converDate", converDate, activeInputValue);
-    if (converDate == "Invalid date") {
-      return NotificationManager.error(
-        "Invalid date format,please use the format below"
-      );
-    }
-    //setAppiontMentDetails({ ...appiontMentDetails, date: converDate });
-    let active = medicationActiveMsg;
+
+    let active = speakDocActive;
     const userRes = {
-      id: 4,
+      id: 70,
       user: [
         <div className="ongoingMsgReplyText">
           {" "}
-          <p>{converDate}</p>
+          <p>{appiont.time}</p>
         </div>,
       ],
       type: "user",
     };
-    // setChatInputDisable(true);
-    // setChatSubmitBtnDisable(true);
+    setChatInputDisable(true);
+    setChatSubmitBtnDisable(true);
     let allMsgSpread = [...active, userRes];
-    setMedicationActiveMsg(allMsgSpread);
-    setActiveMedicationMsg(7);
+    setSpeakToDocActive(allMsgSpread);
+    setActiveDocMsg(71);
+    submitBookDoctor(true);
     setTimeout(() => {
       setactiveInputValue("");
-      setMedicationActiveMsg([...allMsgSpread, allMsg[7]]);
+      setSpeakToDocActive([...allMsgSpread, allMsg[71]]);
       window.location.href = "#showNewMsg";
     }, 1000);
   }
-
-  // if (index == 7) {
-  //   // alert(4);
-  //   if (appiontMentDetails.time == "") {
-  //     return NotificationManager.error(
-  //       "Appiontment time is required to continue"
-  //     );
-  //   }
-
-  //   let active = medicationActiveMsg;
-  //   const userRes = {
-  //     id: 8,
-  //     user: [
-  //       <div className="ongoingMsgReplyText">
-  //         {" "}
-  //         <p>{appiontMentDetails.time}</p>
-  //       </div>,
-  //     ],
-  //     type: "user",
-  //   };
-  //   // setChatInputDisable(true);
-  //   // setChatSubmitBtnDisable(true);
-  //   let allMsgSpread = [...active, userRes];
-  //   setMedicationActiveMsg(allMsgSpread);
-  //   setActiveMedicationMsg(9);
-  //   setTimeout(() => {
-  //     setActiveMedicationMsg(9);
-  //     setactiveInputValue("");
-  //     setMedicationActiveMsg([...allMsgSpread, allMsg[9]]);
-  //     setSubmitAppiontment(true);
-  //     window.location.href = "#showNewMsg";
-  //   }, 1000);
-  // }
-
 }
+

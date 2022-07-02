@@ -30,7 +30,7 @@ export default function CheckoutDone() {
                             <div class="row">
                                 <div class="col-12">
                                     <h2 className="font-weight-normal">invoice<br />
-                                        <span class="small">order #1082</span>
+                                        <span class="small">{order?.order_ref}</span>
                                     </h2>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@ export default function CheckoutDone() {
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h3>ORDER SUMMARY</h3>
+                                <h3>ORDER SUMMARY {order?.cart_uuid}</h3>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr class="line">

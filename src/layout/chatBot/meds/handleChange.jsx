@@ -149,6 +149,7 @@ export default function appiontmentChangeMed(
   //   setsearchSpeacialistByName(e.target.value);
   // }
   if (index == 62 ) {
+    
     getAllMedication(e.target.value)
     console.log(e.target.value);
   }

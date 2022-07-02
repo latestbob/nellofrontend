@@ -41,7 +41,7 @@ const ChatBotDefaultMsg = ({ handleUserRequest, activeTab }) => {
               <p>Help me Schedule a Hospital Appointment</p>
             </div>
 
-            <div
+            {/* <div
               className="askNelloOptionsGrid"
               onClick={() =>
                 NotificationManager.info("Service temporally down")
@@ -49,7 +49,7 @@ const ChatBotDefaultMsg = ({ handleUserRequest, activeTab }) => {
             >
               <img src={nelloOp4} alt="" />
               <p>I want Health & Fitness Tips</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

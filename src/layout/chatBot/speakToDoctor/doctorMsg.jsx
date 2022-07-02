@@ -82,7 +82,7 @@ const onSuccess = (reference) => {
     console.log(reference.reference);
 
     
-axios.get(`http://127.0.0.1:8000/api/appointments/verify/${reference.reference}`,{
+axios.get(`${process.env.REACT_APP_BASE_URL}api/appointments/verify/${reference.reference}`,{
 
 
 }).then(response => {
@@ -93,6 +93,7 @@ console.log(response.data.data.metadata);
 //Check is the reference payment is Verified
 
 if(response.data.data.status == "success"){
+  console.log(response.data.data.amount);
 
     console.log(response.data.data.metadata);
     showLoader();
@@ -102,7 +103,7 @@ if(response.data.data.status == "success"){
 
 
     
-        axios.post('http://127.0.0.1:8000/api/appointments/completebook',{
+        axios.post(`${process.env.REACT_APP_BASE_URL}api/appointments/completebook`,{
                 
         //request body here to complete appointment process
     user_uuid : response.data.data.metadata.user_uuid,
@@ -117,6 +118,7 @@ if(response.data.data.status == "success"){
         user_email:response.data.data.metadata.useremail,
         doctor_email:response.data.data.metadata.doctormail,
         username:response.data.data.metadata.username,
+        amount:response.data.data.amount / 100,
     
 
         }).then(response => {

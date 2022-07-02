@@ -129,7 +129,7 @@ const onSuccess = (reference) => {
     console.log(reference.reference);
 
     
-axios.get(`http://127.0.0.1:8000/api/appointments/verify/${reference.reference}`,{
+axios.get(`${process.env.REACT_APP_BASE_URL}api/appointments/verify/${reference.reference}`,{
 
 
 }).then(response => {
@@ -148,7 +148,7 @@ if(response.data.data.status == "success"){
     
 
     
-        axios.post('http://127.0.0.1:8000/api/appointments/hospital/completebook',{
+        axios.post(`${process.env.REACT_APP_BASE_URL}api/appointments/hospital/completebook`,{
                 
         //request body here to complete appointment process
         user_uuid : response.data.data.metadata.user_uuid,
@@ -666,6 +666,8 @@ const componentProps = {
             ) : (
               ""
             )}
+
+            {/* //init later bash five */}
 
             {id == 14 && index == 0 ? (
               <div className="selectWrapActionMsg">

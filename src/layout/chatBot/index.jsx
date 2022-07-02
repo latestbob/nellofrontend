@@ -675,20 +675,21 @@ export default function Index({
     }
 
     if (req == "Medication") {
-      let allMsg = appiontmentMsgs;
-      let active = appiontmentActiveMsg;
+      let allMsg = medicationMsgs;
+      let active = medicationActiveMsg;
       let allMsgSpread = [...active, allMsg[0]];
-      setappiontmentActiveMsg(allMsgSpread);
+      setMedicationActiveMsg(allMsgSpread);
 
       setTimeout(() => {
-        console.log(appiontmentActiveMsg);
-        setappiontmentActiveMsg([...allMsgSpread, allMsg[1]]);
-        //console.log(medicationActiveMsg);
+        console.log(medicationActiveMsg);
+        setMedicationActiveMsg([...allMsgSpread, allMsg[1]]);
+        console.log(medicationActiveMsg);
         window.location.href = "#showNewMsg";
-        setActiveAppiontmentMsg(1);
+        setActiveMedicationMsg(1);
         // mdSignUpShow();
       }, 500);
     }
+
 
     // if (req == "Medicationreal") {
     //   let allMsg = medicationMsgs;
@@ -806,7 +807,7 @@ export default function Index({
 
       console.log(res);
     }
-    alert(value);
+    //alert(value);
   };
 
   const getMedicationByName = async (sp, wereTo) => {
@@ -1369,50 +1370,7 @@ export default function Index({
 
       //if activeTab is Medication 
 
-      else if(activeTab == "Medication"){
-        setActiveTab("Medicationreal");
-        console.log(activeTab);
-      let allMsg = medicationMsgs;
-      let active = medicationActiveMsg;
-  
      
-  
-      if (action == "skip") {
-        const userRes = {
-          id: 0,
-          user: [
-            <div className="ongoingMsgReplyText">
-              {" "}
-              <p>Ok Great!!!.</p>
-            </div>,
-          ],
-          type: "user",
-        };
-
-       
-        console.log(activeTab);
-        let allMsgSpread = [...active, userRes, allMsg[1]];
-  
-        // setChatInputDisable(false);
-        // setChatSubmitBtnDisable(false);
-
-
-        setActiveMedicationMsg(1);
-        setMedicationActiveMsg(allMsgSpread);
-
-       
-
-       
-  
-       
-      }
-
-     
-
-      }
-
-
-      //end of if ActiveTab is Medication
     };
 
 
@@ -1700,87 +1658,7 @@ export default function Index({
       //end of if activeTab is appiontment
 
 
-      //else if activeTable is Medication
-      else if(activeTab == "Medication"){
-        console.log(activeTab);
-        setLoadSubmitData(false);
-        let allMsg = appiontmentMsgs;
-        let allSentMsg = appiontmentActiveMsg;
-        console.log();
-        let data = accountInfo;
-        // console.log(accountInfo);
-        // console.log(
-        //   " data>>>",
-        //   (data["dob"] = moment(accountInfo.dob).format("DD-MM-YYYY"))
-        // );
-        // data["dob"] = moment(accountInfo.dob).format("DD-MM-YYYY");
-    
-        showLoader();
-        const res = await httpPost(`auth/register`, data);
-        if (res) {
-          hideLoader();
-          if (res.er) {
-            hideLoader();
-            console.log(res.er.errors);
-            let errors = [];
-            for (let key in res.er.errors) {
-              if (res.er.errors[key] !== "" && key !== "javascript") {
-                errors.push(res.er.errors[key]);
-              }
-            }
-            console.log(">>>>>>ERR", errors[0][0]);
-            if (errors.length) {
-              NotificationManager.error(`${errors[0][0]}.`);
-              if (errors[0][0] == "The email has already been taken.") {
-                setactiveInputValue("");
-                setActiveAppiontmentMsg(19);
-                setappiontmentActiveMsg([...allSentMsg, allMsg[19]]);
-  
       
-                window.location.href = "#showNewMsg";
-  
-              
-  
-              }
-    
-              if (errors[0][0] == "The phone has already been taken.") {
-                setactiveInputValue("");
-                setActiveAppiontmentMsg(22);
-                console.log(">>>MSG", allSentMsg);
-                setappiontmentActiveMsg([...allSentMsg, allMsg[22]]);
-                window.location.href = "#showNewMsg";
-              }
-              // setActiveAppiontmentMsg(22);
-              // setappiontmentActiveMsg([...allSentMsg, allMsg[22]]);
-              return false;
-            }
-          } else {
-            NotificationManager.success(`Account successfully created.`);
-            setLoginData(res.user);
-            setUserData(dispatch, res.token, res.user);
-            localStorage.setItem("token", res.token);
-  
-            setAppiontMentDetails({
-              ...appiontMentDetails,
-              username: `${res.user.firstname} ${res.user.lastname}`,
-              useremail: `${res.user.email}`,
-              usergender: `${res.user.gender}`,
-              user_uuid: `${res.user.uuid}`,
-            });
-            
-            alert(authFrom);
-           
-    
-            setappiontmentActiveMsg([...allSentMsg, allMsg[32]]);
-            
-    
-          
-          }
-        }
-  
-      }
-
-      //end of if activeTab is Medication
 
     };
 
@@ -1974,84 +1852,7 @@ export default function Index({
 
     //if active Tab is Medication
 
-    else if (activeTab == "Medication"){
-
-      console.log(activeTab);
-
     
-
-      let allMsg = appiontmentMsgs;
-      let allSentMsg = appiontmentActiveMsg;
-  
-  
-   
-  
-      showLoader();
-      const res = await httpPost(`auth/login`, {
-        'email':accountInfo.email,
-        'password':accountInfo.password
-      });
-  
-      //Ucomment
-      if (res) {
-        hideLoader();
-        console.log("RES>>>>", res);
-        if (res.er) {
-          hideLoader();
-          console.log("ERRIR", res.er.msg);
-          NotificationManager.error(res.er.msg);
-          if (res.er.msg == "Invalid Credentials.") {
-          
-            setappiontmentActiveMsg([...allSentMsg, allMsg[31]]);
-  
-              
-              window.location.href = "#showNewMsg";
-              setChatInputDisable(true);
-              setChatSubmitBtnDisable(true);
-              setactiveInputValue("");
-            
-  
-            
-          }
-        } else {
-          setactiveInputValue("");
-          setUserData(dispatch, res.token, res.user);
-          localStorage.setItem("token", res.token);
-          // alert(res.token);
-          checkUserState();
-          NotificationManager.success(`Login successful .`);
-          setLoginData(res.user);
-          console.log(user);
-          console.log(res.user.email);
-  
-          setAppiontMentDetails({
-            ...appiontMentDetails,
-            username: `${res.user.firstname} ${res.user.lastname}`,
-            useremail: `${res.user.email}`,
-            usergender: `${res.user.gender}`,
-            user_uuid: `${res.user.uuid}`,
-          });
-          
-  
-         
-          
-            
-              // alert(user.height);
-              let allMsgSpread = [...allSentMsg, allMsg[32]];
-              setappiontmentActiveMsg(allMsgSpread);
-            
-  
-            setActiveTab("Medication");
-          
-  
-           return;
-        }
-      }
-
-    }
-
-
-    //end of if active Tab is medication
 
 
   };
@@ -2349,41 +2150,31 @@ export default function Index({
 
     if (activeTab == "Medication") {
       // alert("clic");
-      handleAppiontmentSubmitMed(
+      handleMedicationSubmit(
         e,
-        activeAppiontmentMsg,
-        setActiveAppiontmentMsg,
-        appiontmentActiveMsg,
-        setappiontmentActiveMsg,
-        appiontmentMsgs,
-        appiontMentDetails,
-        setAppiontMentDetails,
-        setactiveInputValue,
-        activeInputValue,
-        setSubmitAppiontment,
+        activeMedicationMsg,
+        speakDoc,
         accountInfo,
-        
-     
+        speakDocActive,
+        setSpeakToDocActive,
+        setactiveInputValue,
+        setActiveDocMsg,
         setChatInputDisable,
         setChatSubmitBtnDisable,
         setLoadSubmitData,
         loginInfo,
+        setSubmitLogin,
+        fitness,
         validateNumber,
-       setAccountInfo,
-       setFitness,
-       fitness,
-       setSubmitLogin,
-       setSubmitFitness,
+        activeInputValue,
+        setFitness,
+        setSubmitFitness,
         getAllSpecalist,
         searchSpeacialistByName,
-        speakDocActive,
-        setLoginInfo,
-        setSubmitLoginHos,
-        submitLoginHos,
-        activeAppiontmentMsg,
-        getAllSpecalistHos,
         appiont,
-        setAppiont,
+        submitBookDoctor,
+        setAccountInfo
+
 
       );
     }
@@ -2457,24 +2248,21 @@ export default function Index({
 
 
     if (activeTab == "Medication") {
-      appiontmentChangeMed(
+      medicationHandleChange(
         e,
-        activeAppiontmentMsg,
-        setactiveInputValue,
-        setAppiontMentDetails,
-        appiontMentDetails,
+        activeMedicationMsg,
         accountInfo,
         setAccountInfo,
+        appiont,
+        setAppiont,
+        fitness,
+        setFitness,
         loginInfo,
         setLoginInfo,
         setactiveInputValue,
-        setAppiont,
-        appiont,
-        fitness,
-        setFitness,
         setsearchSpeacialistByName,
-        getAllMedication,
-        
+        getAllMedication
+
         
 
       );
@@ -2961,7 +2749,7 @@ export default function Index({
               ""
             )}
 
-            {activeTab == "Medicationreal" ? (
+            {activeTab == "Medication" ? (
               <React.Fragment>
                 <ChatBotDefaultMsgWithImg
                   handleUserRequest={handleUserRequest}
@@ -2990,7 +2778,7 @@ export default function Index({
               ""
             )}
 
-        
+         
      
             {activeTab == "appiontment" ? (
               <React.Fragment>
@@ -3041,59 +2829,7 @@ export default function Index({
               ""
             )}
 
-        {activeTab == "Medication" ? (
-              <React.Fragment>
-                <ChatBotDefaultMsgWithImg
-                  handleUserRequest={handleUserRequest}
-                  activeTab={activeTab}
-                />
-                <AppiontmentBotMed
-                  
-                  appiontmentMsg={appiontmentMsg}
-                  activeAppiontmentMsg={activeAppiontmentMsg}
-                  appiontmentActiveMsg={appiontmentActiveMsg}
-                  healthCenter={healthCenter}
-                  getHealthCenterSelect={getHealthCenterSelect}
-                  selectAppiontmentTime={selectAppiontmentTime}
-                  bookAppionmentDate={bookAppionmentDate}
-                  handleBotAccApp={handleBotAccApp}
-                  handleBotAccMed={handleBotAccMed}
-                  appiontMentDetails={appiontMentDetails}
-                  setappiontmentActiveMsg={setappiontmentActiveMsg}
-                  userInfo={accountInfo}
-                  DOBDateHos={DOBDateHos}
-                  handleUserAccountGenderHos={handleUserAccountGenderHos}
-                  handleUserAccountGender={handleUserAccountGender}
-                  getMoreUserDetailsHos={getMoreUserDetailsHos}
-                  setLoginInfo={setLoginInfo}
-                  setSubmitLoginHos={setSubmitLoginHos}
-                  medicalcenter={medicalcenter}
-                  setMedicalCenter={setMedicalCenter}
-                  getAllSpecalistHos={getAllSpecalistHos}
-                  bookAppiontmentWithHos={bookAppiontmentWithHos}
-                  setAppiont={setAppiont}
-                  appiont={appiont}
-                  setAppiontMentDetails={setAppiontMentDetails}
-
-                  allMedication={allMedication}
-                  getMedicationByName={getMedicationByName}
-                  getOrder={getOrder}
-                  checkoutOrContinue={checkoutOrContinue}
-                  getAllMedication={getAllMedication}
-                  
-
-                  ///////////////////
-            
-
-                  // getMedicationByName={getMedicationByName}
-                  // getOrder={getOrder}
-                  // checkoutOrContinue={checkoutOrContinue}
-                  // handleBotAcc={handleBotAcc}
-                />
-              </React.Fragment>
-            ) : (
-              ""
-            )}
+        
           </div>
           {showMedicationCheckOut ? (
             ""

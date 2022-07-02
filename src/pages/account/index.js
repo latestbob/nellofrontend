@@ -56,11 +56,11 @@ export default function Browse({ history }) {
                 Personal Information
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink exact to={`${url}/billing`}>
                 Billing
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink exact to={`${url}/my-orders`}>
                 My Orders

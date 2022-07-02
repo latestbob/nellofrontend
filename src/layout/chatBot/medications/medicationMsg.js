@@ -13,8 +13,7 @@ export const RenderBotMsg = ({
   getOrder,
   checkoutOrContinue,
   handleBotAcc,
-  getDetails,
-  
+  medicationActiveMsg,
 }) => {
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -68,19 +67,10 @@ export const RenderBotMsg = ({
                         </div>
                         <div className="spabdbtns">
                           <button
-                            style={{ width: "50%" }}
+                            style={{ width: "100%" }}
                             onClick={() => getOrder(data)}
                           >
                             Place order
-                          </button>
-
-                          <button 
-                            style={{ width: "50%" }}
-                            data-toggle="modal"
-                            data-target="#exampleModal"
-                            onClick={() => getDetails(data.description)}
-                          >
-                            View Details
                           </button>
                           {/* <button>View item</button> */}
                         </div>
@@ -93,25 +83,15 @@ export const RenderBotMsg = ({
               ""
             )}
 
-
-{/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button> */}
-
-
-
-
             {id == 4 && index == 1 ? (
               <div className="btnWrapActionMsg">
                 <button
-                  type="button"handleMedClick
+                  type="button"
                   className
                   onClick={() => checkoutOrContinue("cart")}
                 >
                   Proceed to cart
                 </button>
-
-        
                 <button
                   type="button"
                   onClick={() => checkoutOrContinue("shop")}
@@ -247,22 +227,15 @@ export const RenderUserMsg = ({ data, index }) => {
   );
 };
 const MedicationMsg = ({
- 
   medicationMsgs,
-// activeMedicationMsg,
-medicationActiveMsg,
-allMedication,
-getMedicationByName,
-getOrder,
-getDetails,
-
-checkoutOrContinue,
-handleBotAcc,
-handleBotAccApp,
-handleBotAccMed,
-// setActiveMedicationMsg,
-setMedicationActiveMsg,
-
+  activeDocMsg,
+  speakDocActive,
+  allMedication,
+  getMedicationByName,
+  getOrder,
+  checkoutOrContinue,
+  handleBotAcc,
+  medicationActiveMsg,
 }) => {
   useEffect(() => {
     console.log("medicationActiveMsg", medicationActiveMsg);
@@ -275,23 +248,16 @@ setMedicationActiveMsg,
           ? MainData.bot.map((data, i) => {
               return (
                 <RenderBotMsg
-                data={data}
-                index={i}
-                id={MainData.id}
-                key={i}
-                allMedication={allMedication}
-                getMedicationByName={getMedicationByName}
-                getOrder={getOrder}
-                
-                checkoutOrContinue={checkoutOrContinue}
-                handleBotAcc={handleBotAcc}
-                handleBotAccMed={handleBotAccMed}
-                // medicationActiveMsg={medicationActiveMsg}
-                // activeMedicationMsg={activeMedicationMsg}
-                // setActiveMedicationMsg={setActiveMedicationMsg}
-                setMedicationActiveMsg={setMedicationActiveMsg}
-                medicationMsgs={medicationMsgs}
-               
+                  data={data}
+                  index={i}
+                  id={MainData.id}
+                  key={i}
+                  allMedication={allMedication}
+                  getMedicationByName={getMedicationByName}
+                  getOrder={getOrder}
+                  checkoutOrContinue={checkoutOrContinue}
+                  handleBotAcc={handleBotAcc}
+                  medicationActiveMsg={medicationActiveMsg}
                 />
               );
             })
@@ -305,3 +271,4 @@ setMedicationActiveMsg,
 };
 
 export default MedicationMsg;
+

@@ -43,7 +43,7 @@ export default function Shipping({ tsDelivery, currentIndex, locations, checkout
                         
                         <div class="form-group">
                             {/* <label>First Name</label>  Send the firstname to hidden*/}
-                            <input type="hidden"
+                            <input type="text"
                                 {...register('firstname', {
                                     required: 'First name is required'
                                 })}
@@ -53,7 +53,7 @@ export default function Shipping({ tsDelivery, currentIndex, locations, checkout
                                 {/* Set the customer last name to hidden  */}
                         <div class="form-group">
                             {/* <label>Last Name</label> */}
-                            <input type="hidden"
+                            <input type="text"
                                 {...register('lastname', {
                                     required: 'Last name is required'
                                 })} class="form-control" placeholder="Last Name"   />

@@ -410,9 +410,9 @@ const Master = ({ children, history }) => {
 
           <ul className="menu">
             <li>
-              <div onClick={() => modalPrice.showModal()} className="a-link">
-                <span>Pricing</span>
-              </div>
+              <Link to="/drugs">
+                <span>Drug Store</span>
+              </Link>
             </li>
             {pathname !== "/checkout-completed" && (
               <li className="has-ico">
@@ -440,12 +440,12 @@ const Master = ({ children, history }) => {
       <header className="mobile">
         <div className="header">
           <div className="header-left">
-            <div onClick={() => modalPrice.showModal()} className="a-link">
-              Pricing
-            </div>
+            <Link to="/drugs">
+              Drug Store
+            </Link>
           </div>
           <Link to="/">
-            <img style={{height:"30px"}} src={`${baseUrl}assets/images/logo.png`} alt="" />
+            <img style={{height:"40px"}} src="http://asknello.com/assets/images/logo.png"alt="" />
           </Link>
           <div
             className="header-right"
@@ -456,7 +456,7 @@ const Master = ({ children, history }) => {
               <Link to={`${pathname}#cart`} className="sc-box">
                 <div className="sc-counter bg-danger">{cartItemsCount}</div>
                 <img
-                  src={`${baseUrl}/assets/images/shopping-cart.svg`}
+                  src="http://asknello.com/assets/images/shopping-cart.svg"
                   alt="shopping-cart"
                 />
               </Link>
@@ -465,7 +465,7 @@ const Master = ({ children, history }) => {
               <>
                 <span className="user-ico">
                   <img
-                    src={`${baseUrl}/assets/images/user.svg`}
+                    src="http://asknello.com/assets/images/user.svg"
                     alt=""
                     height="90%"
                   />
@@ -476,30 +476,30 @@ const Master = ({ children, history }) => {
                     >
                       Personal Info
                     </Link>
-                    <Link className="dropdown-link" to={`/account/billing`}>
+                    {/* <Link className="dropdown-link" to={`/account/billing`}>
                       Billing
-                    </Link>
+                    </Link> */}
                     <Link className="dropdown-link" to={`/account/my-orders`}>
                       My Orders
                     </Link>
-                    <Link
+                    {/* <Link
                       className="dropdown-link"
                       to={`/account/health-records`}
                     >
                       Health Records
-                    </Link>
+                    </Link> */}
                     <Link
                       className="dropdown-link"
                       to={`/account/appointments`}
                     >
                       Appointments
                     </Link>
-                    <Link
+                    {/* <Link
                       className="dropdown-link"
                       to={`/account/chat-history`}
                     >
                       Chat History
-                    </Link>
+                    </Link> */}
                     <div
                       onClick={() => logoutUser(dispatch, history)}
                       className="dropdown-link"
@@ -535,7 +535,7 @@ const Master = ({ children, history }) => {
             <span>AskNello</span>
           </div>
         </div>
-
+{/* 
         <div className="fab-container-wrapper">
           <div className="fab-browse-container">
             <Link to="/browse">
@@ -545,7 +545,7 @@ const Master = ({ children, history }) => {
               <span>Browse/Find Services</span>
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Modal Price */}
