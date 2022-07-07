@@ -38,6 +38,7 @@ import AppiontmentBotMed from "./meds/appiontmentBot";
 
 import appiontmentChangeMed from "./meds/handleChange";
 import handleAppiontmentSubmitMed from "./meds/submit";
+import useRouter from "../../hooks/useRouter";
 
 
 export default function Index({
@@ -646,7 +647,20 @@ export default function Index({
       let active = speakDocActive;
       if (userActive) {
         //check if user has logged in
-        console.log(user);
+        console.log(user.email);
+        setAppiont({
+          ...appiont,
+         
+          
+      
+         username: `${user.firstname} ${user.lastname}`,
+         useremail: user.email,
+          usergender: user.gender,
+          user_uuid: user.uuid,
+        });
+
+        console.log(appiont.user_uuid);
+
         if (user.doctor_subscription == null) {
           // alert(user.height);
           let allMsgSpread = [...active, allMsg[32]];
@@ -710,6 +724,36 @@ export default function Index({
     if (req == "appiontment") {
       let allMsg = appiontmentMsg;
       let active = appiontmentActiveMsg;
+
+      if (userActive) {
+        //check if user has logged in
+        console.log('loggedin' , user);
+        console.log(user.email);
+        setAppiontMentDetails({
+          ...appiontMentDetails,
+         
+          
+      
+         username: `${user.firstname} ${user.lastname}`,
+         useremail: user.email,
+          usergender: user.gender,
+          user_uuid: user.uuid,
+
+          ////
+          
+        });
+        
+       
+        setActiveAppiontmentMsg(32);
+          let allMsgSpread = [...active, allMsg[32]];
+
+          setappiontmentActiveMsg(allMsgSpread);
+      
+
+        return;
+      }
+
+
       let allMsgSpread = [...active, allMsg[0]];
       // setActiveAppiontmentMsg(allMsgSpread);
       setappiontmentActiveMsg(allMsgSpread);

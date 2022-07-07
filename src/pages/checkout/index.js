@@ -25,7 +25,7 @@ export default function Checkout({ pathname, cartBackdrop, setCartBackdrop, hash
     const [pickupLocations, setPickupLocations] = React.useState([]);
     const [checkoutRequest, setCheckoutRequest] = React.useState({
         delivery_method: 'shipping',
-        delivery_type: 'standard',
+        delivery_type: 'same_day',
     });
     const [summary, setSummary] = React.useState({});
     const [summaryError, setSummaryError] = React.useState(false);
@@ -106,7 +106,7 @@ export default function Checkout({ pathname, cartBackdrop, setCartBackdrop, hash
             setSummary(data);
             setPaymentConfig({
                 ...paymentConfig,
-                amount: parseInt(data?.total)
+                amount: parseInt(data?.total * 100)
             })
 
             setTimeout(() => initCheckoutPage('#checkout-payment'), 1000);
@@ -326,6 +326,7 @@ React.useEffect(() => {
                 checkoutRequest={checkoutRequest}
                 initCheckoutPage={initCheckoutPage}
                 summary={summary}
+                setCheckoutRequest={setCheckoutRequest}
             />
 
             <Shipping

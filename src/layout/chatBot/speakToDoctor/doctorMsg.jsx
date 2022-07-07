@@ -49,7 +49,7 @@ export const RenderBotMsg = ({
 ////////////////////////////////START OF PAYSTACK //////////////////////////////
 const config = {
   reference: (new Date()).getTime(),
-  email: appiont.useremail,
+  email: appiont.useremail, 
   amount: appiont.fee * 100,
   publicKey: 'pk_test_02ce7d4340336726886f879f63b3b5fd13988f34',
 
@@ -136,6 +136,7 @@ if(response.data.data.status == "success"){
       
                   //history.replace('/account/appointments');
       
+                  window.location.href = "/account/appointments";
                  
                
             }
@@ -195,6 +196,7 @@ const componentProps = {
   const now = moment().hour(0).minute(0);
   useEffect(() => {
     //console.log(accountInfo);
+    console.log(appiont.useremail);
     setTimeout(() => {
       setShow(true);
       window.location.href = "#showNewMsg";

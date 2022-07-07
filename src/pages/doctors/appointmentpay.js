@@ -94,7 +94,7 @@ const config = {
     //email:useremail,
 
     email:useremail,
-    amount: 300000,
+    amount: location.state.doctorfee * 100,
     publicKey: 'pk_test_02ce7d4340336726886f879f63b3b5fd13988f34',
 
     
@@ -363,6 +363,11 @@ const config = {
                                                         <td>Doctor's specialization</td>
 
                                                         <td>{location.state.aos}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Consultation Fee</td>
+
+                                                        <td>{location.state.doctorfee}</td>
                                                     </tr>
 
                                                     {/* <tr>

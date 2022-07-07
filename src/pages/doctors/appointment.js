@@ -192,7 +192,7 @@ export default function DoctorAppointment({ history }) {
                         usergender:usergender,
                         user_uuid:user_uuid,
                         doctor_id:doctor_id,
-                        doctorfee:doctorfee,
+                        doctorfee:doctor?.fee,
 
 
                     
@@ -440,7 +440,7 @@ export default function DoctorAppointment({ history }) {
                         <div className="text-center" style={{
                             fontWeight: "bold",
                         }}>
-                            Kinldy Note that Online Consultation cost N ₦3000.00
+                            Kinldy Note that Online Consultation cost  ₦{doctor?.fee} 
                         </div>
 
                         <hr />

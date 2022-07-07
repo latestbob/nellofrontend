@@ -15,6 +15,7 @@ const authActions = {
     logoutUser: (dispatch, history) => {
         localStorage.removeItem(process.env.REACT_APP_USER_DATA);
         localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
+        localStorage.removeItem('token');
         dispatch({ type: 'LOGOUT' });
         history.push('/login');
     },

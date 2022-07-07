@@ -252,7 +252,7 @@ export default function Cart({
                             This Medication requires Prescription!
                           </h6>
                           <p className="text-secondary">
-                            Do you have a one for this medication?
+                            Do you have a prescription for this medication?
                           </p>
                           <div className="mb-3">
                             <div>

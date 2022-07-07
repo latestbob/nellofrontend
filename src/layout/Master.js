@@ -419,10 +419,11 @@ const Master = ({ children, history }) => {
                 <Link to={`${pathname}#cart`}>
                   <div className="sc-box">
                     <div className="sc-counter bg-danger">{cartItemsCount}</div>
-                    <img
-                      src="https://asknello.com/assets/images/shopping-cart.svg"
+                    {/* <img
+                      src="http://asknello.com/assets/images/shopping-cart.svg"
                       alt="shopping-cart"
-                    />
+                    /> */}
+                  <i class="fa fa-2x fa-shopping-cart" aria-hidden="true"></i>
                   </div>
                   <span>My Cart</span>
                 </Link>

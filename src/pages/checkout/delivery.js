@@ -11,7 +11,7 @@ import moment from 'moment';
 
 
 export default function Delivery({ pathname, currentIndex, checkoutRequest,
-    pickupLocations, initCheckoutMethod, hash, summary }) {
+    pickupLocations, initCheckoutMethod, hash, summary, setCheckoutRequest }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm({
         criteriaMode: "all",
         defaultValues: {
@@ -24,7 +24,10 @@ export default function Delivery({ pathname, currentIndex, checkoutRequest,
     const delivery_method = watch('delivery_method');
 
     React.useEffect(() => {
-        //console.log(checkoutRequest, 'Delivery__checkoutRequest...')
+        // console.log(checkoutRequest, 'Delivery__checkoutRequest...')
+
+        console.log('checkoutRequest',checkoutRequest);
+       
     }, [checkoutRequest]);
 
 
@@ -49,7 +52,7 @@ export default function Delivery({ pathname, currentIndex, checkoutRequest,
         setTodayTime(datetime.getHours());
         console.log(todaytime);
 
-        if(todaytime > 20){
+        if(todaytime > 16){
             setTodayDelivery(false);
             console.log(showToday);
         }
@@ -91,21 +94,40 @@ export default function Delivery({ pathname, currentIndex, checkoutRequest,
 
                             {delivery_method === 'shipping' && (<>
                                 <div class="font-weight-normal font-size-12 text-secondary mb-2">
-                                    Same day and next day delivery only available in Lagos
+                                    Same day <b>( max 4pm )</b> and next day delivery only available in Lagos
                                 </div>
 
                                 <div class="btn-group btn-group-toggle delivery-door-options mb-2" data-toggle="buttons">
                                    
                                   {showToday && 
                                        <label class={`btn btn-default ${checkoutRequest.delivery_type === 'same_day' ? 'active' : ''}`}>
-                                       <input type="radio" {...register('delivery_type')}
-                                           value="same_day" checked={checkoutRequest.delivery_type === 'same_day'} /> Same day
+                                       <input  type="radio" {...register('delivery_type')}
+                                           value="same_day" onChange={function(e){
+                                               setCheckoutRequest({ ...checkoutRequest, delivery_type : `${e.target.value}`});
+                                               console.log(e.target.value);
+                                           }} /> Same day
                                    </label>
+                                
+                                // <Radio color="primary-o" name="delivery_type" value="same_day"
+                                //     {...register('delivery_type')}
+                                //     bigger>
+                                //     <span className="font-weight-bold text-sky">Same Day</span>
+                                // </Radio>
                                   
                                   }
+                                   {/* <Radio color="primary-o" name="delivery_type" value="next_day"
+                                    {...register('delivery_type')}
+                                    bigger>
+                                    <span className="font-weight-bold text-sky">Next Day</span>
+                                </Radio> */}
+                                
+                                
                                     <label class={`btn btn-default ${checkoutRequest.delivery_type === 'next_day' ? 'active' : ''}`}>
-                                        <input type="radio" {...register('delivery_type')}
-                                            value="next_day" checked={checkoutRequest.delivery_type === 'next_day'} /> Next day
+                                        <input  type="radio" {...register('delivery_type')}
+                                            value="next_day" onClick={function(e){
+                                                setCheckoutRequest({ ...checkoutRequest, delivery_type : `${e.target.value}`});
+                                                console.log(e.target.value);
+                                            }} /> Next day
                                     </label>
                                     {/* <label class={`btn btn-default ${checkoutRequest.delivery_type === 'standard' ? 'active' : ''}`}>
                                         <input type="radio" {...register('delivery_type')}

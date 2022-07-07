@@ -127,7 +127,7 @@ const onSuccess = (reference) => {
     console.log(reference.reference);
     
     
-axios.get(`${process.env.REACT_APP_API_URL}/appointments/verify/${reference.reference}`,{
+axios.get(`${process.env.REACT_APP_API_URL}appointments/verify/${reference.reference}`,{
 
 
 }).then(response => {
@@ -147,6 +147,7 @@ if(response.data.data.status == "success"){
     
 
     
+    
         axios.post(`${process.env.REACT_APP_API_URL}appointments/hospital/completebook`,{
                 
         //request body here to complete appointment process
@@ -165,31 +166,33 @@ if(response.data.data.status == "success"){
     reason:response.data.data.metadata.reason,
     amount:response.data.data.amount / 100,
     
+   
+            
 
-        }).then(response => {
-            console.log(response)
-            hideLoader();
+  }).then(response => {
 
-            if(response.data.status == true){
-                Swal.fire(
-                    'Appointment Scheduled',
-                    `Schedule At - ${response.data.date} , Time - ${response.data.time}` ,
-                    
-                    'success'
-                  )
-      
-      
-                  //history.replace('/account/appointments');
-                  setappiontmentActiveMsg([]);
-      
-                 
-               
-            }
+    hideLoader();
+    console.log(response)
+    console.log(response.data.status);
+    
+    if(response.data.status == true){
+        Swal.fire(
+            'Appointment Scheduled',
+            'Kindly Download Acknowledgement Slip',
+            
+            'success'
+          )
 
- 
-        }).catch(error => {
-            console.log(error)
-        })
+
+          //history.replace('/account/appointments');
+          window.location.href = "/account/appointments";
+          
+    }
+
+
+}).catch(error => {
+    console.log(error)
+})
 
 
 }

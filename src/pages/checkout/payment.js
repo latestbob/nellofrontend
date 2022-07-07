@@ -13,6 +13,7 @@ export default function Shipping({ currentIndex, checkoutRequest, summary, initC
 
     React.useEffect(() => {
         //console.log(summary, 'summary...')
+        console.log('checkoutrequest', checkoutRequest?.delivery_type);
     }, [summary])
 
     return (<>
