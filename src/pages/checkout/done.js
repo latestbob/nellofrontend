@@ -211,7 +211,7 @@ class PrintID extends React.Component {
                         <i class="fal fa-check-circle"></i>
                         <h1>Payment Successful</h1>
                         <h3 class="text-sky">THANK YOU FOR YOUR ORDER!!</h3>
-                        <p>Payment Details has been sent to your email for the records.</p>
+                        <p>Payment Details have been sent to your email.</p>
                         <div>
                             <Link to="/account/my-orders" class="btn btn-secondary btn-inverse" role="button">View Orders</Link>
                             <ReactToPrint
