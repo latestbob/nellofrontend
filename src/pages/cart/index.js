@@ -365,7 +365,7 @@ export default function Cart({
               <div className="cart-summary-container">
                 <div>
                   <h5>Subtotal</h5>
-                  <span>Prescription fee, shipping and tax not included</span>
+                  <span>Prescription fee, shipping and tax not included yet</span>
                 </div>
                 <div>
                   <Currency value={cartTotal} />

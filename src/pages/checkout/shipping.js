@@ -92,7 +92,7 @@ export default function Shipping({ tsDelivery, currentIndex, locations, checkout
                                 {...register('location_id', {
                                     required: 'Delivery location is required'
                                 })}>
-                                <option value="">- Select Pickup Center -</option>
+                                <option value="">- Select LGA -</option>
                                 {locations && locations.length > 0 && locations.map((row, index) => {
                                     return (<option key={index} value={row.id}>{row.name}</option>)
                                 })}
