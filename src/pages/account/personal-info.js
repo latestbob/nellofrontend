@@ -289,7 +289,7 @@ function passwordToggle(e){
   React.useEffect(() => {
     
     if(selected == "Federal Capital Territory"){
-      axios.get(`http://locationsng-api.herokuapp.com/api/v1/states/abuja/lgas`, {
+      axios.get(`https://locationsng-api.herokuapp.com/api/v1/states/abuja/lgas`, {
      
       }).then(response => {
       console.log(response.data)
@@ -305,7 +305,7 @@ function passwordToggle(e){
     }
 
     else{
-      axios.get(`http://locationsng-api.herokuapp.com/api/v1/states/${selected}/lgas`, {
+      axios.get(`https://locationsng-api.herokuapp.com/api/v1/states/${selected}/lgas`, {
      
       }).then(response => {
       console.log(response.data)
@@ -327,7 +327,7 @@ function passwordToggle(e){
 
   React.useEffect(() => {
     
-    axios.get('http://locationsng-api.herokuapp.com/api/v1/states', {
+    axios.get('https://locationsng-api.herokuapp.com/api/v1/states', {
      
       }).then(response => {
       console.log(response.data)
