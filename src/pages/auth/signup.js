@@ -12,6 +12,8 @@ import {
 } from "../../components";
 import { Checkbox } from "pretty-checkbox-react";
 import useFormState from "./../../hooks/useFormState";
+import { useState } from "react";
+import { NotificationManager } from "react-notifications";
 
 export default function SignUp() {
   const { dispatch, setUserData, validateEmail, errorResponse, baseUrl } =
@@ -40,6 +42,8 @@ export default function SignUp() {
     };
   }, []);
 
+  const [passwordData , setPasswordData] = useState("");
+  const [passed , setPassed] = useState(false);
   //password Toggle 
 
   function passwordToggle(e){
@@ -54,6 +58,36 @@ export default function SignUp() {
     }
   }
 
+  function handlePasswordChanged(e){
+    setPasswordData(e.target.value);
+
+    let lowerCaseLetters = /[a-z]/g;
+    var upperCaseLetters = /[A-Z]/g;
+    var numbers = /[0-9]/g;
+    
+    var special = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
+
+    if (
+      !passwordData.match(lowerCaseLetters) ||
+      !passwordData.match(upperCaseLetters) ||
+      !passwordData.match(numbers) ||
+      !passwordData.match(special) ||
+      passwordData.length < 7 
+    ) {
+      // return NotificationManager.error(
+      //   "Invalid password, password must contain,uppercase,lowercase and greater than 8 caracters"
+      // );
+
+      setPassed(false);
+    }
+
+    else{
+      setPassed(true);
+    }
+
+    
+
+  }
 
   const onSubmit = (data) => {
     toggleFormState(true, "signing you in...");
@@ -168,13 +202,25 @@ export default function SignUp() {
                             message: "Password must have at least 6 characters",
                           },
                         })}
+
+                        onKeyUp={handlePasswordChanged}
                         name="password"
                         placeholder="Password"
                         id="passwordInput"
                       />
-
+                   
+                   {!passed ?     <span className="text-danger"style={{
+                        fontSize:"11px",
+                      }}>Password must contain, uppercase, lowercase, number, special character and greater than 7 caracters</span>
+                    :
+                    <span className="text-success"style={{
+                      fontSize:"11px",
+                    }}>Password Validation Checked </span>
+                    }
+                    <br/>
                       <input type='checkbox' onClick={passwordToggle} /> Show Password
                       <ErrorMsg errors={errors} name="password" />
+                      
                     </div>
 
                     <div class="form-group">

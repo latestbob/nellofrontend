@@ -4,6 +4,7 @@ import AppContext from "../../context";
 import { Backdrop, Currency, ItemQtyUpdate } from "./../../components";
 import { Radio } from "pretty-checkbox-react";
 import { cartUploadPresc } from "../../Services";
+import { PrescriptionContext } from "../../context/Prescription";
 
 export default function Cart({
   history,
@@ -32,7 +33,7 @@ export default function Cart({
     setRequestPresription,
     prescriptionRequested,
   } = React.useContext(AppContext);
-
+  const {prePrice, setPriPrice} = React.useContext(PrescriptionContext);
   const [uploading, setUploading] = React.useState({
     state: false,
     drug_id: null,
@@ -43,6 +44,50 @@ export default function Cart({
   const [newStatus, setNewStatus] = React.useState(null);
   const [count, setcount] = React.useState(0);
   const [presCharges, setPresCharges] = React.useState(true);
+
+  const [cartslength, setCartslengths] = React.useState(0);
+  // const [prePrice , setPriPrice] = React.useState(0);
+
+
+  React.useEffect(() => {
+    console.log('itemscart', cartItems);
+
+    if(cartItems){
+      let isPrescription = cartItems.find( (item)=>{
+
+        //if drug prescription is 1
+        if ( item?.drug.require_prescription ) { 
+          console.log('Needed')
+          //setPriPrice(1000);
+  
+          if(item?.prescription==""){
+            setPriPrice(1000)
+          }
+          
+
+
+          // else if(item?.prescription != ""){
+          //   setPriPrice(0)
+          // }
+          //   return true;
+      }
+  
+      else {
+        console.log('not neeed')
+        setPriPrice(0)
+        return 0;
+      }
+  
+  
+  }
+  )
+    }
+
+//console.log(isPrescription);
+
+    //END
+  }, [cartItems]);
+
 
   React.useEffect(() => {
     console.log(status, "status....");
@@ -305,6 +350,11 @@ export default function Cart({
                                 You would be charged a one-time payment of
                                 ₦1,000 as Prescription Fee for this medication.
                               </div>
+
+                              {/* {cartItems.length > 1 ? 
+                                <div className="badge badge-info py-1"> Scrollable  </div>  :
+                                <div></div>
+                            } */}
                             </div>
                           )}
 
@@ -314,7 +364,7 @@ export default function Cart({
                                 {!status[drug_id]?.state && !item.prescription && (
                                   <div className="cpbu-empty">
                                     <i className="fal fa-arrow-from-bottom"></i>{" "}
-                                    Click here to upload Prescription
+                                    Click here to upload Prescription, formats - png|jpeg|jpg|pdf
                                   </div>
                                 )}
                                 {status[drug_id]?.state === "uploading" && (
@@ -362,10 +412,18 @@ export default function Cart({
             </div>
 
             <div className="cart-footer">
+                     {cartItems && cartItems.length > 1 ? 
+                                <div className="badge badge-info py-1"> Scrollable  </div>  :
+                                <div></div>
+                            }
+
+                            
               <div className="cart-summary-container">
+
+                
                 <div>
                   <h5>Subtotal</h5>
-                  <span>Prescription fee, shipping and tax not included yet</span>
+                  <span>Prescription fee, shipping and tax not included yet </span>
                 </div>
                 <div>
                   <Currency value={cartTotal} />

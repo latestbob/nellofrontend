@@ -148,7 +148,53 @@ console.log(parseInt(g))
 /// check if g is greater than 0
 
 if(g >= 1){
-    setShowBtn(true)
+    //setShowBtn(true)
+    console.log('available')
+    if(selectedDate && selectedTime){
+        axios.post(`${process.env.REACT_APP_API_URL}doctor/appointment/check`,{
+                    
+            //request body here to complete appointment process
+                    
+                    date : moment(selectedDate).format('YYYY-MM-DD'),
+                    time: selectedTime,
+                   
+                        doctor_id:doctor_id,
+                       
+                        type:"doctor_appointment",
+                        
+        
+
+            }).then(response => {
+               
+                //hideLoader();
+
+                if(response.data=="true"){
+                   
+                    console.log('hide')
+                    setShowBtn(false);
+                    return NotificationManager.error("Doctor already schedule for current date and time");
+                }
+
+                // else if(response.data == 'false'){
+                //     setShowBtn(true)
+                //     console.log('correct')
+                // }
+
+                else{
+                    console.log('show')
+                    setShowBtn(true);
+                }
+
+                
+              
+
+     
+            }).catch(error => {
+                console.log(error)
+            })
+
+
+    }
 }
 else{
     setShowBtn(false)
@@ -162,7 +208,54 @@ else{
 
 }
 else {
-    setShowBtn(true)
+    //setShowBtn(true)
+    console.log('available')
+
+    if(selectedDate && selectedTime){
+        axios.post(`${process.env.REACT_APP_API_URL}doctor/appointment/check`,{
+                    
+            //request body here to complete appointment process
+                    
+                    date : moment(selectedDate).format('YYYY-MM-DD'),
+                    time: selectedTime,
+                   
+                        doctor_id:doctor_id,
+                       
+                        type:"doctor_appointment",
+                        
+        
+
+            }).then(response => {
+               
+                //hideLoader();
+
+                if(response.data=="true"){
+                   
+                    console.log('hide')
+                    setShowBtn(false);
+                    return NotificationManager.error("Doctor already schedule for current date and time");
+                }
+
+                // else if(response.data == 'false'){
+                //     setShowBtn(true)
+                //     console.log('correct')
+                // }
+
+                else{
+                    console.log('show')
+                    setShowBtn(true);
+                }
+
+                
+              
+
+     
+            }).catch(error => {
+                console.log(error)
+            })
+
+
+    }
 }
 
 
@@ -170,6 +263,15 @@ else {
 
 
     }, [selectedDate, selectedTime]);
+
+
+
+
+    // React.useEffect(() => {
+
+       
+
+    // }, [selectedDate, selectedTime]);
 
 
 

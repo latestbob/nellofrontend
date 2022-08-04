@@ -14,7 +14,8 @@ import useFormState from './../../hooks/useFormState';
 import Delivery from './delivery';
 import Shipping from './shipping';
 import Payment from './payment';
-
+import { PrescriptionContext } from "../../context/Prescription";
+import { NotificationManager } from "react-notifications";
 
 export default function Checkout({ pathname, cartBackdrop, setCartBackdrop, hash,
     setCartItemsData, setCartItemsCount, setCartTotal, queryClient }) {
@@ -31,6 +32,8 @@ export default function Checkout({ pathname, cartBackdrop, setCartBackdrop, hash
     const [summaryError, setSummaryError] = React.useState(false);
     const [checkoutError, setCheckoutError] = React.useState(false);
     const [paymentRef, setPaymentRef] = React.useState({});
+
+    const {prePrice, setPriPrice} = React.useContext(PrescriptionContext);
     // const [paymentConfig, setPaymentConfig] = React.useState({
     //     publicKey: "pk_test_02ce7d4340336726886f879f63b3b5fd13988f34"
     // });
@@ -106,7 +109,7 @@ export default function Checkout({ pathname, cartBackdrop, setCartBackdrop, hash
             setSummary(data);
             setPaymentConfig({
                 ...paymentConfig,
-                amount: parseInt(data?.total * 100)
+                amount: parseInt((data?.total + prePrice) * 100)
             })
 
             setTimeout(() => initCheckoutPage('#checkout-payment'), 1000);
@@ -128,13 +131,14 @@ export default function Checkout({ pathname, cartBackdrop, setCartBackdrop, hash
             setSummary(data);
             setPaymentConfig({
                 ...paymentConfig,
-                amount: parseInt(data?.total * 100)
+                amount: parseInt((data?.total + prePrice) * 100)
             })
         },
         onError: (error) => {
             const getError = errorResponse({ error, dispatch, exclude: [422] });
             if (getError)
-                history.push(`${pathname}#cart`)
+                // history.push(`${pathname}#cart`)
+                return NotificationManager.error("Invalid or expired Coupon code");
         },
         onSettled: async () => {
             tsCoupon(false);

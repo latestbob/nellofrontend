@@ -6,6 +6,7 @@ import { Modal } from 'react-bootstrap'
 import moment from 'moment'
 import { Currency } from './../../components';
 import axios from 'axios';
+import { PrescriptionContext } from "../../context/Prescription";
 
 //import IDCard from './../id-card';
 //import './../print.css';
@@ -35,6 +36,7 @@ class ComponentToPrint extends React.Component {
         super();
         this.state = {
             itemss: [],
+            shippingtype: "",
           };
 
         
@@ -51,10 +53,14 @@ class ComponentToPrint extends React.Component {
      axios.get(`${process.env.REACT_APP_API_URL}order/${this.props.order.id}/view`)
           .then(res => {
     
-           //console.log(res.data);
+           console.log(res.data);
 
-           this.setState({ itemss: res.data.items })
-           console.log(this.state.itemss);
+           this.setState({shippingtype : res.data.delivery_type + '_price' })
+        //    shippingtype : res.data.delivery_type + '_price'
+        //itemss: res.data.items
+           //console.log(this.state.itemss);
+
+          
           })
     }
         
@@ -76,9 +82,33 @@ class ComponentToPrint extends React.Component {
     
     render() {
         const order = this.props.order || {};
+        order.items.map(function(a,i){
+            // console.log(a?.drug_id)
+            // item?.drug.name
+        })
         //const order = state?.order;
         //const order = {};
         //console.log(state, 'state...')
+        const shipping_type = this.props.order.delivery_type + '_price';
+
+        function getName(drug_id){
+
+            let name;
+                                                
+                                                
+           axios.get(`${process.env.REACT_APP_API_URL}drugname/${drug_id}`)
+            .then(res => {
+
+              return JSON.stringify(res.data);
+
+            
+        
+                    
+
+            })
+
+             return name;
+        }
        
         return (
             <div class="container">
@@ -156,14 +186,17 @@ class ComponentToPrint extends React.Component {
                                                     <td class="text-right"><Currency value={15000} /></td>
                                                 </tr> */}
 
-                                                {this.state.itemss.map(function(item, i){
+                                                {order.items.map(function(item, i){
+                                                 
+                                           
+                                                    
                                                     
                                                    return  (<tr>
                                                    <td>{i + 1}</td>
                                                    {/* {getDrugName(item.drug_id)} */}
                                                   
                                                    
-                                                   <td class="text-center">{item?.drug.name}</td>
+                                                   <td class="text-center addname">{getName(1059)}</td>
                                                         {/* <td class="text-right">Drug</td> */}
                                                    <td class="text-center">{item.quantity}</td>
                                                    {/* <td class="text-right"><Currency value={1000} /></td> */}
@@ -173,9 +206,53 @@ class ComponentToPrint extends React.Component {
 
                                                 <tr>
                                                     <td colspan="3">
-                                                    </td><td class="text-right"><strong>Total</strong></td>
+                                                    </td><td class="text-right"><strong>SubTotal</strong></td>
                                                     <td class="text-right"><strong><Currency value={order?.amount} /></strong></td>
                                                 </tr>
+
+                                                
+
+                                               {order.delivery_method == "shipping" ? 
+                                                 <tr>
+                                                 <td colspan="3">
+                                                 </td><td class="text-right"><strong>Shipping Fee</strong></td>
+                                                 {/* <td class="text-right"><strong>{shipping_type}</strong></td> */}
+                                                 <td class="text-right"><strong><Currency value={order.location[shipping_type]} /></strong></td>
+                                             </tr>
+                                             
+                                             : 
+                                             <tr>
+                                                 <td colspan="3">
+                                                 </td><td class="text-right"><strong>Shipping Fee</strong></td>
+                                                 {/* <td class="text-right"><strong>{shipping_type}</strong></td> */}
+                                                 <td class="text-right"><strong><Currency value={0} /></strong></td>
+                                             </tr>
+                                            }
+                                            
+                                            {this.state.itemss.map(function(itemm, i){
+                                                    
+                                                    return  (<tr>
+                                                    
+                                                    <td class="text-center">{itemm?.drug.require_prescription}</td>
+                                                   
+                                                </tr>);
+                                                 })}
+                                           
+                                           {/* {const isPrescription = items.find( (item) => {
+                                            if (item.prescription) {
+                                            return item
+                                            }
+                                            }  )} */}
+                                            <tr>
+
+                                            {this.state.itemss.find((itembb) => {
+                                                if(itembb.drug.require_prescription){
+                                                    return <td>Prescription Required</td> ;
+                                                }
+                                                else return <td>No need</td> ;
+                                            })}
+
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -214,11 +291,11 @@ class PrintID extends React.Component {
                         <p>Payment Details have been sent to your email.</p>
                         <div>
                             <Link to="/account/my-orders" class="btn btn-secondary btn-inverse" role="button">View Orders</Link>
-                            <ReactToPrint
+                            {/* <ReactToPrint
                                 trigger={() => (<button className="btn btn-secondary"
                                     type="button">Download Receipt</button>)}
                                 content={() => this.componentRef}
-                            />
+                            /> */}
                         </div>
                     </div>
                 </div>

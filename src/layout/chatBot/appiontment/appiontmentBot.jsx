@@ -117,13 +117,89 @@ export const RenderBotMsg = ({
     //   time: `${e.target.value}`,
     // });
 
-        setAppiontMentDetails({
-      ...appiontMentDetails,
-      time: `${e.target.value}`,
+    if(appiontMentDetails.date && e.target.value){
+      axios.post(`${process.env.REACT_APP_API_URL}med/appointment/check`,{
+                  
+          //request body here to complete appointment process
+                  
+                  // date : moment(appiont.date).format('YYYY-MM-DD'),
+                  // time: e.target.value,
+                 
+                  //     doctor_id:appiont.doctor_id,
+                     
+                  //     type:"doctor_appointment",
+
+                  date : moment(appiontMentDetails.date).format('YYYY-MM-DD'),
+                  time: e.target.value,
+                 
+                      name:appiontMentDetails.center_name,
+
+                      //
+                      
+                      
       
-    });
+
+          }).then(response => {
+             
+              //hideLoader();
+
+              if(response.data=="true"){
+                 
+                  console.log('hide')
+                  //setShowBtn(false);
+
+                  
+                  // setAppiont({
+                  //   ...appiont,
+                  //   time: "",
+                  // });
+
+                       setAppiontMentDetails({
+                      ...appiontMentDetails,
+                      time: "",
+                      
+                    });
+
+
+                  return NotificationManager.error("Medical Center already schedule for current date and time");
+              }
+
+              // else if(response.data == 'false'){
+              //     setShowBtn(true)
+              //     console.log('correct')
+              // }
+
+              else{
+                  console.log('show')
+                  //setShowBtn(true);
+
+                  setAppiontMentDetails({
+                    ...appiontMentDetails,
+                    time:`${e.target.value}`,
+                    
+                  });
+                
+                  return NotificationManager.success("Valid,, click send to continue");
+              }
+
+              
+            
+
+   
+          }).catch(error => {
+              console.log(error)
+          })
+
+
+  }
+
+    //     setAppiontMentDetails({
+    //   ...appiontMentDetails,
+    //   time: `${e.target.value}`,
+      
+    // });
     
-      return NotificationManager.success("Valid,, click send to continue");
+    //   return NotificationManager.success("Valid,, click send to continue");
 
   }
   else{
@@ -143,12 +219,90 @@ export const RenderBotMsg = ({
     //   ...appiont,
     //   time: `${e.target.value}`,
     // });
-        setAppiontMentDetails({
-      ...appiontMentDetails,
-      time: `${e.target.value}`,
+    //     setAppiontMentDetails({
+    //   ...appiontMentDetails,
+    //   time: `${e.target.value}`,
       
-    });
-      return NotificationManager.success("Valid,, click send to continue");
+    // });
+    //   return NotificationManager.success("Valid,, click send to continue");
+
+    if(appiontMentDetails.date && e.target.value){
+      axios.post(`${process.env.REACT_APP_API_URL}med/appointment/check`,{
+                  
+          //request body here to complete appointment process
+                  
+                  // date : moment(appiont.date).format('YYYY-MM-DD'),
+                  // time: e.target.value,
+                 
+                  //     doctor_id:appiont.doctor_id,
+                     
+                  //     type:"doctor_appointment",
+
+                  date : moment(appiontMentDetails.date).format('YYYY-MM-DD'),
+                  time: e.target.value,
+                 
+                      name:appiontMentDetails.center_name,
+
+                      //
+                      
+                      
+      
+
+          }).then(response => {
+             
+              //hideLoader();
+
+              if(response.data=="true"){
+                 
+                  console.log('hide')
+                  //setShowBtn(false);
+
+                  
+                  // setAppiont({
+                  //   ...appiont,
+                  //   time: "",
+                  // });
+
+                       setAppiontMentDetails({
+                      ...appiontMentDetails,
+                      time: "",
+                      
+                    });
+
+
+                  return NotificationManager.error("Medical Center already schedule for current date and time");
+              }
+
+              // else if(response.data == 'false'){
+              //     setShowBtn(true)
+              //     console.log('correct')
+              // }
+
+              else{
+                  console.log('show')
+                  //setShowBtn(true);
+
+                  setAppiontMentDetails({
+                    ...appiontMentDetails,
+                    time:`${e.target.value}`,
+                    
+                  });
+                
+                  return NotificationManager.success("Valid,, click send to continue");
+              }
+
+              
+            
+
+   
+          }).catch(error => {
+              console.log(error)
+          })
+
+
+  }
+
+  
   }
   
   

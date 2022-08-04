@@ -37,7 +37,7 @@ function addUsers(){
                     <h1>Hi, I am Nello! Your Personal Health Assistant</h1>
                     <p>I'll help you get the high quality health care you need to stay alive and healthy. how may I assist in improving your health?</p>
 
-                    <button  class="btn btn-primary btn-arrow btn-lg" onClick={toggleChatBox} >Get Started</button> 
+                    <button  class="btn btn-primary btn-lg text-center" onClick={toggleChatBox} >Get Started</button> 
                 </div>
 
                 <img src="./assets/images/banner-img.svg" alt="banner-img" />

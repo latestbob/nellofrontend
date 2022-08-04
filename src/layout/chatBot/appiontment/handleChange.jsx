@@ -165,7 +165,7 @@ export default function appiontmentChange(
   }
 
   if (index == 69) {
-    setAppiont({
+    setAppiontMentDetails({
       ...appiontMentDetails,
       time: `${e.target.value}`,
     });

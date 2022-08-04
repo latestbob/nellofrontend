@@ -418,7 +418,7 @@ const Master = ({ children, history }) => {
               <li className="has-ico">
                 <Link to={`${pathname}#cart`}>
                   <div className="sc-box">
-                    <div className="sc-counter bg-danger">{cartItemsCount}</div>
+                    <div className="sc-counter bg-danger">{!cartItemsData ? "0" : `${cartItemsData.length}`}</div>
                     {/* <img
                       src="http://asknello.com/assets/images/shopping-cart.svg"
                       alt="shopping-cart"
@@ -470,7 +470,12 @@ const Master = ({ children, history }) => {
                     alt=""
                     height="90%"
                   />
+
+                 
+                 
+
                   <div className="user-ico-dropdown">
+                 
                     <Link
                       className="dropdown-link"
                       to={`/account/personal-information`}

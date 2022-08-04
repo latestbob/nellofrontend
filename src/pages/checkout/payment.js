@@ -5,15 +5,17 @@ import { Checkbox, Radio } from 'pretty-checkbox-react';
 import { useForm } from "react-hook-form";
 import { Currency, ItemQtyUpdate, StepsIndicator, ErrorMsg } from './../../components';
 import { PaystackButton } from 'react-paystack';
-
+import { PrescriptionContext } from "../../context/Prescription";
 
 
 export default function Shipping({ currentIndex, checkoutRequest, summary, initCoupon, paymentConfig, initCheckoutPage, tsDelivery }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const {prePrice, setPriPrice} = React.useContext(PrescriptionContext);
     React.useEffect(() => {
         //console.log(summary, 'summary...')
         console.log('checkoutrequest', checkoutRequest?.delivery_type);
+        console.log(summary?.myvalue);
     }, [summary])
 
     return (<>
@@ -70,11 +72,11 @@ export default function Shipping({ currentIndex, checkoutRequest, summary, initC
                                 <div>Delivery</div><div><Currency value={summary?.delivery} /></div>
                             </div>)}
 
-                        {summary?.prescription_charge &&
-                            (<div class="summary-inline-2">
-                                <div>Prescription Charge</div><div><Currency value={summary?.prescription_charge} /></div>
-                            </div>)}
-
+                        {prePrice > 0 ? 
+                    <div class="summary-inline-2">
+                    <div>Prescription Charge</div><div><Currency value={prePrice} /></div>
+                </div> : <div> </div>    
+                    }
                         {summary?.discount &&
                             (<div class="summary-inline-2">
                                 <div>Discount</div><div>- <Currency value={summary?.discount} /></div>
@@ -85,7 +87,7 @@ export default function Shipping({ currentIndex, checkoutRequest, summary, initC
                         <div class="summary-inline-2">
                             <div>Order Total</div>
                             <div class="font-size-18 font-weight-bold text-sky">
-                                <Currency value={summary?.total} />
+                                <Currency value={(summary?.total) + prePrice} />
                             </div>
                         </div>
                     </div>

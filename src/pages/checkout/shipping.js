@@ -66,6 +66,7 @@ export default function Shipping({ tsDelivery, currentIndex, locations, checkout
                                 {...register('shipping_address', {
                                     required: 'Shipping address is required'
                                 })}
+                                value={userData.address}
                                 class="form-control" placeholder="Shipping Address" />
                             <ErrorMsg errors={errors} name="shipping_address" />
                         </div>

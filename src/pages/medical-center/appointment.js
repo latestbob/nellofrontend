@@ -149,7 +149,53 @@ console.log(parseInt(g))
 /// check if g is greater than 0
 
 if(g >= 1){
-    setShowBtn(true)
+    //setShowBtn(true)
+
+    if(selectedDate && selectedTime){
+        axios.post(`${process.env.REACT_APP_API_URL}med/appointment/check`,{
+                    
+            //request body here to complete appointment process
+                    
+                    date : moment(selectedDate).format('YYYY-MM-DD'),
+                    time: selectedTime,
+                   
+                        name:selectedMedicalCenter.name,
+                       
+                        // $request->date
+                        
+        
+
+            }).then(response => {
+               console.log(response)
+                //hideLoader();
+
+                if(response.data=="true"){
+                   
+                    console.log('hide')
+                    setShowBtn(false);
+                    return NotificationManager.error(`${selectedMedicalCenter.name} already schedule for current date and time`);
+                }
+
+                // else if(response.data == 'false'){
+                //     setShowBtn(true)
+                //     console.log('correct')
+                // }
+
+                else{
+                    console.log('show')
+                    setShowBtn(true);
+                }
+
+                
+              
+
+     
+            }).catch(error => {
+                console.log(error)
+            })
+
+
+    }
 }
 else{
     setShowBtn(false)
@@ -163,7 +209,53 @@ else{
 
 }
 else {
-    setShowBtn(true)
+    //setShowBtn(true)
+
+    if(selectedDate && selectedTime){
+        axios.post(`${process.env.REACT_APP_API_URL}med/appointment/check`,{
+                    
+            //request body here to complete appointment process
+                    
+                    date : moment(selectedDate).format('YYYY-MM-DD'),
+                    time: selectedTime,
+                   
+                        name:selectedMedicalCenter.name,
+                       
+                       
+                        
+        
+
+            }).then(response => {
+               console.log(response)
+                //hideLoader();
+
+                if(response.data=="true"){
+                   
+                    console.log('hide')
+                    setShowBtn(false);
+                    return NotificationManager.error(`${selectedMedicalCenter.name} already schedule for current date and time`);
+                }
+
+                // else if(response.data == 'false'){
+                //     setShowBtn(true)
+                //     console.log('correct')
+                // }
+
+                else{
+                    console.log('show')
+                    setShowBtn(true);
+                }
+
+                
+              
+
+     
+            }).catch(error => {
+                console.log(error)
+            })
+
+
+    }
 }
 
 

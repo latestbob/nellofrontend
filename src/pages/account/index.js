@@ -15,6 +15,8 @@ import Billing from "./billing";
 import Orders from "./orders";
 import ViewOrder from "./viewOrder";
 import Appointments from "./appointments";
+import "./account.css";
+
 
 export default function Browse({ history }) {
   const {
@@ -46,10 +48,103 @@ export default function Browse({ history }) {
         <p>
           Hi, {userData?.firstname} {userData?.lastname}
         </p>
+
+        <hr/>
+
+
+     
+
+       <div className="hideonmobile">
+       <p style={{
+          fontSize:"15px",
+          paddingTop:"30px"
+        }}>Quick Actions</p>
+
+        <div className="col-10 m-auto pt-3">
+            <div className="row">
+            <div className="col-4">
+                <Link to="/doctors" className="btn btn-primary">Speak To A Doctor</Link>
+            </div>
+
+            <div className="col-4">
+                <Link to="/appointment" className="btn btn-primary">Schedule Appointment with Hospital</Link>
+            </div>
+
+            <div className="col-4">
+                <Link to="/drugs" className="btn btn-primary">Order Medications</Link>
+            </div>
+            </div>
+        </div>
+       </div>
       </div>
+
+
+      <div  className="onMobileView">
+      <p className="text-center">
+
+<button style={{
+  background:"#1997cf",
+  color:"white"
+}} class="btn btn-sm  col-8 py-2 mt-3" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Quick Actions
+</button>
+</p>
+<div class="collapse" id="collapseExample">
+<div class="card card-body">
+  <ul className="text-center">
+    <li>   <Link style={{
+      background:"none",
+      color:"black",
+      textAlign:"center",
+    }} to="/doctors" className="btn btn-primary">Speak To A Doctor</Link></li> 
+
+    <Link style={{
+      background:"none",
+      color:"black",
+      textAlign:"center",
+    }} to="/appointment" className="btn btn-primary">Schedule Appointment with Hospital</Link><br/>
+
+    <Link style={{
+      background:"none",
+      color:"black",
+      textAlign:"center",
+    }} to="/drugs" className="btn btn-primary">Order Medications</Link>
+  </ul>
+</div>
+</div>
+
+      </div>
+
 
       <div class="container content-body container-layout">
         <div class="side-container">
+        
+           
+{/*             
+                <p className="font-weight-bold text-center">Quick Actions</p>
+              
+          
+                <ul class="menu-side">
+            <li className="font-weight-bold">
+              <NavLink exact to="/doctors">
+                Speak To A Doctor
+              </NavLink>
+            </li>
+
+            <li className="font-weight-bold">
+              <NavLink exact to="/appointment">
+                Schedule Hospital Appointments
+              </NavLink>
+            </li>
+
+            <li className="font-weight-bold">
+              <NavLink exact to="/drugs">
+                Order Medications
+              </NavLink>
+            </li>
+
+          </ul> */}
+            
           <ul class="menu-side">
             <li>
               <NavLink exact to={`${url}/personal-information`}>

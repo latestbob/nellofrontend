@@ -19,6 +19,7 @@ import "@djthoms/pretty-checkbox";
 import { NotificationContainer } from "react-notifications";
 import { UserDataProvider } from "./context/auth/user";
 import { DeliveryPriceContextProvider } from "./context/DeliveryPrice";
+import { PrescriptionContextProvider } from "./context/Prescription";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -97,6 +98,7 @@ function App() {
           }}
         >
 
+          <PrescriptionContextProvider>
           <DeliveryPriceContextProvider>
           {state.appIsReady ? (
             <Master>
@@ -120,6 +122,7 @@ function App() {
             <></>
           )}
           </DeliveryPriceContextProvider>
+          </PrescriptionContextProvider>
         </AppContext.Provider>
         <ReactQueryDevtools />
       </QueryClientProvider>

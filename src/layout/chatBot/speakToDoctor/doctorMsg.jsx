@@ -249,12 +249,75 @@ const componentProps = {
   if(g >= 1){
     console.log('appointment Available')
 
-    setAppiont({
-      ...appiont,
-      time: `${e.target.value}`,
-    });
+    // setAppiont({
+    //   ...appiont,
+    //   time: `${e.target.value}`,
+    // });
     
-      return NotificationManager.success("Valid,, click send to continue");
+    //   return NotificationManager.success("Valid,, click send to continue");
+
+    if(appiont.date && e.target.value){
+      axios.post(`${process.env.REACT_APP_API_URL}doctor/appointment/check`,{
+                  
+          //request body here to complete appointment process
+                  
+                  date : moment(appiont.date).format('YYYY-MM-DD'),
+                  time: e.target.value,
+                 
+                      doctor_id:appiont.doctor_id,
+                     
+                      type:"doctor_appointment",
+
+
+                      //
+                      
+                      
+      
+
+          }).then(response => {
+             
+              //hideLoader();
+
+              if(response.data=="true"){
+                 
+                  console.log('hide')
+                  //setShowBtn(false);
+
+                  
+                  setAppiont({
+                    ...appiont,
+                    time: "",
+                  });
+                  return NotificationManager.error("Doctor already schedule for current date and time");
+              }
+
+              // else if(response.data == 'false'){
+              //     setShowBtn(true)
+              //     console.log('correct')
+              // }
+
+              else{
+                  console.log('show')
+                  //setShowBtn(true);
+
+                   setAppiont({
+                  ...appiont,
+                  time: `${e.target.value}`,
+                });
+                
+                  return NotificationManager.success("Valid,, click send to continue");
+              }
+
+              
+            
+
+   
+          }).catch(error => {
+              console.log(error)
+          })
+
+
+  }
 
   }
   else{
@@ -270,11 +333,75 @@ const componentProps = {
   }
   else {
       console.log('Appointment Available')
-     setAppiont({
-      ...appiont,
-      time: `${e.target.value}`,
-    });
-      return NotificationManager.success("Valid,, click send to continue");
+    //  setAppiont({
+    //   ...appiont,
+    //   time: `${e.target.value}`,
+    // });
+    //   return NotificationManager.success("Valid,, click send to continue");
+
+    if(appiont.date && e.target.value){
+      axios.post(`${process.env.REACT_APP_API_URL}doctor/appointment/check`,{
+                  
+          //request body here to complete appointment process
+                  
+                  date : moment(appiont.date).format('YYYY-MM-DD'),
+                  time: e.target.value,
+                 
+                      doctor_id:appiont.doctor_id,
+                     
+                      type:"doctor_appointment",
+
+
+                      //
+                      
+                      
+      
+
+          }).then(response => {
+             
+              //hideLoader();
+
+              if(response.data=="true"){
+                 
+                  console.log('hide')
+                  setAppiont({
+                    ...appiont,
+                    time: "",
+                  });
+                  //setShowBtn(false);
+                  return NotificationManager.error("Doctor already schedule for current date and time");
+              }
+
+              // else if(response.data == 'false'){
+              //     setShowBtn(true)
+              //     console.log('correct')
+              // }
+
+              else{
+                  console.log('show')
+                  //setShowBtn(true);
+
+                     setAppiont({
+                    ...appiont,
+                    time: `${e.target.value}`,
+                  });
+                    return NotificationManager.success("Valid,, click send to continue");
+              }
+
+              
+            
+
+   
+          }).catch(error => {
+              console.log(error)
+          })
+
+
+  }
+
+
+
+
   }
   
   
