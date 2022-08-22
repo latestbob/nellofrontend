@@ -9,7 +9,7 @@ import {
 import { drugs, drugCategories } from "../../Services";
 import {
   CheckboxCategories,
-  CheckboxRatings,
+  // CheckboxRatings,
   RadioPrescription,
 } from "./../../components/drugs-components";
 import { Paginate, PlaceholderStatus } from "./../../components";
@@ -28,6 +28,7 @@ import SidebarSvg from "./../../svg/sidebar-svg";
 import DrugItemSvg from "./../../svg/drug-item-svg";
 import DataTab from "./../../svg/data-tab-svg";
 import { ascendingSort } from "../../utils/dataSort";
+import { useState } from 'react';
 
 export default function Store({ history }) {
   const {
@@ -43,6 +44,10 @@ export default function Store({ history }) {
   const queryClient = useQueryClient();
   const router = useRouter();
   const [sortType, setSortType] = React.useState("none");
+
+
+  const[minvalue, setMinvalue] = useState(0);
+  const[maxvalue, setMaxValue] = useState(0);
 
   const [query, setQuery] = React.useState(router.query);
   const {
@@ -100,8 +105,8 @@ export default function Store({ history }) {
     onSuccess: (data) => setCategories(data),
   });
 
-  const updatePriceRange = React.useCallback((min, max) => {
-    setSelectedPriceRange(`${min}---${max}`);
+  const updatePriceRange = React.useCallback((minvalue, maxvalue) => {
+    setSelectedPriceRange(`${minvalue}---${maxvalue}`);
     setSearchRange(true);
   }, []);
 
@@ -329,28 +334,65 @@ export default function Store({ history }) {
                       />
                     </section>
 
-                    <section className="mb-5">
-                      <h5 className="flex-space mb-4">Price</h5>
-                      <MultiRangeSlider
-                        min={100}
-                        max={100000}
-                        onChange={({ min, max }) => updatePriceRange(min, max)}
-                      />
+                    
+
+                    <section className="mb-5 text-center">
+                    <h5 className="flex-space mb-4">Price
+                    <span style={{
+                      fontWeight:"normal",
+                    }}>
+
+                      <Link style={{
+                        fontWeight:"normal"
+                      }} to="/drugs">reset</Link>
+                          
+                        </span>
+                    </h5>
+                            <form>
+                          <div class="row">
+                            <div class="col">
+                              <input onChange={function(e){
+                                  setMinvalue(e.target.value);
+                              }} type="number" class="form-control input-sm"style={{
+                                height:"40px"
+                              }}  placeholder="Min"/>
+                            </div>
+                            <div class="col">
+                              <input onChange={function(e){
+                                setMaxValue(e.target.value);
+                              }} type="number" class="form-control"style={{
+                                height:"40px"
+                              }} placeholder="Max"/>
+                            </div>
+                          </div>
+                        </form>
+
+                      <button onClick={function(e){
+                        e.preventDefault();
+                        // console.log(minvalue);
+                        // console.log(maxvalue);
+                        updatePriceRange(minvalue, maxvalue);
+                      }} className="btn m-auto" style={{
+                        backgroundColor:"#1997cf",
+                        color:"white",
+                        padding:"4px 22px 4px 22px"
+                      }}>Filter</button>
+
                     </section>
 
-                    <section>
-                      <h5 className="flex-space">
+                    {/* <section> */}
+                      {/* <h5 className="flex-space">
                         <span>Ratings</span>
                         <Link className="dropdown-link text-reset" to="#">
                           reset
                         </Link>
-                      </h5>
+                      </h5> */}
 
-                      <CheckboxRatings
+                      {/* <CheckboxRatings
                         selectedRatings={selectedRatings}
                         setSelectedRatings={setSelectedRatings}
-                      />
-                    </section>
+                      /> */}
+                    {/* </section> */}
 
                     <section>
                       <h5 className="flex-space">
@@ -392,14 +434,7 @@ export default function Store({ history }) {
                         >
                           None
                         </Link>
-                        <span
-                          onClick={() => {
-                            setSortType("most popular");
-                          }}
-                          className="dropdown-link"
-                        >
-                          Most Popular
-                        </span>
+                      
                         <span
                           onClick={() => {
                             setSortType("lowest price");
@@ -474,22 +509,59 @@ export default function Store({ history }) {
                 </section>
               </div>
               <div className="col-lg-3 col-md-6">
-                <section>
+                {/* <section>
                   <h5 className="flex-space">Price</h5>
                   <MultiRangeSlider
                     min={500}
                     max={100000}
                     onChange={({ min, max }) => updatePriceRange(min, max)}
                   />
-                </section>
+                </section> */}
+
+<section className="mb-5 text-center">
+                    <h5 className="flex-space mb-4">Price
+                    <span className="font-weight-normal">
+
+                      <Link to="/drugs">reset</Link>
+                          
+                        </span>
+                    </h5>
+                            <form>
+                          <div class="row">
+                            <div class="col">
+                              <input onChange={function(e){
+                                  setMinvalue(e.target.value);
+                              }} type="number" class="form-control" placeholder="Min"/>
+                            </div>
+                            <div class="col">
+                              <input onChange={function(e){
+                                setMaxValue(e.target.value);
+                              }} type="number" class="form-control" placeholder="Max"/>
+                            </div>
+                          </div>
+                        </form>
+
+                      <button onClick={function(e){
+                        e.preventDefault();
+                        // console.log(minvalue);
+                        // console.log(maxvalue);
+                        updatePriceRange(minvalue, maxvalue);
+                      }} className="btn m-auto" style={{
+                        backgroundColor:"#1997cf",
+                        color:"white",
+                        padding:"6px 15px 6px 15px"
+                      }}>Filter</button>
+
+                    </section>
+
               </div>
               <div className="col-lg-3 col-md-6">
                 <section>
                   <h5 className="flex-space mt-3">Ratings</h5>
-                  <CheckboxRatings
+                  {/* <CheckboxRatings
                     selectedRatings={selectedRatings}
                     setSelectedRatings={setSelectedRatings}
-                  />
+                  /> */}
                 </section>
               </div>
               <div className="col-lg-3 col-md-6">

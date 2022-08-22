@@ -699,7 +699,9 @@ const componentProps = {
                         <p className="badge badge-success p-1 text-light">Available</p>
                       </div>
                       <div className="whatDocjs">
-                        <p>{data.center_type}</p>
+                        <p style={{
+                          textTranform:"capitalize"
+                        }}>{data.center_type.charAt(0).toUpperCase() + data.center_type.slice(1)}</p>
                        
                         <div className="docratidn">
                           <img src={rate} alt="" />

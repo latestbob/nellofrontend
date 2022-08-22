@@ -23,7 +23,7 @@ export default function StoreItem({ data }) {
                 <i class="la la-star"></i>
             </div>
             <Link to={`/doctor/${data?.uuid}`} class="btn btn-secondary btn-inverse btn-sm">
-                Connect <span>&nbsp;with Doctor</span>
+                Book <span>&nbsp;Consultation</span>
             </Link>
         </div>
     </div>);

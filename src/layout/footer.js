@@ -48,7 +48,7 @@ export default function Browse({ history }) {
                 <a href="/drugs">Order Medication</a>
               </li>
               <li>
-                <a href="/about">About Ask Nello</a>
+                <Link to="/about">About Ask Nello</Link>
               </li>
               {/* <li>
                 <a href="#">FAQs</a>

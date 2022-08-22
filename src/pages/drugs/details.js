@@ -193,7 +193,7 @@ export default function StoreDetails() {
                       </div>
                     </div>
                   </div>
-                  <div className="card">
+                  {/* <div className="card">
                     <div className="card-header" id="headingTwo">
                       <span
                         data-toggle="collapse"
@@ -352,7 +352,7 @@ export default function StoreDetails() {
                         )}
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </>

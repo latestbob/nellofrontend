@@ -84,7 +84,7 @@ export default function Index({
 
         <div className="incomingMsgWrapMain">
           <p>
-            I have four options for you to choose from, you can click on any to
+            I have three (3) options for you to choose from, you can click on any to
             get started{" "}
           </p>
         </div>,
@@ -1037,7 +1037,7 @@ export default function Index({
       user: [
         <div className="ongoingMsgReplyText">
           {" "}
-          <p>All Specialist</p>
+          <p>{sp}</p>
         </div>,
       ],
       type: "user",

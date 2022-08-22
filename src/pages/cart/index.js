@@ -246,7 +246,7 @@ export default function Cart({
               </div>
               <Link to="/account">
                 {/* <img src="./assets/images/ico-box.svg" alt="" /> */}
-                <i className="fal fa-cube"></i>
+                <i className="fal fa-user"></i>
               </Link>
             </div>
           </div>
@@ -294,7 +294,7 @@ export default function Cart({
                       {drug?.require_prescription === 1 && (
                         <div className="cart-presc-box">
                           <h6 className="text-danger mb-2">
-                            This Medication requires Prescription!
+                            This medication requires  a prescription!
                           </h6>
                           <p className="text-secondary">
                             Do you have a prescription for this medication?
@@ -364,7 +364,7 @@ export default function Cart({
                                 {!status[drug_id]?.state && !item.prescription && (
                                   <div className="cpbu-empty">
                                     <i className="fal fa-arrow-from-bottom"></i>{" "}
-                                    Click here to upload Prescription, formats - png|jpeg|jpg|pdf
+                                    Click here to upload prescription, formats - png,jpeg,jpg,pdf
                                   </div>
                                 )}
                                 {status[drug_id]?.state === "uploading" && (

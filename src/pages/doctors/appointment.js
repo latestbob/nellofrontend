@@ -628,7 +628,7 @@ else {
                         <div className="text-center" style={{
                             fontWeight: "bold",
                         }}>
-                            Kinldy Note that Online Consultation cost  ₦{doctor?.fee} 
+                            Kindly note that online consultation cost  ₦{doctor?.fee} 
                         </div>
 
                         <hr />

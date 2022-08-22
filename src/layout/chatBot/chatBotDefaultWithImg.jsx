@@ -20,7 +20,7 @@ const ChatBotDefaultMsg = ({ handleUserRequest, activeTab }) => {
               onClick={() => handleUserRequest("speakToDoc")}
             >
               <img src={nelloOp1} alt="" />
-              <p>I’d like to Speak to a Doctor</p>
+              <p>Help me schedule a Doctor's appointment</p>
             </div>
 
             <div

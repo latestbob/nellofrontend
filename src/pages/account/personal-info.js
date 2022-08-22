@@ -1486,7 +1486,7 @@ function passwordToggle(e){
          
           class="font-weight-bold text-primary font-size-md cursor-pointer"
         >
-          Contact Addreess
+          Contact Address
         </span>
 
        {preaddress ? <div>

@@ -35,7 +35,9 @@ function addUsers(){
             <div className="container banner-wrapper">
                 <div className="banner-content">
                     <h1>Hi, I am Nello! Your Personal Health Assistant</h1>
-                    <p>I'll help you get the high quality health care you need to stay alive and healthy. how may I assist in improving your health?</p>
+                    <p>
+                    I'll help you get the high-quality health care you need to stay healthy. How may I assist in improving your health today?
+                    </p>
 
                     <button  class="btn btn-primary btn-lg text-center" onClick={toggleChatBox} >Get Started</button> 
                 </div>
@@ -99,7 +101,7 @@ function addUsers(){
                                 <i class="las la-calendar-minus ccard-4-ico"></i>
                                 <h4>Hospital Appointment</h4>
                                 <p>
-                                    Schedule  appointment with with hospitals closer to you.    </p>
+                                    Schedule  appointment with hospitals closer to you.    </p>
                             </div>
                             <Link to="/appointment" className="ccard-4-more">
                                 <span>Learn More</span>

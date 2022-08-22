@@ -40,57 +40,7 @@ export default function StoreItem({ data, initCartAdd }) {
           <div className="si-3">
             <Currency value={data?.price || 0} />
           </div>
-          <div className="mt-3">
-            {data?.rating === 5 ? (
-              <span className="star-group">
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-              </span>
-            ) : data?.rating === 4 ? (
-              <span className="star-group">
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-                <i class="la la-star"></i>
-              </span>
-            ) : data?.rating === 3 ? (
-              <span className="star-group">
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-              </span>
-            ) : data?.rating === 2 ? (
-              <span className="star-group">
-                <i class="la la-star rated"></i>
-                <i class="la la-star rated"></i>
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-              </span>
-            ) : data?.rating === 1 ? (
-              <span className="star-group">
-                <i class="la la-star rated"></i>
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-              </span>
-            ) : (
-              <span className="star-group">
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-                <i class="la la-star"></i>
-              </span>
-            )}
-          </div>
+          
         </div>
       </div>
     </div>

@@ -390,7 +390,9 @@ const config = {
 
                                                 <tr>
                                                     <td>Type</td>
-                                                    <td>{center_type}</td>
+                                                    <td style={{
+                                                        textTransform:"capitalize"
+                                                    }}>{center_type}</td>
                                                 </tr>
 
                                                 

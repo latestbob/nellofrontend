@@ -564,14 +564,13 @@ export const speakDoc = [
       <div className="incomingMsgWrapMain">
         <p>
           {" "}
-          I will need you to provide preferred appointment date and time
+          I will need you to provide your preferred appointment date and time
         </p>
       </div>,
 
       <div className="incomingMsgWrapMain">
         <p>
-          Be rest assured that the information provided are handled with the
-          utmost confidentiality.
+        Be rest assured that the information provided will be handled with the utmost confidentiality.
         </p>
       </div>,
     ],
@@ -1099,7 +1098,7 @@ export const speakDoc = [
     bot: [
       <div className="incomingMsgWrapMain">
         {" "}
-        <p>Please input a date for appointment</p>
+        <p>Please select a preferred date for your appointment</p>
       </div>,
       
     ],
@@ -1132,7 +1131,7 @@ export const speakDoc = [
     bot: [
       <div className="incomingMsgWrapMain">
         {" "}
-        <p>Please input a time for appointment, <br/>preferrably 30mins after the current time</p>
+        <p>Please input your preferred time for the appointment, <br/>preferrably 30mins after the current time</p>
       </div>
     ],
     botReject: [],

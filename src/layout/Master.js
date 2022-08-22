@@ -414,6 +414,18 @@ const Master = ({ children, history }) => {
                 <span>Drug Store</span>
               </Link>
             </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Schedule Appointments
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <Link class="dropdown-item" to="/doctors">Specialist</Link>
+          <Link class="dropdown-item" to="/appointment">Facility</Link>
+          
+        </div>
+      </li>
+
             {pathname !== "/checkout-completed" && (
               <li className="has-ico">
                 <Link to={`${pathname}#cart`}>

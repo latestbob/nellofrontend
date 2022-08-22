@@ -361,7 +361,7 @@ const config = {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Doctor's specialization</td>
+                                                        <td>Doctor's Specialization</td>
 
                                                         <td>{location.state.aos}</td>
                                                     </tr>
