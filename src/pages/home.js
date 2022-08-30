@@ -101,7 +101,7 @@ function addUsers(){
                                 <i class="las la-calendar-minus ccard-4-ico"></i>
                                 <h4>Hospital Appointment</h4>
                                 <p>
-                                    Schedule  appointment with hospitals closer to you.    </p>
+                                    Schedule  appointment with hospitals close to you.    </p>
                             </div>
                             <Link to="/appointment" className="ccard-4-more">
                                 <span>Learn More</span>

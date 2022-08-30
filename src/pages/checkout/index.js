@@ -281,7 +281,7 @@ React.useEffect(() => {
         setPaymentConfig({
             ...paymentConfig,
             email: userData?.email,
-            publicKey: "pk_test_02ce7d4340336726886f879f63b3b5fd13988f34",
+            publicKey: "pk_live_04b0162244452d5a157e09846bd408924b790445",
             text: 'Proceed to Payment',
             onSuccess: (reference) => onPaymentSuccess(reference),
             onClose: onPaymentClose,

@@ -64,7 +64,7 @@ export const speakDoc = [
     user: [
       <div className="ongoingMsgReplyText">
         {" "}
-        <p>I’ dont have an acccount</p>
+        <p>I don't have an account</p>
       </div>,
       <div className="ongoingMsgReplyText">
         {" "}
@@ -87,7 +87,7 @@ export const speakDoc = [
     bot: [
       <div className="incomingMsgWrapMain">
         {" "}
-        <p>Ok Nice,Lets jump in</p>
+        <p>Nice! Let's jump in</p>
       </div>,
       <div className="incomingMsgWrapMain">
         {" "}
@@ -461,7 +461,7 @@ export const speakDoc = [
     userReject: [],
     bot: [
       <div className="incomingMsgWrapMain">
-        <p>Ok let see</p>
+        <p>Ok, let's see</p>
       </div>,
 
       <div className="incomingMsgWrapMain">

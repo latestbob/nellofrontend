@@ -89,7 +89,7 @@ export const appiontmentMsg = [
     bot: [
       <div className="incomingMsgWrapMain">
         {" "}
-        <p>Ok Nice,Lets jump in</p>
+        <p>Nice! Let's jump in</p>
       </div>,
       <div className="incomingMsgWrapMain">
         {" "}
@@ -463,7 +463,7 @@ export const appiontmentMsg = [
     userReject: [],
     bot: [
       <div className="incomingMsgWrapMain">
-        <p>Ok let see</p>
+        <p>Ok, let's see</p>
       </div>,
 
       <div className="incomingMsgWrapMain">
