@@ -31,6 +31,7 @@ import About from './pages/about/about'
 import Forgot from './pages/auth/forgot';
 import ResetPassword from './pages/auth/resetpassword';
 import HealthAppointmentPay from './pages/medical-center/appointment-pay';
+import Visitation from './pages/visitation';
 const routes = [
 	{
 		id: 1,
@@ -286,6 +287,17 @@ const routes = [
 		route: true,
 		pageTitle: 'Privacy',
 	},
+
+	{
+		id: 21,
+		path: '/visitation/:ref',
+		component: Visitation,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Vistation Slip',
+	},
+
 	{
 		id: 404,
 		path: '/*',
