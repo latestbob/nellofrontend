@@ -298,7 +298,7 @@ else {
         reference: (new Date()).getTime(),
         email: "user@example.com",
         amount: 3000,
-        publicKey: 'pk_test_02ce7d4340336726886f879f63b3b5fd13988f34',
+        publicKey: 'pk_test_503f897f24ba4bb17fffc719f08481b288a0e2c0',
 
         metadata: {
             "userfirstname":userfirstname,
