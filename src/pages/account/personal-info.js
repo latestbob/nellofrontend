@@ -66,6 +66,7 @@ export default function Browse({ history }) {
   const [passwordmatched , setPasswordMatched] = useState(false);
   const [states, setStates] = useState([]);
 
+  const [passed , setPassed] = useState(false);
   
   const [lag, setUserLga] = useState([]);
   const [selected , setSelected] = useState("");
@@ -73,6 +74,7 @@ export default function Browse({ history }) {
   const [selectedlga , setSelectedlga] = useState("");
 
   const [address , setAddress] = useState("");
+  const [validaddres, setValidAddress] = useState(false);
 
   //previous details
 
@@ -155,8 +157,39 @@ function passwordToggle(e){
 
   //new passworf input handler 
 
+  // function handleNewPassword(e){
+  //   setNewPassword(e.target.value);
+  // }
+
   function handleNewPassword(e){
     setNewPassword(e.target.value);
+  
+    let lowerCaseLetters = /[a-z]/g;
+    var upperCaseLetters = /[A-Z]/g;
+    var numbers = /[0-9]/g;
+    
+    var special = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
+  
+    if (
+      !newpassword.match(lowerCaseLetters) ||
+      !newpassword.match(upperCaseLetters) ||
+      !newpassword.match(numbers) ||
+      !newpassword.match(special) ||
+      newpassword.length < 8
+    ) {
+      // return NotificationManager.error(
+      //   "Invalid password, password must contain,uppercase,lowercase and greater than 8 caracters"
+      // );
+  
+      setPassed(false);
+    }
+  
+    else{
+      setPassed(true);
+    }
+  
+    
+  
   }
 
   //confirm password input handler
@@ -1629,12 +1662,44 @@ function passwordToggle(e){
           //console.log(e.target.value)
 
           setAddress(e.target.value);
+
+          let lowerCaseLetters = /[A-Za-z]/g;
+          var upperCaseLetters = /[A-Z]/g;
+          var alphabets = /^[A-Za-z]+$/i;
+          var numbers = /[0-9]/g;
+
+          if (
+            // !address.match(lowerCaseLetters) ||
+            !address.match(lowerCaseLetters) ||
+            !address.match(numbers) 
+          
+          ) {
+            // return NotificationManager.error(
+            //   "Invalid password, password must contain,uppercase,lowercase and greater than 8 caracters"
+            // );
+        
+            setValidAddress(false);
+          }
+        
+          else{
+            setValidAddress(true);
+          }
         }} />
+        
+        {address && !validaddres ?     <span className="text-danger"style={{
+                        fontSize:"11px",
+                      }}>Invalid Address format, Address must contain number and alphabets</span>
+                    :
+                    <span className="text-success"> </span>
+                    }
          
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onClick={handleUpdateClick}>Save changes</button>
+       
+       {validaddres ?  <button type="button" class="btn btn-primary" onClick={handleUpdateClick}>Save changes</button> : <div> </div>
+
+       }
       </div>
     </div>
   </div>
@@ -1703,10 +1768,23 @@ function passwordToggle(e){
 
               id="passwordInput"
 
-              minLength="6"
+              minLength="8"
 
               required
             />
+
+
+              {newpassword ? <div> 
+                {!passed ?     <span className="text-danger"style={{
+                        fontSize:"11px",
+                      }}>Password must contain, uppercase, lowercase, number, special character and greater than 7 caracters</span>
+                    :
+                    <span className="text-success"style={{
+                      fontSize:"11px",
+                    }}>Password Validation Checked </span>
+                    }
+                 </div> : <div></div>}
+              
           </div>
 
           <input type='checkbox' onClick={passwordToggle} /> <span style={{
@@ -1728,7 +1806,7 @@ function passwordToggle(e){
               required
             />
             
-            {!passwordmatched ? 
+            {newpassword && confirmpassword && !passwordmatched ? 
           <span style={{
             fontSize:"10px"
           }} className="text-danger font-weight-bold">Password Not Matched</span>

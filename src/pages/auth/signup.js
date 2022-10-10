@@ -90,6 +90,7 @@ export default function SignUp() {
   }
 
   const onSubmit = (data) => {
+    console.log(data)
     toggleFormState(true, "signing you in...");
     data = {
       ...data,
@@ -157,10 +158,17 @@ export default function SignUp() {
                         class="form-control"
                         {...register("firstname", {
                           required: "First name is required!",
+                          pattern: /^[A-Za-z]+$/i 
+                          
                         })}
                         placeholder="First Name"
                       />
                       <ErrorMsg errors={errors} name="firstname" />
+                      {errors?.firstname?.type === "pattern" && (
+                        <p style={{
+                          fontSize:"11px",
+                        }} className="text-danger">Alphabetical characters only</p>
+                      )}
                     </div>
 
                     <div class="form-group">
@@ -170,10 +178,17 @@ export default function SignUp() {
                         class="form-control"
                         {...register("lastname", {
                           required: "Last name is required!",
+                          pattern: /^[A-Za-z]+$/i 
                         })}
                         placeholder="Last Name"
                       />
                       <ErrorMsg errors={errors} name="lastname" />
+
+                      {errors?.lastname?.type === "pattern" && (
+                        <p style={{
+                          fontSize:"11px",
+                        }} className="text-danger">Alphabetical characters only</p>
+                      )}
                     </div>
 
                     <div class="form-group">
@@ -230,10 +245,24 @@ export default function SignUp() {
                         class="form-control"
                         {...register("phone", {
                           required: "Phone number is required!",
+                          minLength:10,
+                          pattern:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
                         })}
                         placeholder="Phone Number"
                       />
                       <ErrorMsg errors={errors} name="phone" />
+
+                      {errors?.phone?.type === "minLength" && (
+                        <p style={{
+                          fontSize:"11px",
+                        }} className="text-danger">Phone number should be at least 10 in value</p>
+                      )}
+
+                      {errors?.phone?.type === "pattern" && (
+                        <p style={{
+                          fontSize:"11px",
+                        }} className="text-danger">Invalid phone format</p>
+                      )}
                     </div>
 
                     <div class="form-group">

@@ -69,7 +69,7 @@ export default function Browse({ history }) {
                 <a href="tel:+2349070041292">+234 90700 41292</a>
               </li>
               <li class="location">
-                <a href="#">
+                <a href="https://www.google.com/maps/place/7a+Milverton+Rd,+Ikoyi+106104,+Lagos/@6.4500361,3.4440533,17z/data=!4m5!3m4!1s0x103bf4e8b32cd023:0x7f3cfa141ea66fc7!8m2!3d6.4502973!4d3.4447936?hl=en">
                   7a, Milverton Road,
                   <br />
                   Ikoyi Lagos

@@ -34,6 +34,8 @@ export default function ResetPassword({ history }) {
   const [code , setResetCode] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation , setConfirm] = useState("");
+
+  const [passed , setPassed] = useState(false);
   
 
 const Swal = require('sweetalert2')
@@ -61,8 +63,38 @@ function handleResetChange(e){
   setResetCode(e.target.value);
 }
 
-function handlePasswordChange(e){
-setPassword(e.target.value);
+// function handlePasswordChange(e){
+// setPassword(e.target.value);
+// }
+function handlePasswordChanged(e){
+  setPassword(e.target.value);
+
+  let lowerCaseLetters = /[a-z]/g;
+  var upperCaseLetters = /[A-Z]/g;
+  var numbers = /[0-9]/g;
+  
+  var special = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g;
+
+  if (
+    !password.match(lowerCaseLetters) ||
+    !password.match(upperCaseLetters) ||
+    !password.match(numbers) ||
+    !password.match(special) ||
+    password.length < 8
+  ) {
+    // return NotificationManager.error(
+    //   "Invalid password, password must contain,uppercase,lowercase and greater than 8 caracters"
+    // );
+
+    setPassed(false);
+  }
+
+  else{
+    setPassed(true);
+  }
+
+  
+
 }
 
 function handleConfirm(e){
@@ -214,17 +246,26 @@ axios.post(`${process.env.REACT_APP_API_URL}auth/reset-password`,{
                         type="password"
                         class="form-control"
                        
-                        onChange={handlePasswordChange}
+                        onChange={handlePasswordChanged}
                         name="password"
                         placeholder="New Password"
                         minLength="8"
                         id="passwordInput"
 
                         value={password}
+                        // onKeyUp={handlePasswordChanged}
 
                         required
                       />
                       
+                      {!passed ?     <span className="text-danger"style={{
+                        fontSize:"11px",
+                      }}>Password must contain, uppercase, lowercase, number, special character and greater than 7 caracters</span>
+                    :
+                    <span className="text-success"style={{
+                      fontSize:"11px",
+                    }}>Password Validation Checked </span>
+                    }
                     </div>
 
                     <input type='checkbox' onClick={passwordToggle} /> Show Password
