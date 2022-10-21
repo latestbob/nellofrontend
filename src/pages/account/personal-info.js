@@ -1372,6 +1372,7 @@ function passwordToggle(e){
         updateUserData(dispatch, user);
       })
       .catch((error) => {
+        //console.log("error is " + error)
         errorResponse({ error, dispatch, history });
       })
       .then(() => toggleFormState(false));

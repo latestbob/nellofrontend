@@ -8,7 +8,7 @@ export default function Browse({ history }) {
     <footer>
       <div class="container footer container-layout">
         <div class="row">
-          <div class="col-lg-3 col-md-3 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-4 col-md-6 col-sm-6">
             <h3>
               <img src={`${baseUrl}assets/images/logo-inverse.svg`} alt="" />
             </h3>
@@ -41,7 +41,7 @@ export default function Browse({ history }) {
             </div> */}
           </div>
 
-          <div class="col-lg-3 col-md-3 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-4 col-md-6 col-sm-6">
             <h3>Quick Links</h3>
             <ul>
               <li>
@@ -59,7 +59,7 @@ export default function Browse({ history }) {
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-3 col-md-6 col-sm-6">
+          <div class="col-lg-4 col-md-4 col-md-6 col-sm-6">
             <h3>Reach us</h3>
             <ul class="has-ico">
               <li class="message">
@@ -77,7 +77,7 @@ export default function Browse({ history }) {
               </li>
             </ul>
           </div>
-          <div class="col-lg-3 col-md-3 col-md-6 col-sm-6">
+          {/* <div class="col-lg-3 col-md-3 col-md-6 col-sm-6">
             <h3>Stay up to date</h3>
             <form>
               <div class="form-group">
@@ -89,7 +89,7 @@ export default function Browse({ history }) {
                 />
               </div>
             </form>
-          </div>
+          </div> */}
         </div>
       </div>
       <div class="footer-bottom">

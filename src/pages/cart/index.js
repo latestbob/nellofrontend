@@ -364,7 +364,7 @@ export default function Cart({
                                 {!status[drug_id]?.state && !item.prescription && (
                                   <div className="cpbu-empty">
                                     <i className="fal fa-arrow-from-bottom"></i>{" "}
-                                    Click here to upload prescription, formats - png,jpeg,jpg,pdf
+                                    Click here to upload prescription, formats - png,jpeg,jpg,pdf  <br/> Maximum size: 2MB
                                   </div>
                                 )}
                                 {status[drug_id]?.state === "uploading" && (
