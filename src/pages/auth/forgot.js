@@ -90,7 +90,9 @@ e.preventDefault();
         <div className="container header container-layout">
           <div className="logo">
             <Link to="/">
-              <img src="http://asknello.com:5500//assets/images/logo.svg" alt="" />
+              <img src="http://asknello.com/assets/images/logo.png"style={{
+                width:"100px"
+              }} alt="" />
             </Link>
           </div>
         </div>
@@ -143,6 +145,12 @@ e.preventDefault();
                   
                     <Link to="/login" class="font-weight-medium">
                       Back to Login
+                    </Link>
+
+                    <span className="px-3"></span>
+
+                    <Link to="/" class="font-weight-medium">
+                      Back to Home
                     </Link>
 
                     <hr />
