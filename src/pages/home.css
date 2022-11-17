@@ -1,0 +1,38 @@
+.stepheading{
+    
+}
+
+.stepara{
+    font-size: 13px;
+    
+}
+
+.headings{
+    /* fontWeight:"bold",
+    color:"#ff9017", */
+    font-weight:bold;
+    color:#ff9017;
+}
+.intro{
+    font-size: 42px;
+    color: #093a4f;
+}
+
+
+  /* Mobile Screen  */
+
+  @media screen and (min-width:300px) and (max-width:764px) {
+
+    .headings{
+        /* fontWeight:"bold",
+        color:"#ff9017", */
+        font-weight:bold;
+        color:#ff9017;
+        font-size:20px;
+    }
+
+    .intro{
+        font-size: 25px;
+        color: #093a4f;
+    }
+  }
