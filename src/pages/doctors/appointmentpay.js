@@ -95,7 +95,7 @@ const config = {
 
     email:useremail,
     amount: location.state.doctorfee * 100,
-    publicKey: 'pk_test_503f897f24ba4bb17fffc719f08481b288a0e2c0',
+    publicKey: 'pk_live_c98b318b0a6960d258c3ea7ce676e804714b95eb',
 
     
     metadata: {

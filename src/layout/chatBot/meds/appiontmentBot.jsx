@@ -86,7 +86,7 @@ const config = {
   reference: (new Date()).getTime(),
   email: appiontMentDetails.useremail,
   amount: appiontMentDetails.fee,
-  publicKey: 'pk_test_02ce7d4340336726886f879f63b3b5fd13988f34',
+  publicKey: 'pk_live_c98b318b0a6960d258c3ea7ce676e804714b95eb',
 
   metadata: {
         

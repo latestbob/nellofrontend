@@ -456,6 +456,8 @@ const Master = ({ children, history }) => {
             <Link to="/drugs">
               Drug Store
             </Link>
+
+            
           </div>
           <Link to="/">
             <img style={{height:"40px"}} src="http://asknello.com/assets/images/logo.png"alt="" />

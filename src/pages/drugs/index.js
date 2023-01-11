@@ -298,7 +298,15 @@ export default function Store({ history }) {
                 <div className="hc-title">
                   Order Medication
                   <br />
-                  We have the Best Price for You.
+                  We have the Best Price for You. 
+                  <br/>
+
+                  <p style={{
+                    fontSize:"11px",
+                    fontStyle:"italic",
+                    fontWeight:"bold",
+                    color:"white",
+                  }}>Note : We are not an online pharmacy but provide access to medications in <br /> registered health facilities and pharmacies.</p>
                 </div>
                 <div className="input-container">
                   <form
