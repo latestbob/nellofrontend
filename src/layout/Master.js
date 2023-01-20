@@ -546,26 +546,28 @@ const Master = ({ children, history }) => {
       <Footer />
 
       <div className={`page-fab ${fabless ? "page-fab-less" : ""}`}>
+
+        
         <div className="fab-container-wrapper">
-          <div className="fab-ask-container" onClick={toggleChatBox}>
-            <span>
-              <img src={`${baseUrl}/assets/images/ico-chat.svg`} alt="" />
+          <a href="https://wa.me/message/MCKR7N5KXAZJN1">
+          <div className="fab-ask-container" >
+            <span style={{
+              textAlign:"center",
+            }}>
+              <img src="https://res.cloudinary.com/edifice-solutions/image/upload/v1674158623/whatsapp-48_r0wvqo.png" style={{
+                width:"70%",
+                
+              }} alt="" />
             </span>
             {/* <div className="badge">3</div> */}
             <span>AskNello</span>
           </div>
+
+          </a>
+          
         </div>
-{/* 
-        <div className="fab-container-wrapper">
-          <div className="fab-browse-container">
-            <Link to="/browse">
-              <span>
-                <img src={`${baseUrl}/assets/images/ico-browse.svg`} alt="" />
-              </span>
-              <span>Browse/Find Services</span>
-            </Link>
-          </div>
-        </div> */}
+
+       
       </div>
 
       {/* Modal Price */}

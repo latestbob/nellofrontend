@@ -109,9 +109,11 @@ export default function StoreDetails() {
 
           {!isError && data && (
             <>
-              <div className="container-max clearfix sd-main-top">
-                <div className="sd-img-box">
+              <div className="row container-max clearfix sd-main-top">
+                <div className="col-md-6 sd-img-box">
                   <img
+                  
+                  
                     src={
                       data?.image ||
                       `https://www.gimplearn.net/funimage.php?q=${data?.name
@@ -121,14 +123,16 @@ export default function StoreDetails() {
                     alt={data?.name}
                   />
                 </div>
-                <div className="sd-content">
+
+
+                <div className="col-md-6 sd-content">
                   <div className="sd-1">{data?.name} </div>
                   <div className="sd-2">
                     <Currency value={data?.price} />
                   </div>
 
                   {/* {data?.description && (<div className="sd-3" dangerouslySetInnerHTML={{__html: (data?.description)}}></div>)} */}
-                  <div className="">Description: {data?.description}</div>
+                  <div className="text-justify">Description: {data?.description}</div>
                   <br />
                   <div className="sd-action-box-container">
                     <h6>Quantity</h6>

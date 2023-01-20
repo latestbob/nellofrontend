@@ -88,6 +88,7 @@ export default function Store({ history }) {
     showModal: mdSearchShow,
   } = useModal();
 
+ 
   /* Page data */
   const { isLoading, refetch, data, isError } = useQuery(
     [queryName, query],
@@ -189,9 +190,16 @@ export default function Store({ history }) {
   };
 
   const initSearchModalClose = () => {
-    const getRange = selectedPriceRange.split("---");
-    const min = parseInt(getRange[0]);
-    const max = parseInt(getRange[1]);
+    // const getRange = selectedPriceRange.split("---");
+    // const min = parseInt(getRange[0]);
+    // const max = parseInt(getRange[1]);
+
+    if (selectedPriceRange) {
+      let getRange = selectedPriceRange.split("---");
+      const min = parseInt(getRange[0]);
+      const max = parseInt(getRange[1]);
+
+    }
     mdSearchClose();
 
     /* setTimeout(() => {
@@ -425,7 +433,7 @@ export default function Store({ history }) {
                   <div className="flex-space mb-4">
                     <div className="store-filter-container">
                       <span className="sfc-box" onClick={mdSearchShow}>
-                        <i className="fas fa-filter"></i>
+                        <i className="fas fa-filter"></i>Categories
                       </span>
                       {data?.data && <span>{data?.total} Items Found</span>}
                     </div>
@@ -495,7 +503,7 @@ export default function Store({ history }) {
         className="modal-store-filter"
       >
         <Modal.Body>
-          <h5 className="h-bordered text-sky ico-left">
+          <h5 onClick={initSearchModalClose} className="h-bordered text-sky ico-left">
             <i
               onClick={initSearchModalClose}
               className="fas fa-arrow-left cursor-pointer"
