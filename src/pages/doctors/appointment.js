@@ -29,18 +29,26 @@ export default function DoctorAppointment({ history }) {
 
     const selectedDate = watch('date');
     const selectedTime = watch('time');
+    const date = new Date();
 
     const [service, setService] = React.useState(null);
     const [doctor, setDoctor] = React.useState(null);
-    const [times] = React.useState([
-        { value: '08:00:00', label: '8:00 am' },
-        { value: '08:30:00', label: '8:30 am' },
-        { value: '10:00:00', label: '10:00 am' },
-        { value: '11:00:00', label: '11:00 am' },
-        { value: '12:00:00', label: '12:00 pm' },
-        { value: '13:30:00', label: '1:30 pm' },
-        { value: '14:00:00', label: '2:00 pm' },
-        { value: '16:00:00', label: '4:00 pm' },
+    const [times , setTimes] = React.useState([
+        { value: '8:00:00', label: '8:00 am', match: true },
+                    { value: '8:30:00', label: '8:30 am', match: true },
+                    { value: '9:00:00', label: '9:00 am', match: true },
+                    { value: '9:30:00', label: '9:30 am', match: true },
+                    { value: '10:00:00', label: '10:00 am', match: true },
+                    { value: '10:30:00', label: '10:30 am', match: true },
+                    { value: '11:00:00', label: '11:00 am', match: true },
+                    { value: '11:30:00', label: '11:30 am', match: true },
+                    { value: '12:00:00', label: '12:00 pm', match: true },
+                    { value: '13:30:00', label: '1:30 pm', match: true },
+                    { value: '14:00:00', label: '2:00 pm', match: true },
+                    { value: '14:30:00', label: '2:30 pm', match: true },
+                    { value: '15:00:00', label: '15:00 pm', match: true },
+                    { value: '15:30:00', label: '15:30 pm', match: true },
+                    { value: '16:00:00', label: '4:00 pm', match: true },
         // { value: '18:00:00', label: '6:00 pm' },
         // { value: '19:00:00', label: '7:00 pm' },
         // { value: '20:00:00', label: '8:00 pm' },
@@ -77,8 +85,46 @@ export default function DoctorAppointment({ history }) {
 
     const [showbtn, setShowBtn] = useState(false);
 
+    const [doctorday , setDoctorDay] = useState([]);
+
+    const [availabletime , setAvailableTime] = useState([]);
 
 
+    const [weekday , setWeekDay] = useState(
+        [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+            
+    ]
+    );
+
+
+    // const setClass = (date) => {
+    //     const dateobj =
+    //       datenumber.find((x) => {
+    //         return (
+    //           date.getDate() === parseInt(x['dates'])
+    //         );
+    //       });
+    //     return !  dateobj ;}
+
+    // const isWeekday = (date) => {
+    //     const day = date.getDay(date);
+    //     return day !== 1 && day !== 2 && day !== 6;
+    //    }
+
+
+      // const notAvailableDays = [1,2,6];
+
+const isDisabled = (date) => {
+   const day = date.getDay(date);
+   return !doctorday.includes(day);
+}
     
     // React.useEffect(()=>{
     //     const currentTime = todaydate.getTime();
@@ -90,6 +136,44 @@ export default function DoctorAppointment({ history }) {
 
     //     console.log(mydate);
     // })
+
+
+    //get the exact days in which doctors are available
+
+
+    React.useEffect(()=>{
+       
+        axios.get(`https://admin.asknello.com/api/nello_doctors_days/${docuuid}`, {
+            
+
+        }).then(response => {
+           // console.log(response)
+
+            if (response.data) {
+
+
+               setDoctorDay(response.data);
+
+                 console.log(response.data);
+                // console.log(userlastname);
+                // console.log(useremail);
+                // console.log(usergender);
+
+
+            }
+
+
+        }).catch(error => {
+            console.log(error)
+        })
+
+
+         
+         
+     },[])
+ 
+
+
     React.useEffect(() => {
         var pickedate = moment(selectedDate).format('dddd, MMMM DD, YYYY')
         var todaydated = moment().format('dddd, MMMM DD, YYYY')
@@ -263,6 +347,97 @@ else {
 
 
     }, [selectedDate, selectedTime]);
+
+
+    React.useEffect(() => {
+
+       
+
+   
+    
+        if(selectedDate){
+
+            //console.log("Date format now is " + moment(selectedDate).format('DD-MM-YYYY'));
+            axios.get(`https://admin.asknello.com/api/doctor_appointment_time?date=${moment(selectedDate).format('DD-MM-YYYY')}&specialization=${doctor.aos}&uuid=${uuid}`).then(response => {
+               
+                //hideLoader();
+                console.log(response.data)
+
+                setAvailableTime(response.data);
+                
+                if(response.data.length == 0){
+                    setTimes({ value: '8:00:00', label: '8:00 am', match: true },
+                    { value: '8:30:00', label: '8:30 am', match: true },
+                    { value: '9:00:00', label: '9:00 am', match: true },
+                    { value: '9:30:00', label: '9:30 am', match: true },
+                    { value: '10:00:00', label: '10:00 am', match: true },
+                    { value: '10:30:00', label: '10:30 am', match: true },
+                    { value: '11:00:00', label: '11:00 am', match: true },
+                    { value: '11:30:00', label: '11:30 am', match: true },
+                    { value: '12:00:00', label: '12:00 pm', match: true },
+                    { value: '13:30:00', label: '1:30 pm', match: true },
+                    { value: '14:00:00', label: '2:00 pm', match: true },
+                    { value: '14:30:00', label: '2:30 pm', match: true },
+                    { value: '15:00:00', label: '15:00 pm', match: true },
+                    { value: '15:30:00', label: '15:30 pm', match: true },
+                    { value: '16:00:00', label: '4:00 pm', match: true })
+                }
+
+                else{
+
+
+
+             
+                     let booked = response.data;
+               
+                         let obj3 = []
+
+                        times.map(function(a) {
+                        let match = booked.filter(b => a.value === b);
+                        if (match.length) {
+                        obj3.push({value: a.value, label: a.label, match: false});
+                        } else {
+                        obj3.push({value: a.value, label: a.label, match: true});
+                        }
+                        })
+
+                        console.log(obj3);
+
+                        setTimes(obj3);
+
+                    
+
+                }
+
+
+
+                
+
+              
+
+                    // let booked = response.data.time;
+               
+                    
+
+                    
+
+                   
+                
+
+                
+              
+
+     
+            }).catch(error => {
+                console.log(error)
+            })
+
+
+    }
+    
+
+
+    }, [selectedDate]);
 
 
 
@@ -577,7 +752,10 @@ else {
                                             field: { onChange, onBlur, value, name, ref },
                                         }) => (
                                             <Calendar
+                                                //minDate={new Date()}
+                                                
                                                 minDate={new Date()}
+                                            maxDate={new Date(date.getFullYear(), date.getMonth() + 2, 0)}
                                                 onChange={onChange}
                                                 value={value}
                                                 className="appointment-calendar"
@@ -585,6 +763,13 @@ else {
                                                 prev2Label={null}
                                                 nextLabel={<i class="fas fa-chevron-right text-secondary"></i>}
                                                 prevLabel={<i class="fas fa-chevron-left text-secondary"></i>}
+
+                                                tileDisabled={({ date }) => isDisabled(date) }
+
+
+                                               
+
+                                                
                                             />
                                         )}
                                     />
@@ -597,17 +782,63 @@ else {
                                         <div class="row">
                                             {times && times.map((row, index) => {
 
-                                                return (<Controller
+                                                // return (<Controller
+                                                //     name="time"
+                                                //     control={control}
+                                                //     rules={{ required: 'Appointment time is required' }}
+                                                //     render={({
+                                                //         field: { onChange, onBlur, value, name, ref },
+                                                //     }) => (<div key={index} class="col-4"
+                                                //         onClick={() => setValue("time", row.value)}>
+                                                //         <div class={`time-picker ${value === row.value && 'active'}`}>{row.label}</div>
+                                                //     </div>)}
+                                                // />)
+
+                                                return (
+
+                                                    <>
+                                                    {row.match == false ? <Controller
+                                                    
+                                                    
                                                     name="time"
                                                     control={control}
                                                     rules={{ required: 'Appointment time is required' }}
                                                     render={({
                                                         field: { onChange, onBlur, value, name, ref },
-                                                    }) => (<div key={index} class="col-6"
-                                                        onClick={() => setValue("time", row.value)}>
+                                                    }) => (
+                                                    
+                                                    
+                                                    <div key={index} class="col-4"
+                                                    onClick={() => setValue("time", row.value)}>
+
+                                                     
+
                                                         <div class={`time-picker ${value === row.value && 'active'}`}>{row.label}</div>
-                                                    </div>)}
-                                                />)
+
+
+                                                    </div>
+                                                    
+                                                    
+                                                    )}
+                                                /> : 
+                                                <div 
+                                                
+                                               
+                                                
+                                                key={index} class="col-4"
+                                                >
+                                                    <div class="bg-secondary time-picker"style={{
+                                                        color:"white",
+                                                        border:"none",
+                                                    
+                                                    }}>{row.label}</div>
+                                                </div>
+                                            }
+                                                    </>
+                                               
+                                                )
+
+                                              
                                             })}
                                         </div>
 

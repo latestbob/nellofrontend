@@ -28,6 +28,7 @@ export default function DoctorAppointment({ history }) {
 
     const selectedDate = watch('date');
     const selectedTime = watch('time');
+    const date = new Date();
 
     const [service, setService] = React.useState(null);
     const [medicalCenters, setMedicalCenters] = React.useState([]);
@@ -47,6 +48,8 @@ export default function DoctorAppointment({ history }) {
         { value: '16:00:00', label: '4:00 pm' },
     ]);
 
+    const [facilityday , setFacilityDay] = useState([]);
+
     const { isLoading: isLoadingSub, refetch, isError: isErrorSub }
         = useQuery(['medical-center-appointment', rand], subscriptionsWithMedicalCenters, {
             onError: (error) => errorResponse({ dispatch, error, history, state: { from: currentPath } }),
@@ -60,6 +63,14 @@ export default function DoctorAppointment({ history }) {
                 setMedicalCenters(medicalCenters);
             },
         });
+
+
+
+       
+
+
+
+
 
 
         //Get Login Users Information 
@@ -367,6 +378,49 @@ else {
         setCurrentIndex(2);
     }
 
+
+
+    React.useEffect(()=>{
+       
+        axios.get(`https://admin.asknello.com/api/nello_facility_days/${selectedMedicalCenter?.uuid}`, {
+            
+
+        }).then(response => {
+           // console.log(response)
+
+            if (response.data) {
+
+
+               setFacilityDay(response.data);
+
+                 console.log(response.data);
+                // console.log(userlastname);
+                // console.log(useremail);
+                // console.log(usergender);
+
+
+            }
+
+
+        }).catch(error => {
+            console.log(error)
+        })
+
+
+         
+         
+     },[selectedMedicalCenter]);
+
+
+     const isDisabled = (date) => {
+        const day = date.getDay(date);
+        return !facilityday.includes(day);
+     }
+         
+
+
+
+
     React.useEffect(() => {
         //console.log(values, values?.medical_center, 'values..')
         //setValue([{ name: userData.name }, { phone: userData.phone }]);
@@ -403,6 +457,8 @@ else {
                             <div class="dmc-content-box text-center">
                                 <div class="dmc-1">{selectedMedicalCenter?.name}</div>
                                 <div class="dmc-2">{selectedMedicalCenter?.address1}</div>
+                                {/* <div class="dmc-2">{selectedMedicalCenter?.uuid}</div> */}
+                               
                                 <div class="dmc-4">
                                     <i class="la la-star"></i>
                                     <i class="la la-star"></i>
@@ -430,6 +486,9 @@ else {
                                         }) => (
                                             <Calendar
                                                 minDate={new Date()}
+                                                maxDate={new Date(date.getFullYear(), date.getMonth() + 2, 0)}
+
+                                                
                                                 onChange={onChange}
                                                 value={value}
                                                 className="appointment-calendar"
@@ -437,6 +496,8 @@ else {
                                                 prev2Label={null}
                                                 nextLabel={<i class="fas fa-chevron-right text-secondary"></i>}
                                                 prevLabel={<i class="fas fa-chevron-left text-secondary"></i>}
+
+                                                tileDisabled={({ date }) => isDisabled(date) }
                                             />
                                         )}
                                     />
