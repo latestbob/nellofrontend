@@ -81,9 +81,9 @@ export default function Shipping({ currentIndex, checkoutRequest, summary, initC
                             (<div class="summary-inline-2">
                                 <div>Discount</div><div>- <Currency value={summary?.discount} /></div>
                             </div>)}
-                        {/* <div class="summary-inline-2">
+                        <div class="summary-inline-2">
                             <div>Transaction Charge</div><div><Currency value={summary?.transaction_charge} /></div>
-                        </div> */}
+                        </div>
                         <div class="summary-inline-2">
                             <div>Order Total</div>
                             <div class="font-size-18 font-weight-bold text-sky">
