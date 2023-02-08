@@ -1726,7 +1726,7 @@ footer {
   height: 404px;
   border-radius: 16px;
   overflow: hidden;
-  background-color: #f9f9f9;
+  background-color: white;
   position: relative;
   float: left;
 }

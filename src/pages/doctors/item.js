@@ -12,7 +12,9 @@ export default function StoreItem({ data }) {
                     <img src={data.picture} alt="" />
                 </Link>
             </span>
-            <h5>{data?.firstname} {data?.lastname}</h5>
+
+            {data?.aos == "Nurse" ? <h5>{data?.firstname} {data?.lastname}</h5> : <h5>{data?.title}. {data?.firstname} {data?.lastname}</h5> }
+            
             <div class="cdl1">{data?.vendor?.name}</div>
             <div class="cdl2">{data?.aos}</div>
             <div class="cdl3">
