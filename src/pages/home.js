@@ -64,9 +64,9 @@ function addUsers(){
                             <div className="ccard-4-inner">
                                 {/* <img className="ccard-4-ico" src="./assets/images/home-user.svg" alt="home-user" /> */}
                                 <i class="las la-user ccard-4-ico"></i>
-                                <h4>Find a Doctor</h4>
+                                <h4>Find a Medical Specialist</h4>
                                 <p>
-                                    Find specialized doctors to meet your healthcare needs.
+                                    Find specialized medical personnels to meet your healthcare needs.
                                 </p>
                             </div>
                             <a href="/#doctor" className="ccard-4-more">

@@ -720,7 +720,7 @@ else {
                         <h3>Schedule Appointment </h3>
                         <div class="doc-mini-container">
                             <div class="dmc-image-box">
-                                <img src="./../../assets/images/doc-1.png" alt="" />
+                                <img src={doctor?.picture} alt="" />
                             </div>
                             <div class="dmc-content-box">
                                 <div class="dmc-1">DR. {doctor?.firstname} {doctor?.lastname}</div>

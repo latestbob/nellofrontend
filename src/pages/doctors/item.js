@@ -9,7 +9,7 @@ export default function StoreItem({ data }) {
             <span class="img-container">
                 <Link to={`/doctor/${data?.uuid}`}>
                     {/* <img src={data?.picture} alt={data.name} /> */}
-                    <img src="./assets/images/male-doctor.jpg" alt="" />
+                    <img src={data.picture} alt="" />
                 </Link>
             </span>
             <h5>{data?.firstname} {data?.lastname}</h5>

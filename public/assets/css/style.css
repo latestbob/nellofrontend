@@ -2050,6 +2050,10 @@ footer {
 }
 
 @media (max-width: 767px) {
+
+  .docd-img-container img {
+    width: 50%;
+  }
   .container.container-items {
     max-width: 100% !important;
   }

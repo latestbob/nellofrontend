@@ -48,14 +48,14 @@ export default function DoctorDetails({ history }) {
         </div>
 
         <div className="container content-body container-layout">
-            <div className="docd-main clearfix">
-                <div className="docd-img-container">
-                    <img src="./../assets/images/male-doctor.jpg" alt="" />
+            <div className="docd-main clearfix row px-2">
+                <div className="docd-img-container col-md-6">
+                    <img src={data?.picture} alt="" />
                 </div>
 
-                <div className="docd-content-container">
+                <div className="docd-content-container col-md-6">
                     <div className="docd-content-container-inner">
-                        <h4 className="docd-1">Dr. {data?.firstname} {data?.lastname}</h4>
+                        <h4 className="docd-1">{data?.title}. {data?.firstname} {data?.lastname}</h4>
                         <div className="docd-2">{data?.aos}</div>
                         <div className="docd-3">{data?.vendor?.name}</div>
                         <div className="docd-4">
@@ -70,6 +70,12 @@ export default function DoctorDetails({ history }) {
                             dolore
                             magna aliqua. Ut enim ad minim veniam.</p> */}
                     </div>
+
+                    <hr/>
+
+                    <div className="docd-2 mt-3 py-3">About</div>
+
+                    <div className="docd-3 text-justify">{data?.about}</div>
 
                     <div className="docd-5">
                         {/* <button className="btn btn-secondary btn-inverse btn-sm btn-ico">
