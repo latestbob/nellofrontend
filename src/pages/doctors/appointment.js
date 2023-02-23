@@ -33,6 +33,7 @@ export default function DoctorAppointment({ history }) {
 
     const [service, setService] = React.useState(null);
     const [doctor, setDoctor] = React.useState(null);
+    const [notblockedtime , setNotBlockedTime] = useState([]);
     const [times , setTimes] = React.useState([
         { value: '8:00:00', label: '8:00 am', match: true },
                     { value: '8:30:00', label: '8:30 am', match: true },
@@ -46,9 +47,16 @@ export default function DoctorAppointment({ history }) {
                     { value: '13:30:00', label: '1:30 pm', match: true },
                     { value: '14:00:00', label: '2:00 pm', match: true },
                     { value: '14:30:00', label: '2:30 pm', match: true },
-                    { value: '15:00:00', label: '15:00 pm', match: true },
-                    { value: '15:30:00', label: '15:30 pm', match: true },
+                    { value: '15:00:00', label: '3:00 pm', match: true },
+                    { value: '15:30:00', label: '3:30 pm', match: true },
                     { value: '16:00:00', label: '4:00 pm', match: true },
+
+                    { value: '16:30:00', label: '4:30 pm', match: true },
+                    { value: '17:00:00', label: '5:00 pm', match: true },
+                    { value: '17:30:00', label: '5:30 pm', match: true },
+                    { value: '18:00:00', label: '6:00 pm', match: true },
+                    { value: '18:30:00', label: '6:30 pm', match: true },
+                    { value: '19:00:00', label: '7:00 pm', match: true },
         // { value: '18:00:00', label: '6:00 pm' },
         // { value: '19:00:00', label: '7:00 pm' },
         // { value: '20:00:00', label: '8:00 pm' },
@@ -122,9 +130,25 @@ export default function DoctorAppointment({ history }) {
       // const notAvailableDays = [1,2,6];
 
 const isDisabled = (date) => {
-   const day = date.getDay(date);
-   return !doctorday.includes(day);
+//    const day = date.getDay(date);
+//    return !doctorday.includes(day);
+const dateobj =
+doctorday.find((x) => {
+  return (
+    date.getDate() === parseInt(x['dates'])
+  );
+});
+return !  dateobj ;
 }
+
+// const setClass = (date) => {
+//     const dateobj =
+//       doctorday.find((x) => {
+//         return (
+//           date.getDate() === parseInt(x['dates'])
+//         );
+//       });
+//     return !  dateobj ;}
     
     // React.useEffect(()=>{
     //     const currentTime = todaydate.getTime();
@@ -143,7 +167,7 @@ const isDisabled = (date) => {
 
     React.useEffect(()=>{
        
-        axios.get(`https://admin.asknello.com/api/nello_doctors_days/${docuuid}`, {
+        axios.get(`https://admin.asknello.com/api/nellodoctordates?uuid=${docuuid}`, {
             
 
         }).then(response => {
@@ -349,65 +373,65 @@ else {
     }, [selectedDate, selectedTime]);
 
 
-    React.useEffect(() => {
+    // React.useEffect(() => {
 
        
 
    
     
-        if(selectedDate){
+    //     if(selectedDate){
 
-            //console.log("Date format now is " + moment(selectedDate).format('DD-MM-YYYY'));
-            axios.get(`https://admin.asknello.com/api/doctor_appointment_time?date=${moment(selectedDate).format('DD-MM-YYYY')}&specialization=${doctor.aos}&uuid=${uuid}`).then(response => {
+    //         //console.log("Date format now is " + moment(selectedDate).format('DD-MM-YYYY'));
+    //         axios.get(`https://admin.asknello.com/api/doctor_appointment_time?date=${moment(selectedDate).format('DD-MM-YYYY')}&specialization=${doctor.aos}&uuid=${uuid}`).then(response => {
                
-                //hideLoader();
-                console.log(response.data)
+    //             //hideLoader();
+    //             console.log(response.data)
 
-                setAvailableTime(response.data);
+    //             setAvailableTime(response.data);
                 
-                if(response.data.length == 0){
-                    setTimes({ value: '8:00:00', label: '8:00 am', match: true },
-                    { value: '8:30:00', label: '8:30 am', match: true },
-                    { value: '9:00:00', label: '9:00 am', match: true },
-                    { value: '9:30:00', label: '9:30 am', match: true },
-                    { value: '10:00:00', label: '10:00 am', match: true },
-                    { value: '10:30:00', label: '10:30 am', match: true },
-                    { value: '11:00:00', label: '11:00 am', match: true },
-                    { value: '11:30:00', label: '11:30 am', match: true },
-                    { value: '12:00:00', label: '12:00 pm', match: true },
-                    { value: '13:30:00', label: '1:30 pm', match: true },
-                    { value: '14:00:00', label: '2:00 pm', match: true },
-                    { value: '14:30:00', label: '2:30 pm', match: true },
-                    { value: '15:00:00', label: '15:00 pm', match: true },
-                    { value: '15:30:00', label: '15:30 pm', match: true },
-                    { value: '16:00:00', label: '4:00 pm', match: true })
-                }
+    //             if(response.data.length == 0){
+    //                 setTimes({ value: '8:00:00', label: '8:00 am', match: true },
+    //                 { value: '8:30:00', label: '8:30 am', match: true },
+    //                 { value: '9:00:00', label: '9:00 am', match: true },
+    //                 { value: '9:30:00', label: '9:30 am', match: true },
+    //                 { value: '10:00:00', label: '10:00 am', match: true },
+    //                 { value: '10:30:00', label: '10:30 am', match: true },
+    //                 { value: '11:00:00', label: '11:00 am', match: true },
+    //                 { value: '11:30:00', label: '11:30 am', match: true },
+    //                 { value: '12:00:00', label: '12:00 pm', match: true },
+    //                 { value: '13:30:00', label: '1:30 pm', match: true },
+    //                 { value: '14:00:00', label: '2:00 pm', match: true },
+    //                 { value: '14:30:00', label: '2:30 pm', match: true },
+    //                 { value: '15:00:00', label: '15:00 pm', match: true },
+    //                 { value: '15:30:00', label: '15:30 pm', match: true },
+    //                 { value: '16:00:00', label: '4:00 pm', match: true })
+    //             }
 
-                else{
+    //             else{
 
 
 
              
-                     let booked = response.data;
+    //                  let booked = response.data;
                
-                         let obj3 = []
+    //                      let obj3 = []
 
-                        times.map(function(a) {
-                        let match = booked.filter(b => a.value === b);
-                        if (match.length) {
-                        obj3.push({value: a.value, label: a.label, match: false});
-                        } else {
-                        obj3.push({value: a.value, label: a.label, match: true});
-                        }
-                        })
+    //                     times.map(function(a) {
+    //                     let match = booked.filter(b => a.value === b);
+    //                     if (match.length) {
+    //                     obj3.push({value: a.value, label: a.label, match: false});
+    //                     } else {
+    //                     obj3.push({value: a.value, label: a.label, match: true});
+    //                     }
+    //                     })
 
-                        console.log(obj3);
+    //                     console.log(obj3);
 
-                        setTimes(obj3);
+    //                     setTimes(obj3);
 
                     
 
-                }
+    //             }
 
 
 
@@ -415,7 +439,7 @@ else {
 
               
 
-                    // let booked = response.data.time;
+    //                 // let booked = response.data.time;
                
                     
 
@@ -428,12 +452,42 @@ else {
               
 
      
+    //         }).catch(error => {
+    //             console.log(error)
+    //         })
+
+
+    // }
+    
+
+
+    // }, [selectedDate]);
+
+    React.useEffect(() => {
+
+        axios.get(`https://admin.asknello.com/api/nellodoctortimes?uuid=${docuuid}&date=${moment(selectedDate).format('dddd, MMMM DD, YYYY')}`).then(response => {
+               
+                //hideLoader();
+                console.log(response.data);
+
+             
+                setNotBlockedTime(response.data);
+
+
+            
+
+              
+
+               
+              
+
+     
             }).catch(error => {
                 console.log(error)
             })
 
-
-    }
+    
+      
     
 
 
@@ -755,7 +809,7 @@ else {
                                                 //minDate={new Date()}
                                                 
                                                 minDate={new Date()}
-                                            maxDate={new Date(date.getFullYear(), date.getMonth() + 2, 0)}
+                                            maxDate={new Date(date.getFullYear(), date.getMonth() + 1, 0)}
                                                 onChange={onChange}
                                                 value={value}
                                                 className="appointment-calendar"
@@ -775,9 +829,9 @@ else {
                                     />
                                     <ErrorMsg errors={errors} name="date" />
                                 </div>
-                                <div class="col-md-6">
+                                {/* <div class="col-md-6">
                                     <label className="font-weight-medium display-block
-                    text-secondary mb-3 font-size-14">Select Time </label>
+                                        text-secondary mb-3 font-size-14">Select Time </label>
                                     <div className="time-picker-container">
                                         <div class="row">
                                             {times && times.map((row, index) => {
@@ -850,7 +904,108 @@ else {
                                         <span className="text-sky"> {moment(selectedTime, 'h:mm a').format('h:mm a')}</span>
                                     </div>)}
 
-                                </div>
+                                </div> */}
+
+
+                                {/* time div below */}
+
+                             <div className='timediv col-md-6'>
+
+                                                    {
+                                                        
+                                                        selectedDate && (
+                                                        <div class="row">
+                                            {times && times.map((row, index) => {
+
+                                                if(notblockedtime.includes(row.label)){
+                                                    row.match = false;
+                                                }
+                                                if(!notblockedtime.includes(row.label)){
+                                                    row.match = true;
+                                                }
+
+                                        
+
+
+
+                                                
+
+                                                return (
+
+                                                    <>
+                                                    {row.match == false ? <Controller
+                                                    
+                                                    
+                                                    name="time"
+                                                    control={control}
+                                                    rules={{ required: 'Appointment time is required' }}
+                                                    render={({
+                                                        field: { onChange, onBlur, value, name, ref },
+                                                    }) => (
+                                                    
+                                                    
+                                                    <div key={index} class="col-4"
+                                                    onClick={() => setValue("time", row.value)}>
+
+                                                     
+
+                                                        <div class={`time-picker ${value === row.value && 'active'}`}>{row.label}</div>
+
+
+                                                    </div>
+                                                    
+                                                    
+                                                    )}
+                                                /> : 
+                                                <div 
+                                                
+                                               
+                                                
+                                                key={index} class="col-4"
+                                                >
+                                                    <div class="bg-secondary time-picker"style={{
+                                                        color:"white",
+                                                        border:"none",
+                                                    
+                                                    }}>{row.label}</div>
+                                                </div>
+                                            }
+                                                    </>
+                                               
+                                                )
+                                            })}
+                                            <ErrorMsg errors={errors} name="time" />
+                                        </div>
+
+                    )
+                                        // kkk
+
+                                        
+
+                                       
+                }
+
+
+            
+
+                                        
+            
+
+                          {selectedDate && selectedTime && (<div className='alert alert-info'>
+                            <p style={{
+                                fontSize:"15px",
+
+                            }}>You have selected </p> 
+                            <p style={{
+                                fontSize:"14px",
+                                fontWeight:"bold",
+                            }}><span className="text-sky"> {moment(selectedDate).format('dddd, MMMM DD, YYYY')}</span> by
+                            <span className="text-sky"> {moment(selectedTime, 'h:mm a').format('h:mm a')}</span></p>
+                        </div>)}
+
+                                </div> 
+
+
                             </div>
                         </div>
 

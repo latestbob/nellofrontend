@@ -22,6 +22,18 @@ export default function DoctorAppointment({ medicalCenters, initAppointment, val
             </div>
 
             <div class="form-group">
+                <label>Please select care type</label>
+                <select class="form-control" {...register('caretype', {
+                    required: "Select Care Type"
+                })}>
+                    <option value="">- Select -</option>
+                    <option value="Clinical Services">Clinical Services</option>
+                    <option value="Antenatal">Antenatal</option>
+                </select>
+                <ErrorMsg errors={errors} name="caretype" />
+            </div>
+
+            <div class="form-group">
                 <label>Provide the reason for appointment</label>
                 <textarea class="form-control" style={{ resize: 'none', height: '100px' }}
                     {...register('reason', {

@@ -30,22 +30,37 @@ export default function DoctorAppointment({ history }) {
     const selectedTime = watch('time');
     const date = new Date();
 
+    const [caretype, setCareType] = React.useState(null);
     const [service, setService] = React.useState(null);
     const [medicalCenters, setMedicalCenters] = React.useState([]);
     const [selectedMedicalCenter, setSelectedMedicalCenter] = React.useState(null);
     const [currentIndex, setCurrentIndex] = React.useState(1);
     const [values, setValues] = React.useState({});
     const [rand] = React.useState(randomString());
+    const [notblockedtime , setNotBlockedTime] = useState([]);
 
     const [times] = React.useState([
-        { value: '08:00:00', label: '8:00 am' },
-        { value: '08:30:00', label: '8:30 am' },
-        { value: '10:00:00', label: '10:00 am' },
-        { value: '11:00:00', label: '11:00 am' },
-        { value: '12:00:00', label: '12:00 pm' },
-        { value: '13:30:00', label: '1:30 pm' },
-        { value: '14:00:00', label: '2:00 pm' },
-        { value: '16:00:00', label: '4:00 pm' },
+       
+        { value: '9:00:00', label: '9:00 am', match: true },
+        { value: '9:30:00', label: '9:30 am', match: true },
+        { value: '10:00:00', label: '10:00 am', match: true },
+        { value: '10:30:00', label: '10:30 am', match: true },
+        { value: '11:00:00', label: '11:00 am', match: true },
+        { value: '11:30:00', label: '11:30 am', match: true },
+        { value: '12:00:00', label: '12:00 pm', match: true },
+        { value: '13:30:00', label: '1:30 pm', match: true },
+        { value: '14:00:00', label: '2:00 pm', match: true },
+        { value: '14:30:00', label: '2:30 pm', match: true },
+        { value: '15:00:00', label: '3:00 pm', match: true },
+        { value: '15:30:00', label: '3:30 pm', match: true },
+        { value: '16:00:00', label: '4:00 pm', match: true },
+
+        { value: '16:30:00', label: '4:30 pm', match: true },
+        { value: '17:00:00', label: '5:00 pm', match: true },
+        { value: '17:30:00', label: '5:30 pm', match: true },
+        { value: '18:00:00', label: '6:00 pm', match: true },
+        { value: '18:30:00', label: '6:30 pm', match: true },
+        { value: '19:00:00', label: '7:00 pm', match: true },
     ]);
 
     const [facilityday , setFacilityDay] = useState([]);
@@ -372,21 +387,25 @@ else {
 
     const initAppointment = (vals) => {
         const mc = medicalCenters.find(dt => dt.uuid === vals.medical_center)
+        const mytype = vals.caretype;
         //console.log(mc, medicalCenters, vals, 'values..');
         setSelectedMedicalCenter(mc);
         setValues(vals);
         setCurrentIndex(2);
+        setCareType(mytype);
     }
 
 
 
     React.useEffect(()=>{
+        
+        if(caretype){
        
-        axios.get(`https://admin.asknello.com/api/nello_facility_days/${selectedMedicalCenter?.uuid}`, {
+        axios.get(`https://admin.asknello.com/api/nellofacilitydates?specialization=${caretype}&center_uuid=${selectedMedicalCenter?.uuid}`, {
             
 
         }).then(response => {
-           // console.log(response)
+           console.log(response)
 
             if (response.data) {
 
@@ -405,17 +424,62 @@ else {
         }).catch(error => {
             console.log(error)
         })
-
+    }
 
          
          
-     },[selectedMedicalCenter]);
+     },[caretype]);
 
+
+    //  const isDisabled = (date) => {
+    //     const day = date.getDay(date);
+    //     return !facilityday.includes(day);
+    //  }
 
      const isDisabled = (date) => {
-        const day = date.getDay(date);
-        return !facilityday.includes(day);
-     }
+        //    const day = date.getDay(date);
+        //    return !doctorday.includes(day);
+        const dateobj =
+        facilityday.find((x) => {
+          return (
+            date.getDate() === parseInt(x['dates'])
+          );
+        });
+        return !  dateobj ;
+        }
+
+
+        
+        React.useEffect(() => {
+
+            axios.get(`https://admin.asknello.com/api/nellofacilitytimes?uuid=${selectedMedicalCenter?.uuid}&date=${moment(selectedDate).format('dddd, MMMM DD, YYYY')}&specialization=${caretype}`).then(response => {
+                   
+                    //hideLoader();
+                    console.log(response.data);
+    
+                 
+                    setNotBlockedTime(response.data);
+    
+    
+                
+    
+                  
+    
+                   
+                  
+    
+         
+                }).catch(error => {
+                    console.log(error)
+                })
+    
+        
+          
+        
+    
+    
+        }, [selectedDate, caretype]);
+        
          
 
 
@@ -452,7 +516,7 @@ else {
             {!isErrorSub && (<>
                 <div class="account-badge-container">
                     <div class="container-width-sm">
-                        <h3 className="mb-2">Schedule Appointment</h3>
+                        <h3 className="mb-2">Schedule Appointment  </h3>
                         {currentIndex === 2 ? (<div class="doc-mini-container">
                             <div class="dmc-content-box text-center">
                                 <div class="dmc-1">{selectedMedicalCenter?.name}</div>
@@ -466,6 +530,7 @@ else {
                                     <i class="la la-star"></i>
                                     <i class="la la-star"></i>
                                 </div>
+                                {caretype}
                             </div>
                         </div>) : ""}
                     </div>
@@ -486,7 +551,7 @@ else {
                                         }) => (
                                             <Calendar
                                                 minDate={new Date()}
-                                                maxDate={new Date(date.getFullYear(), date.getMonth() + 2, 0)}
+                                                maxDate={new Date(date.getFullYear(), date.getMonth() + 1, 0)}
 
                                                 
                                                 onChange={onChange}
@@ -503,36 +568,101 @@ else {
                                     />
                                     <ErrorMsg errors={errors} name="date" />
                                 </div>
-                                <div class="col-md-6">
-                                    <label className="font-weight-medium display-block
-                    text-secondary mb-3 font-size-14">Select Time </label>
-                                    <div className="time-picker-container">
-                                        <div class="row">
+                                <div className='timediv col-md-6'>
+
+                                            {
+                                                
+                                                selectedDate && (
+                                                <div class="row">
                                             {times && times.map((row, index) => {
-                                                return (<Controller
-                                                    key={index}
-                                                    name="time"
-                                                    control={control}
-                                                    rules={{ required: 'Appointment time is required' }}
-                                                    render={({
-                                                        field: { onChange, onBlur, value, name, ref },
-                                                    }) => (<div key={index} class="col-6"
-                                                        onClick={() => setValue("time", row.value)}>
-                                                        <div class={`time-picker ${value === row.value && 'active'}`}>{row.label}</div>
-                                                    </div>)}
-                                                />)
+
+                                            if(notblockedtime.includes(row.label)){
+                                            row.match = false;
+                                            }
+                                            if(!notblockedtime.includes(row.label)){
+                                            row.match = true;
+                                            }
+
+
+
+
+
+
+
+                                            return (
+
+                                            <>
+                                            {row.match == false ? <Controller
+
+
+                                            name="time"
+                                            control={control}
+                                            rules={{ required: 'Appointment time is required' }}
+                                            render={({
+                                                field: { onChange, onBlur, value, name, ref },
+                                            }) => (
+
+
+                                            <div key={index} class="col-4"
+                                            onClick={() => setValue("time", row.value)}>
+
+                                            
+
+                                                <div class={`time-picker ${value === row.value && 'active'}`}>{row.label}</div>
+
+
+                                            </div>
+
+
+                                            )}
+                                            /> : 
+                                            <div 
+
+
+
+                                            key={index} class="col-4"
+                                            >
+                                            <div class="bg-secondary time-picker"style={{
+                                                color:"white",
+                                                border:"none",
+
+                                            }}>{row.label}</div>
+                                            </div>
+                                            }
+                                            </>
+
+                                            )
                                             })}
-                                        </div>
+                                            <ErrorMsg errors={errors} name="time" />
+                                            </div>
 
-                                        <ErrorMsg errors={errors} name="time" />
-                                    </div>
-                                    {selectedDate && selectedTime && (<div className="text-secondary font-weight-medium font-size-14">
-                                        <span className="font-weight-normal text-muted">You have selected</span><br />
-                                        <span className="text-sky"> {moment(selectedDate).format('dddd, MMMM DD, YYYY')}</span> by
-                                        <span className="text-sky"> {moment(selectedTime, 'h:mm a').format('h:mm a')}</span>
-                                    </div>)}
+                                            )
+                                            // kkk
 
-                                </div>
+
+
+
+                                            }
+
+
+
+
+
+
+
+                                            {selectedDate && selectedTime && (<div className='alert alert-info'>
+                                            <p style={{
+                                            fontSize:"15px",
+
+                                            }}>You have selected </p> 
+                                            <p style={{
+                                            fontSize:"14px",
+                                            fontWeight:"bold",
+                                            }}><span className="text-sky"> {moment(selectedDate).format('dddd, MMMM DD, YYYY')}</span> by
+                                            <span className="text-sky"> {moment(selectedTime, 'h:mm a').format('h:mm a')}</span></p>
+                                            </div>)}
+
+                                            </div> 
                             </div>
                         </div>
 
