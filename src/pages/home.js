@@ -40,8 +40,19 @@ function addUsers(){
                     <p>
                     I'll help you get the high-quality health care you need to stay healthy. How may I assist in improving your health today?
                     </p>
+                
+              
+                
+                        
+                        <Link to="/login" class="btn btn-primary btn-lg text-center"style={{
+                          
+                        }} >Get Started</Link> 
 
-                    <button  class="btn btn-primary btn-lg text-center" onClick={toggleChatBox} >Get Started</button> 
+                        
+
+                        
+
+                   
                 </div>
 
                 <img src="./assets/images/banner-img.svg" alt="banner-img" />
@@ -64,7 +75,7 @@ function addUsers(){
                             <div className="ccard-4-inner">
                                 {/* <img className="ccard-4-ico" src="./assets/images/home-user.svg" alt="home-user" /> */}
                                 <i class="las la-user ccard-4-ico"></i>
-                                <h4>Find a Medical Specialist</h4>
+                                <h4>Find a Health Specialist</h4>
                                 <p>
                                     Find specialized medical personnels to meet your healthcare needs.
                                 </p>
@@ -84,7 +95,7 @@ function addUsers(){
                             <div className="ccard-4-inner">
                                 {/* <img className="ccard-4-ico" src="./assets/images/home-shopping-cart.svg" alt="home-shopping-cart" /> */}
                                 <i class="las la-shopping-cart ccard-4-ico"></i>
-                                <h4>Order Medication</h4>
+                                <h4>Order Health Products</h4>
                                 <p>
                                     Buy drugs and have it delivered to you anywhere.                                </p>
                             </div>
@@ -103,7 +114,7 @@ function addUsers(){
                             <div className="ccard-4-inner">
                                 {/* <img className="ccard-4-ico" src="./assets/images/home-calendar.svg" alt="home-calendar" /> */}
                                 <i class="las la-calendar-minus ccard-4-ico"></i>
-                                <h4>Hospital Appointment</h4>
+                                <h4>Visit A Health Facility</h4>
                                 <p>
                                     Schedule  appointment with hospitals close to you.    </p>
                             </div>
@@ -199,7 +210,7 @@ function addUsers(){
                         </div>
                         <div className='buttondiv text-center mt-5'>
                         <a href="https://wa.me/message/MCKR7N5KXAZJN1" class="btn "style={{
-                            backgroundColor:"#128C7E",
+                            backgroundColor:"#25D366",
                             color:"white",
                             fontWeight:"bold"
                         }}> <img style={{
@@ -263,7 +274,7 @@ function addUsers(){
                         </div>
                         <div className='buttondiv text-center mt-2'>
                         <a href="https://wa.me/message/MCKR7N5KXAZJN1" class="btn "style={{
-                            backgroundColor:"#128C7E",
+                            backgroundColor:"#25D366",
                             color:"white",
                             fontWeight:"bold"
                         }}> <img style={{

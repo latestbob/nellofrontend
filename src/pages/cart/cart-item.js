@@ -17,7 +17,10 @@ export default function CartItem({ data }) {
             {/* <img src={drug?.image} alt={drug?.name} /> */}
         </div>
         <div class="cart-item-content">
+           
+
             <div class="cic-1">{drug?.name}</div>
+            
             <div class="cic-2">Total: <Currency value={price} /></div>
             <div class="cart-item-action-box">
                 <div class="cart-item-vol">

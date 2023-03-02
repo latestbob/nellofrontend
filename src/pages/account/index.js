@@ -63,15 +63,15 @@ export default function Browse({ history }) {
         <div className="col-10 m-auto pt-3">
             <div className="row">
             <div className="col-4">
-                <Link to="/doctors" className="btn btn-primary">Schedule a doctor consultation</Link>
+                <Link to="/doctors" className="btn btn-primary">Find a Health Specialist</Link>
             </div>
 
             <div className="col-4">
-                <Link to="/appointment" className="btn btn-primary">Schedule a hospital visit</Link>
+                <Link to="/appointment" className="btn btn-primary">Visit A Health Facility</Link>
             </div>
 
             <div className="col-4">
-                <Link to="/drugs" className="btn btn-primary">Order Medications</Link>
+                <Link to="/drugs" className="btn btn-primary">Order Health Products</Link>
             </div>
             </div>
         </div>
@@ -96,19 +96,19 @@ export default function Browse({ history }) {
       background:"none",
       color:"black",
       textAlign:"center",
-    }} to="/doctors" className="btn btn-primary">Schedule a doctor consultation</Link></li> 
+    }} to="/doctors" className="btn btn-primary">Find a Health Specialist</Link></li> 
 
     <Link style={{
       background:"none",
       color:"black",
       textAlign:"center",
-    }} to="/appointment" className="btn btn-primary">Schedule a hospital visit</Link><br/>
+    }} to="/appointment" className="btn btn-primary">Visit A Health Facility</Link><br/>
 
     <Link style={{
       background:"none",
       color:"black",
       textAlign:"center",
-    }} to="/drugs" className="btn btn-primary">Order Medications</Link>
+    }} to="/drugs" className="btn btn-primary">Order Health Products</Link>
   </ul>
 </div>
 </div>

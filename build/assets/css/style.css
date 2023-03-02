@@ -624,7 +624,7 @@ header.mobile .user-ico .user-ico-dropdown,
   display: none;
   position: absolute;
   background-color: #ffffff;
-  min-width: 150px;
+  min-width: 200px;
   overflow: auto;
   box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
   z-index: 4;
@@ -935,7 +935,7 @@ footer {
 }
 
 .banner-content {
-  max-width: 400px;
+  max-width: 600px;
   font-size: 16px;
   font-weight: 400;
   line-height: 2.4;
@@ -1538,7 +1538,7 @@ footer {
 }
 
 .fab-ask-container {
-  background: linear-gradient(90deg, #82cff0 0%, #1997cf 100%);
+  background: linear-gradient(90deg, #25D366 0%, #25D366 100%);
   box-shadow: 0px 12px 40px 5px rgba(95, 193, 235, 0.25);
   border-radius: 18px;
   padding: 16px;

@@ -54,6 +54,7 @@ export default function DoctorAppointmentPay({ history }) {
     const [usergender, setUserGender]=useState("");
     const [user_uuid , setUserUuid]=useState("");
     const [doctor_id , setDoctorId]=useState("");
+    const [doctor_title , setDoctorTitle] = useState("");
 
 
 
@@ -69,6 +70,7 @@ export default function DoctorAppointmentPay({ history }) {
         setUserGender(location.state.usergender);
         setUserUuid(location.state.user_uuid);
         setDoctorId(location.state.doctor_id);
+        setDoctorTitle(location.state.doctortitle);
 
         
     })
@@ -356,8 +358,8 @@ const config = {
 
                                                 
                                                     <tr>
-                                                        <td>Doctor's Name</td>
-                                                        <td>{location.state.doctor}</td>
+                                                        <td>Specialist Name</td>
+                                                        <td> {location.state.doctor}</td>
                                                     </tr>
 
                                                     <tr>

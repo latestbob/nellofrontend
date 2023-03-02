@@ -411,7 +411,7 @@ const Master = ({ children, history }) => {
           <ul className="menu">
             <li>
               <Link to="/drugs">
-                <span>Drug Store</span>
+                <span>Order Health Products</span>
               </Link>
             </li>
 
@@ -420,8 +420,8 @@ const Master = ({ children, history }) => {
           Schedule Appointments
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link class="dropdown-item" to="/doctors">Specialist</Link>
-          <Link class="dropdown-item" to="/appointment">Facility</Link>
+          <Link class="dropdown-item" to="/doctors">Find a Health Specialist</Link>
+          <Link class="dropdown-item" to="/appointment">Visit A Health Facility</Link>
           
         </div>
       </li>
@@ -453,9 +453,11 @@ const Master = ({ children, history }) => {
       <header className="mobile">
         <div className="header">
           <div className="header-left">
-            <Link to="/drugs">
+            {/* <Link to="/drugs">
               Drug Store
-            </Link>
+            </Link> */}
+
+
 
             
           </div>
@@ -514,6 +516,30 @@ const Master = ({ children, history }) => {
                     >
                       Appointments
                     </Link>
+
+
+                    <Link
+                      className="dropdown-link"
+                      to={`/drugs`}
+                    >
+                      Order Health Products
+                    </Link>
+
+
+                    <Link
+                      className="dropdown-link"
+                      to={`/doctors`}
+                    >
+                      Find A Health Specialist
+                    </Link>
+
+
+                    <Link
+                      className="dropdown-link"
+                      to={`/appointment`}
+                    >
+                      Visit A Health Facility
+                    </Link>
                     {/* <Link
                       className="dropdown-link"
                       to={`/account/chat-history`}
@@ -560,7 +586,7 @@ const Master = ({ children, history }) => {
               }} alt="" />
             </span>
             {/* <div className="badge">3</div> */}
-            <span>AskNello</span>
+            <span>Get Started On WhatsApp</span>
           </div>
 
           </a>

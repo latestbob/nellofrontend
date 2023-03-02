@@ -81,6 +81,7 @@ export default function DoctorAppointment({ history }) {
     const [docemail, setDocEmail] = useState("");
     const [aos, setDocAos] = useState("");
     const [doctorfee, setDoctorFee]= useState(0);
+    const [doctortitle , setDoctorTitle] = useState("");
 
 
     //HIDE BOTTON FOR PAYSTACK
@@ -600,7 +601,7 @@ else {
                  
                         date: moment(selectedDate).format('dddd, MMMM DD, YYYY'),
                         time: selectedTime,
-                        doctor: `DR. ${docfirstname} ${doclastname}`,
+                        doctor: `${doctortitle}. ${docfirstname} ${doclastname}`,
                         aos:aos,
                         doctormail: docemail,
                         username: `${userfirstname} ${userlastname}`,
@@ -610,6 +611,7 @@ else {
                         user_uuid:user_uuid,
                         doctor_id:doctor_id,
                         doctorfee:doctor?.fee,
+                        title: doctortitle,
 
 
                     
@@ -743,6 +745,8 @@ else {
                 setDocAos(response.data.aos);
                 setDoctorFee(response.data.fee);
 
+                setDoctorTitle(response.data.title);
+
                // console.log(response.data.aos);
 
                
@@ -777,7 +781,7 @@ else {
                                 <img src={doctor?.picture} alt="" />
                             </div>
                             <div class="dmc-content-box">
-                                <div class="dmc-1">DR. {doctor?.firstname} {doctor?.lastname}</div>
+                                <div class="dmc-1">{doctor.title}. {doctor?.firstname} {doctor?.lastname}</div>
                                 <div class="dmc-2">{doctor?.aos}</div>
                                 <div class="dmc-3">{doctor?.vendor?.name}</div>
                                 <div class="dmc-4">

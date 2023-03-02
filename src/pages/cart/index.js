@@ -93,9 +93,15 @@ export default function Cart({
     console.log(status, "status....");
   }, [status]);
 
+ 
+  
+
   React.useEffect(() => {
     //console.log(prescriptionRequested, 'prescriptionRequested....');
+
+   
   }, [prescriptionRequested]);
+
 
   React.useEffect(() => {
     if (cartItems && itsArray(cartItems) && cartItems.length > 0) {
@@ -301,6 +307,8 @@ export default function Cart({
                           </p>
                           <div className="mb-3">
                             <div>
+
+
                               <Radio
                                 color="primary-o"
                                 onClick={(e) => setOptions(true, drug_id)}
@@ -310,6 +318,8 @@ export default function Cart({
                               >
                                 Yes
                               </Radio>
+
+
 
                               <Radio
                                 color="primary-o"
@@ -333,6 +343,7 @@ export default function Cart({
                                     !prescriptionRequested && `btn-inverse`
                                   }`}
                                 >
+
                                   {prescriptionRequested
                                     ? "Prescription Requested"
                                     : "Request Prescription"}

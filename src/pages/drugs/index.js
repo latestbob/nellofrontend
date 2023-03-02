@@ -304,7 +304,7 @@ export default function Store({ history }) {
             <>
               <div className="header-container store">
                 <div className="hc-title">
-                  Order Medication
+                Order Health Products
                   <br />
                   We have the Best Price for You. 
                   <br/>
