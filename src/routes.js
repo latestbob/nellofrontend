@@ -32,6 +32,9 @@ import Forgot from './pages/auth/forgot';
 import ResetPassword from './pages/auth/resetpassword';
 import HealthAppointmentPay from './pages/medical-center/appointment-pay';
 import Visitation from './pages/visitation';
+import Faq from './pages/faq';
+import Contact from './pages/contact';
+
 const routes = [
 	{
 		id: 1,
@@ -298,6 +301,27 @@ const routes = [
 		pageTitle: 'Vistation Slip',
 	},
 
+
+	{
+		id: 23,
+		path: '/faq',
+		component: Faq,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'FAQs',
+	},
+
+	{
+		id: 24,
+		path: '/contact',
+		component: Contact,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Contact',
+	},
+
 	{
 		id: 404,
 		path: '/*',
@@ -307,6 +331,8 @@ const routes = [
 		pageTitle: 'Page Not Found!',
 		menu: { status: false }
 	},
+
+	
 ];
 
 export default routes;

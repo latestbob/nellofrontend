@@ -18,6 +18,19 @@
     color: #093a4f;
 }
 
+.feedbackheading{
+    color:white;
+    text-align: center;
+    font-weight:bold;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.feedbackpara {
+    color:white;
+    font-size:15px;
+    text-align: center;
+    font-weight: 500;
+}
 
   /* Mobile Screen  */
 
@@ -35,4 +48,21 @@
         font-size: 25px;
         color: #093a4f;
     }
+
+
+    .feedbackheading{
+        color:white;
+        text-align: center;
+        font-weight:600;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        
+    }
+    .feedbackpara {
+        color:white;
+        font-size:15px;
+        text-align: justify;
+        font-weight: 500;
+    }
+   
   }

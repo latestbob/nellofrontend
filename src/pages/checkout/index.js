@@ -283,6 +283,8 @@ React.useEffect(() => {
             email: userData?.email,
             publicKey: "pk_live_c98b318b0a6960d258c3ea7ce676e804714b95eb",
             text: 'Proceed to Payment',
+            "subaccount": "ACCT_j5pxqpw7kveslp6",
+            
             onSuccess: (reference) => onPaymentSuccess(reference),
             onClose: onPaymentClose,
             reference: randomString(16),

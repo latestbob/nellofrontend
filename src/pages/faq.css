@@ -1,0 +1,54 @@
+
+.faqlink {
+    font-size:16px;
+    color:#ff9017;
+    font-weight:600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.faqpara {
+    text-align:justify;
+   line-height:1.5;
+   font-size: 15px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.faqheading {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size:40px;
+    color:rgb(43, 42, 42);
+    
+}
+
+
+@media (max-width: 765px) {
+    .faqheading {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        font-size:22px;
+        color:rgb(43, 42, 42);
+        text-align: center;
+        
+    }
+
+    .faqlink {
+        font-size:15px;
+        color:#ff9017;
+        font-weight:500;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    .faqpara {
+        text-align:justify;
+       line-height:1.5;
+       font-size: 14px;
+       font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+  }
+
+
+

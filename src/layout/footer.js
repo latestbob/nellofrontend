@@ -45,17 +45,17 @@ export default function Browse({ history }) {
             <h3>Quick Links</h3>
             <ul>
               <li>
-                <a href="/drugs">Order Medication</a>
+                <a href="/drugs">Order Health Products</a>
               </li>
               <li>
                 <Link to="/about">About Ask Nello</Link>
               </li>
-              {/* <li>
-                <a href="#">FAQs</a>
-              </li>
               <li>
-                <a href="#">Careers</a>
-              </li> */}
+                <Link to="/faq">FAQs</Link>
+              </li>
+               <li>
+                <Link to="/contact">Contact Us</Link>
+              </li>  
             </ul>
           </div>
 

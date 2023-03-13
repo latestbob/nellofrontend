@@ -426,6 +426,19 @@ const Master = ({ children, history }) => {
         </div>
       </li>
 
+      <li>
+              <Link to="/faq">
+                <span>FAQs</span>
+              </Link>
+            </li>
+
+
+            <li>
+              <Link to="/contact">
+                <span>Contact</span>
+              </Link>
+            </li>
+
             {pathname !== "/checkout-completed" && (
               <li className="has-ico">
                 <Link to={`${pathname}#cart`}>
@@ -539,6 +552,20 @@ const Master = ({ children, history }) => {
                       to={`/appointment`}
                     >
                       Visit A Health Facility
+                    </Link>
+
+                    <Link
+                      className="dropdown-link"
+                      to={`/faq`}
+                    >
+                      FAQs
+                    </Link>
+
+                    <Link
+                      className="dropdown-link"
+                      to={`/contact`}
+                    >
+                      Contact
                     </Link>
                     {/* <Link
                       className="dropdown-link"

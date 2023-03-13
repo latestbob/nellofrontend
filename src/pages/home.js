@@ -44,7 +44,7 @@ function addUsers(){
               
                 
                         
-                        <Link to="/login" class="btn btn-primary btn-lg text-center"style={{
+                        <Link to={'/signup'} class="btn btn-primary btn-lg text-center"style={{
                           
                         }} >Get Started</Link> 
 
@@ -296,6 +296,32 @@ function addUsers(){
 
                 </div>
 
+
+                <div className='py-5 mt-4 w-100 rounded'style={{
+                        backgroundColor:"#1997cf",
+                       
+                    }}>
+
+                        <h3  className='mb-1 feedbackheading' style={{
+                            
+                        }}>FAQs and Feedback</h3>
+
+                        <p className='px-5 feedbackpara'>Explore our comprehensive FAQs for answers to common questions about our products and services, and share your feedback with us to help us improve your experience on our website. We value your input and strive to provide you with the best possible service. Thank you for choosing Nello!</p>
+
+<div className='buttondiv text-center mt-5'>
+                        <Link to="/faq" class="btn btn-primary mx-2"style={{
+                            fontWeight:"bold"
+                        }}> Explore Our FAQs</Link>  <Link to="/contact" class="btn btn-primary mx-2"style={{
+                            fontWeight:"bold"
+                        }}> Provide Feedback</Link>
+
+
+                        </div>
+
+
+
+                    </div>
+
                 <div className="infographics row mt-3 "style={{
                    background:"white",
                    paddingTop:70,
@@ -313,6 +339,8 @@ function addUsers(){
 
                        
                     </div>
+
+                   
 
                     <div className="infographic_text col-md-6">
                         <h5 style={{
