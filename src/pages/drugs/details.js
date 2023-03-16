@@ -110,8 +110,8 @@ export default function StoreDetails() {
           {!isError && data && (
             <>
               <div className="row container-max clearfix sd-main-top">
-                <div className="col-md-6 sd-img-box">
-                  <img
+                <div className="col-md-6 text-center sd-img-box w-100">
+                  <img className="detailsimage "
                   
                   
                     src={
