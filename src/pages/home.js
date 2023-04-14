@@ -187,7 +187,7 @@ function addUsers(){
 
                         <div className='steps mt-2'>
                             <h6 className='stepheading'>Setup an Asknello account</h6>
-                            <p className='stepara'>As a new user, you have to setup an account. This can be done by either by navigating to Asknello.com or via Chatbot.</p>
+                            <p className='stepara'>As a new user, you have to setup an account. This can be done by navigating to Asknello.com or via Chatbot.</p>
 
                         </div>
 
@@ -245,7 +245,7 @@ function addUsers(){
 
                         <div className='steps mt-2'>
                             <h6 className='stepheading'>Setup an Asknello account</h6>
-                            <p className='stepara'>As a new user, you have to setup an account. This can be done by either navigating ot Asknello.com or via Chatbot.</p>
+                            <p className='stepara'>As a new user, you have to setup an account. This can be done by either navigating to Asknello.com or via Chatbot.</p>
 
                         </div>
 
@@ -523,7 +523,7 @@ function addUsers(){
                                  }} className="" src="https://res.cloudinary.com/edifice-solutions/image/upload/v1668417652/Order_Medication_2_kv3vvm.png" alt="home-shopping-cart" /> 
                                 {/* <i class="las la-quote-left ccard-4-ico"></i> */}
                                
-                                <p className='mt-2'>Get approved prescription prepared by medical experts, for every drugs ordered on Nello.</p>
+                                <p className='mt-2 hoverme'>Get approved prescription prepared by medical experts, for every drugs ordered on Nello.</p>
                             </div>
                            
                         </div>

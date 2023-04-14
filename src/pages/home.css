@@ -7,6 +7,13 @@
     
 }
 
+.hoverme{
+    color: #666666;
+}
+
+.hoverme:hover{
+    color:white;
+}
 .headings{
     /* fontWeight:"bold",
     color:"#ff9017", */
