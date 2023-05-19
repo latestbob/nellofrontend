@@ -1,0 +1,59 @@
+.searchboxcenter{
+    /* width: 100%; */
+    min-height:150px;
+    background-color: #1997cf;
+    border:none;
+    border-radius: 30px;
+     box-shadow: 0 0 2px rgba(29, 29, 29, 0.3);
+     margin-top: 100px;
+    position: relative;
+}
+
+.nellocolorcenter{
+    background:#2f7ea0;;
+    color:white;
+}
+
+.youmaycenter{
+    font-size: 20px;
+
+}
+
+.filterdivs{
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 100;
+
+    position: relative;
+    z-index: 3;
+}
+
+.filterlocation{
+    display: block;
+    padding:7px
+}
+
+.filterlocation:hover{
+    background-color: rgb(209, 211, 214);
+    padding:7px;
+    border-radius: 8px;
+}
+
+
+.searchedList{
+    max-height: 400px;
+    overflow-y: auto;
+    
+
+    background-color: white;
+    z-index: 3;
+}
+
+
+
+.searchItem{
+    
+    padding:7px;
+    font-size:13px;
+    
+}

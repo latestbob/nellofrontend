@@ -12,7 +12,9 @@ export default function Browse({ history }) {
             <h3>
               <img src={`${baseUrl}assets/images/logo-inverse.svg`} alt="" />
             </h3>
-            <p>Hi, I am Nello, your personal healthcare assistant.</p>
+            <p className="px-2" style={{
+              color:"white",
+            }}>I'll help you get the high-quality health care you need to stay healthy. How may I assist in improving your health today?</p>
             {/* <div class="social-set">
               <a href="http://instagram.com" target="_blank" rel="noreferrer">
                 <img
@@ -95,7 +97,7 @@ export default function Browse({ history }) {
       <div class="footer-bottom">
         <div class="container py-4">
           <div class="row">
-            <div class="col-md-6">© 2021 AskNello. All rights reserved</div>
+            <div class="col-md-6">© 2023 AskNello. All rights reserved</div>
             <div class="col-md-6 text-md-right footer-inline">
               <a href="/terms_and_conditions">Terms & Conditions</a>
               <a href="/privacy_policy">Privacy Policy</a>

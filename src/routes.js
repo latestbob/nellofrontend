@@ -34,12 +34,20 @@ import HealthAppointmentPay from './pages/medical-center/appointment-pay';
 import Visitation from './pages/visitation';
 import Faq from './pages/faq';
 import Contact from './pages/contact';
+import NewHome from './pages/newhome';
+import Centers from './pages/medical-center/centers';
+import HealthCareProviders from './pages/business/healthcareproviders';
+import Companies from './pages/business/companies';
+import Pharmacies from './pages/business/pharmacies';
+import Diagnostic from './pages/business/diagnostic_center';
+import Consultation from './pages/medical_report/consultation';
+import SearchPage from './pages/searchpage';
 
 const routes = [
 	{
 		id: 1,
 		path: '/',
-		component: Home,
+		component: NewHome,
 		auth: false,
 		exact: true,
 		route: true,
@@ -192,7 +200,7 @@ const routes = [
 		id: 12,
 		path: '/appointment',
 		component: medicalCenterAppointment,
-		auth: true,
+		auth: false,
 		exact: true,
 		route: true,
 		pageTitle: 'Appointment',
@@ -321,6 +329,88 @@ const routes = [
 		route: true,
 		pageTitle: 'Contact',
 	},
+
+	{
+		id: 25,
+		path: '/oldhome',
+		component: Home,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'OldHome',
+	},
+
+	{
+		id: 26,
+		path: '/medcenters',
+		component: Centers,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Medical Centers',
+	},
+
+	{
+		id: 27,
+		path: '/business/healthproviders',
+		component: HealthCareProviders,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Health Providers',
+	},
+
+	{
+		id: 28,
+		path: '/business/cooperate',
+		component: Companies,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Cooperate Organizations',
+	},
+
+	{
+		id: 29,
+		path: '/business/pharmacies',
+		component: Pharmacies,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Pharmacies & Health Vendors',
+	},
+
+	{
+		id: 30,
+		path: '/business/diagnostic_center',
+		component: Diagnostic,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Diagnostic Center',
+	},
+
+	{
+		id: 31,
+		path: '/consultation/:ref',
+		component: Consultation,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Asknello Consultation',
+	},
+
+	{
+		id: 32,
+		path: '/searchresults',
+		component: SearchPage,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Search Results',
+	},
+
+
 
 	{
 		id: 404,

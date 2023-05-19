@@ -211,12 +211,21 @@ export default function Appointments() {
                 {row.type == "doctor_appointment" ? <>
                   <h4>Dr. {row.doctor_name}</h4>
                   <div class="c5c-1">{row.doctor_aos}</div>
+                  <div class="c5c-1">{row.ref_no}</div>
 
-                  <div class="text-dark font-size-13">at {moment(row?.date, 'YYYY-MM-DD').format('dddd, MMMM DD, YYYY')} {moment(row?.time, 'h:mm a').format('h:mm a')}</div>
+                  <div class="text-dark font-size-13">at {moment(row?.date, 'YYYY-MM-DD').format('dddd, MMMM DD, YYYY')} {moment(row?.time, 'h:mm a').format('h:mm a')}
+                  
+                  </div>
 
                   {row?.status === 'completed' ? <div class="c5c-2">Completed</div> :
                     row?.status === 'cancelled' ? <div class="c5c-2 danger">Cancelled</div>
-                      : <a href={row.link} className="btn btn-primary btn-sm btn-main">Appointment Link</a>
+                      : 
+                      // <a href={row.link} className="btn btn-primary btn-sm btn-main">Appointment Link</a> 
+
+                      <div className='row'>
+                         <a href={row.link} className="btn btn-primary btn-sm btn-main">Appointment Link</a> 
+                         <a href=""className="btn btn-success mx-2 btn-sm btn-main">View Medical Report</a> 
+                      </div>
 
                   }
                 </>
@@ -225,18 +234,31 @@ export default function Appointments() {
 
                     <h4>{row.center_name}</h4>
                     <div class="c5c-1">{row.location}</div>
+                    {/* <div class="c5c-1">{row.ref_no}</div> */}
 
                     <div class="text-dark font-size-13">at {moment(row?.date, 'YYYY-MM-DD').format('dddd, MMMM DD, YYYY')} {moment(row?.time, 'h:mm a').format('h:mm a')}</div>
 
                     {row?.status === 'completed' ? <div class="c5c-2">Completed</div> :
                       row?.status === 'cancelled' ? <div class="c5c-2 danger">Cancelled</div>
-                        : <a onClick={function(e){
+                        : 
+                        // <a onClick={function(e){
+                        //   //generatePDF
+                        //   e.preventDefault();
+                        //   generatePDF(row);
+                        // }} href="" style={{
+                        //   color:"white",
+                        // }} className="btn btn-info btn-sm btn-main">Download Appointment Slip</a>
+
+                        <div className='row'>
+                          <a onClick={function(e){
                           //generatePDF
                           e.preventDefault();
                           generatePDF(row);
                         }} href="" style={{
                           color:"white",
                         }} className="btn btn-info btn-sm btn-main">Download Appointment Slip</a>
+                         <a href=""className="btn btn-success mx-2 btn-sm btn-main">View Medical Report</a> 
+                      </div>
 
                     }
                   </>

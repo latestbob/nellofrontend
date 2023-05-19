@@ -67,7 +67,7 @@ export default function Browse({ history }) {
             </div>
 
             <div className="col-4">
-                <Link to="/appointment" className="btn btn-primary">Visit A Health Facility</Link>
+                <Link to="/medcenters" className="btn btn-primary">Visit A Health Facility</Link>
             </div>
 
             <div className="col-4">
@@ -102,7 +102,7 @@ export default function Browse({ history }) {
       background:"none",
       color:"black",
       textAlign:"center",
-    }} to="/appointment" className="btn btn-primary">Visit A Health Facility</Link><br/>
+    }} to="/medcenters" className="btn btn-primary">Visit A Health Facility</Link><br/>
 
     <Link style={{
       background:"none",

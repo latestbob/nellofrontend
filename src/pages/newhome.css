@@ -1,0 +1,684 @@
+p{
+    font-weight: 400;
+    font-family: 'Lato', sans-serif;
+    color: #122C47;
+    font-size: 16px;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: #122C47;
+}
+
+.herosection {
+    height:600px;
+    background-image: url("https://res.cloudinary.com/edifice-solutions/image/upload/v1682587922/banner_bg_iyly5i.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    padding: 80px 100px 80px 100px;
+    
+  
+   
+
+}
+
+
+.heroimage{
+    width:85%;
+    margin-bottom: 50px;
+
+}
+
+.heroheading_one{
+    background:#1997cf;
+    color:white;
+    display: inline-block;
+    padding: 4px 12px 4px 12px;
+    border-radius:30px;
+   
+    font-weight: bold;
+
+}
+
+.heroheading_two{
+    font-size: 40px;
+    
+    
+
+}
+
+.searchbox{
+    /* width: 100%; */
+    min-height:250px;
+    background-color: aliceblue;
+    border:none;
+    border-radius: 30px;
+     box-shadow: 0 0 2px rgba(29, 29, 29, 0.3);
+     position: relative;
+     z-index: 1;
+    
+}
+
+.nellocolor{
+    background:#1997cf;
+    color:white;
+}
+
+.youmay{
+    font-size: 20px;
+
+}
+
+.lookingfor{
+    max-width: 100%;
+    overflow-x: auto;
+    /* background: red; */
+    /* max-height: 40px; */
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 8px; /* Set the height of the scrollbar */
+  }
+  
+  .scroll-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Set the background color of the scrollbar track */
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Set the color of the scrollbar thumb */
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Set the color of the scrollbar thumb on hover */
+  }
+
+.servicess{
+    white-space: nowrap;
+    background-color: #1997cf;
+    color:white;
+    padding: 4px 12px 4px 12px;
+    border:none;
+    border-radius: 20px;
+    
+    font-size: 13px;
+    text-align: center;
+    margin-right: 10px;
+    transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+}
+
+.servicess:hover{
+    display: inline-block;
+    background-color:#ff9017;
+    color:white;
+    /* padding: 8px 15px 8px 15px; */
+   
+    border:none;
+    border-radius: 20px;
+   
+    font-size: 13px;
+    text-align: center;
+    margin-right: 10px;
+    transform: scale(1.2);
+    
+}
+
+.aboutsection {
+    margin-top: 50px;
+    height:600px;
+    background-image: url("https://res.cloudinary.com/edifice-solutions/image/upload/v1682596678/about_bg_zagqbi.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    padding: 80px 100px 80px 100px;
+
+ 
+    
+  
+}
+.aboutimage{
+    width:90%;
+    margin-bottom: 50px;
+
+}
+
+.aboutimageprovider{
+    width:100%;
+    margin-bottom: 50px;
+
+}
+
+.aboutimageprovidercompany{
+    width:95%;
+    height: 95%;
+    margin-bottom: 50px;
+    border-radius: 100%;
+
+}
+.aboutpara{
+    text-align: justify;
+    font-weight: 400;
+    
+    color: #122C47;
+    font-size: 16px;
+}
+
+.myicon{
+    color:#1997cf;
+    font-size: 40px;
+}
+
+.icontext{
+    font-size:17px;
+    font-weight: 700;
+    margin-top: 12px;
+
+}
+
+
+.servicesection{
+    margin-top: 50px;
+    min-height:600px;
+    
+}
+
+.feature_image{
+    width: 55px;
+}
+
+.feature_item{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.feature_center{
+    width:100%;
+    
+}
+
+.featurespan{
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: #122C47;
+}
+
+.howcover{
+    background-color: aliceblue;
+}
+.howsection{
+    /* margin-top: 50px; */
+    min-height:700px;
+    background-color: aliceblue;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-position-x: right; */
+
+
+    padding: 80px 100px 50px 100px;
+    /* background-position: 100%; */
+    /* transform: rotate(180deg); */
+
+}
+
+.howsectiontwo{
+    margin-top: 10px;
+    min-height:700px;
+    background-color: aliceblue;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-position-x: right; */
+    
+
+    padding: 0px 100px 50px 100px;
+    /* background-position: 100%; */
+    /* transform: rotate(180deg); */
+
+}
+
+.howsectiontwoprovider{
+    margin-top: 10px;
+    min-height:500px;
+    background-color: aliceblue;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-position-x: right; */
+    
+
+    padding: 0px 100px 50px 100px;
+    /* background-position: 100%; */
+    /* transform: rotate(180deg); */
+
+}
+
+.howimage{
+    width:85%;
+    margin-bottom: 50px;
+    border-radius: 30px;
+
+}
+
+.feature_image_how{
+    width: 40px;
+}
+
+.feature_item_how{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* .btnwhatsapp{
+    background-color:#25D366;
+    color:white;
+    font-weight:"bold";
+    
+} */
+
+
+.btnwhatsapp{
+    background-color:#25D366;
+    padding:15px 30px 15px 30px;
+    color:white;
+    font-weight: bold;
+    border:none;
+    border-radius: 50px;
+    font-family: 'Lato', sans-serif;
+    /* margin-top: 300px; */
+
+
+}
+
+.feature_item_why{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.faqfeeback{
+    margin-top: 100px;
+    min-height:250px;
+    background-color: aliceblue;
+    border:none;
+    border-radius: 30px;
+     box-shadow: 0 0 2px rgba(29, 29, 29, 0.3);
+}
+
+.testimonies_partners{
+    min-height: 700px;
+    width: 100%;
+    background-image: url("https://res.cloudinary.com/edifice-solutions/image/upload/v1682587922/banner_bg_iyly5i.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    padding: 80px 100px 80px 100px;
+}
+
+.testimonies_partnerss{
+    min-height: 700px;
+    width: 100%;
+   background-color: white;
+
+    padding: 80px 100px 80px 100px;
+}
+
+.myhover:hover{
+    color:white;
+}
+
+
+
+
+/* Large Desktop Screens /Tv */
+@media (min-width: 1500px) {
+    .howimage{
+        width:60%;
+        margin-bottom: 50px;
+        border-radius: 30px;
+    
+    }
+
+    .aboutimage{
+        width:60%;
+        margin-bottom: 50px;
+    
+    }
+
+    .aboutimageprovider{
+        width:60%;
+        margin-bottom: 50px;
+    
+    }
+  }
+
+  /* Mobile Screens */
+
+  @media screen and (min-width:300px) and (max-width:764px) {
+    .herosection {
+        height:400px;
+        max-width: 100%;
+        overflow: hidden;
+        background-image: url("https://res.cloudinary.com/edifice-solutions/image/upload/v1682587922/banner_bg_iyly5i.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+        padding: 80px 30px 80px 30px;
+        
+      
+       
+    
+    }
+    
+    
+    .heroimagcontainer{
+        display: none;
+    
+    }
+
+    .heroheading_one{
+        background:#1997cf;
+        color:white;
+        display: inline-block;
+        padding: 4px 12px 4px 12px;
+        border-radius:30px;
+       
+        font-weight: bold;
+        font-size:15px;
+    
+    }
+
+    .heroheading_two{
+        font-size: 30px;
+        
+        
+    
+    }
+
+    .heading_two{
+        font-size: 20px;
+        
+        
+    
+    }
+
+    .testimonies_partnerss{
+        min-height: 700px;
+        width: 100%;
+       background-color: white;
+    
+        padding: 80px 30px 80px 30px;
+    }
+
+    .mydoc{
+        margin-top: 30px;
+    }
+
+    .searchbox{
+        /* width: 100%; */
+        min-height:300px;
+        background-color: aliceblue;
+        border:none;
+        border-radius: 30px;
+         box-shadow: 0 0 2px rgba(29, 29, 29, 0.3);
+        
+    }
+.lookingfor{
+    max-width: 100%;
+    overflow-x: scroll;
+    /* background: red; */
+    /* max-height: 40px; */
+    display: flex;
+    flex-direction: row;
+    
+}
+    .servicess{
+        
+        white-space: nowrap;
+        background-color: #1997cf;
+        color:white;
+        padding: 4px 12px 4px 12px;
+        border:none;
+        border-radius: 20px;
+        
+        font-size: 13px;
+        text-align: center;
+       margin-right: 15px;
+       /* margin-top: 10px; */
+        transition: transform 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+    
+    }
+
+
+    .aboutsection {
+        margin-top: 50px;
+        min-height:900px;
+        background-image: url("https://res.cloudinary.com/edifice-solutions/image/upload/v1682596678/about_bg_zagqbi.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    
+        padding: 50px 30px 80px 30px;
+        
+      
+    }
+
+    .heroaboutimagcontainer{
+        text-align: center;
+    }
+    .aboutimage{
+        width:90%;
+        margin-bottom: 50px;
+        text-align: center;
+    
+    }
+
+    .aboutimageprovider{
+        width:80%;
+        margin-bottom: 50px;
+        text-align: center;
+    
+    }
+    .aboutpara{
+        text-align: justify;
+        font-weight: 400;
+        
+        color: #122C47;
+        font-size: 16px;
+    }
+    
+    .myicon{
+        color:#1997cf;
+        font-size: 32px;
+        text-align: center;
+    }
+    
+    .icontext{
+        font-size:15px;
+        font-weight: 700;
+        margin-top: 12px;
+        text-align: center;
+    
+    }
+
+
+.servicesection{
+    margin-top: 50px;
+    min-height:1500px;
+    padding: 0px 30px 80px 30px;
+    
+}
+
+.feature_image{
+    width: 55px;
+}
+
+.feature_item{
+    margin-top: 40px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.feature_center{
+    width:100%;
+    
+}
+
+.featurespan{
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: #122C47;
+}
+
+
+.howsection{
+    /* margin-top: 50px; */
+    min-height:1000px;
+    background-color: aliceblue;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-position-x: right; */
+
+
+    padding: 80px 30px 50px 30px;
+    /* background-position: 100%; */
+    /* transform: rotate(180deg); */
+
+}
+
+.howsectiontwo{
+    margin-top: 10px;
+    min-height:1000px;
+    background-color: aliceblue;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-position-x: right; */
+    
+
+    padding: 0px 30px 50px 30px;
+    /* background-position: 100%; */
+    /* transform: rotate(180deg); */
+
+}
+
+.howsectiontwoprovider{
+    margin-top: 10px;
+    min-height:600px;
+    background-color: aliceblue;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-position-x: right; */
+    
+
+    padding: 0px 30px 50px 30px;
+    /* background-position: 100%; */
+    /* transform: rotate(180deg); */
+
+}
+
+.howimage{
+    width:85%;
+    margin-bottom: 50px;
+    border-radius: 30px;
+
+}
+
+.feature_image_how{
+    width: 40px;
+}
+
+.feature_item_how{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* .btnwhatsapp{
+    background-color:#25D366;
+    color:white;
+    font-weight:"bold";
+    
+} */
+
+
+.btnwhatsapp{
+    background-color:#25D366;
+    padding:15px 30px 15px 30px;
+    color:white;
+    font-weight: bold;
+    border:none;
+    border-radius: 50px;
+    font-family: 'Lato', sans-serif;
+    /* margin-top: 300px; */
+
+
+}
+
+
+.howpicture{
+    margin-top: 60px;
+    width:100%;
+}
+
+
+.aboutimagewhy{
+    width:90%;
+}
+
+
+.faqfeeback{
+    margin-top: 200px;
+    min-height:400px;
+    background-color: #1997cf;
+    border:none;
+    border-radius: 30px;
+     box-shadow: 0 0 2px rgba(29, 29, 29, 0.3);
+     
+}
+
+
+.testimonies_partners{
+    min-height: 700px;
+    width: 100%;
+    background-image: url("https://res.cloudinary.com/edifice-solutions/image/upload/v1682587922/banner_bg_iyly5i.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    padding: 80px 30px 80px 30px;
+}
+
+.myhover:hover{
+    color:white;
+}
+    
+
+  }
+
+
+  .searchedList{
+    max-height: 400px;
+    /* overflow-y: auto;
+    
+
+    background-color: white;
+    z-index: 3; */
+
+    position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: white;
+ 
+  /* display: none; */
+  max-height: 200px;
+  overflow-y: auto;
+  
+}
+
+
+
+.searchItem{
+    
+    padding:7px;
+    font-size:13px;
+    
+}

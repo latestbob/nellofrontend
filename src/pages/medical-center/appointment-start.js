@@ -3,6 +3,7 @@ import { ErrorMsg } from './../../components';
 import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 export default function DoctorAppointment({ medicalCenters, initAppointment, values }) {
     const { register, handleSubmit, onChange, formState: { errors } } = useForm({
@@ -12,7 +13,9 @@ export default function DoctorAppointment({ medicalCenters, initAppointment, val
     const[center_uuid , setCenterUuid] = useState("");
     const[specialization , setSpecialization] = useState([]);
 
-
+    const location = useLocation();
+    const data = location.state;
+  
 
 
    
@@ -22,9 +25,9 @@ export default function DoctorAppointment({ medicalCenters, initAppointment, val
 
     React.useEffect(()=>{
         
-        if(center_uuid){
+        if(data){
        
-        axios.get(`https://admin.asknello.com/api/healthcenter/spec?uuid=${center_uuid}`, {
+        axios.get(`https://admin.asknello.com/api/healthcenter/spec?uuid=${data.uuid}`, {
             
 
         }).then(response => {
@@ -44,7 +47,7 @@ export default function DoctorAppointment({ medicalCenters, initAppointment, val
 
          
          
-     },[center_uuid]);
+     },[data]);
 
 
     //////
@@ -54,15 +57,16 @@ export default function DoctorAppointment({ medicalCenters, initAppointment, val
 
 
     return (<div class="container-width-sm py-5">
+        {/* <h2>{data.name}</h2> */}
         <form id="form-appointment-start" onSubmit={handleSubmit(initAppointment)}>
             <div class="form-group">
-                <label>Please select medical center</label>
+                
                 <select id="mycenter" class="form-control" {...register('medical_center', {
                     required: "Select medical center"
-                })}  onChange={(event) => setCenterUuid(event.target.value)} >
-                    <option value="">- Select -</option>
-                    {medicalCenters && medicalCenters.map((row, index) =>
-                        <option key={row.id} value={row.uuid}>{row.name}</option>)}
+                })}  >
+                    <option value={data.uuid}>{data.name}</option>
+                    {/* {medicalCenters && medicalCenters.map((row, index) =>
+                        <option key={row.id} value={row.uuid}>{row.name}</option>)} */}
                 </select>
                 <ErrorMsg errors={errors} name="medical_center" />
             </div>

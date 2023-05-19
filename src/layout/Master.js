@@ -421,7 +421,20 @@ const Master = ({ children, history }) => {
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link class="dropdown-item" to="/doctors">Find a Health Specialist</Link>
-          <Link class="dropdown-item" to="/appointment">Visit A Health Facility</Link>
+          <Link class="dropdown-item" to="/medcenters">Visit A Health Facility</Link>
+          
+        </div>
+      </li>
+
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          For Business
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <Link class="dropdown-item" to="/business/healthproviders">Healthcare Providers</Link>
+          <Link class="dropdown-item" to="/business/cooperate">Cooperate Organizations</Link>
+         
           
         </div>
       </li>
@@ -546,10 +559,14 @@ const Master = ({ children, history }) => {
                       Find A Health Specialist
                     </Link>
 
+                    <Link className="dropdown-link" to="/business/healthproviders">Healthcare Providers</Link>
+          <Link className="dropdown-link" to="/business/cooperate">Cooperate Organizations</Link>
+         
+
 
                     <Link
                       className="dropdown-link"
-                      to={`/appointment`}
+                      to={`/medcenters`}
                     >
                       Visit A Health Facility
                     </Link>
