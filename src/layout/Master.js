@@ -433,7 +433,7 @@ const Master = ({ children, history }) => {
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link class="dropdown-item" to="/business/healthproviders">Healthcare Providers</Link>
-          <Link class="dropdown-item" to="/business/cooperate">Cooperate Organizations</Link>
+          <Link class="dropdown-item" to="/business/corporate">Corporate Organizations</Link>
          
           
         </div>
@@ -560,7 +560,7 @@ const Master = ({ children, history }) => {
                     </Link>
 
                     <Link className="dropdown-link" to="/business/healthproviders">Healthcare Providers</Link>
-          <Link className="dropdown-link" to="/business/cooperate">Cooperate Organizations</Link>
+          <Link className="dropdown-link" to="/business/corporate">Corporate Organizations</Link>
          
 
 

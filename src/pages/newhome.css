@@ -132,7 +132,7 @@ h1,h2,h3,h4,h5,h6 {
     height:600px;
     background-image: url("https://res.cloudinary.com/edifice-solutions/image/upload/v1682596678/about_bg_zagqbi.png");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 600px;
 
     padding: 80px 100px 80px 100px;
 

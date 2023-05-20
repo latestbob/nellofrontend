@@ -236,7 +236,7 @@ function HealthCareProviders(){
 
               <div className='col-md-4 py-5 '>
 
-                <img className='feature_center text-center' src='https://res.cloudinary.com/edifice-solutions/image/upload/v1684434926/Group_7_nqhwge.svg' />
+                <img className='feature_center text-center' src='https://res.cloudinary.com/edifice-solutions/image/upload/v1684579655/Group_7_1_cy8bal.svg' />
                 
               </div>
 

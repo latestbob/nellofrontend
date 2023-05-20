@@ -13,7 +13,7 @@ function Companies(){
 <div className="row  align-items-center ">
 
     <div className="col-md-6 herotext">
-        <h6 className='heroheading_one my-1'>Nello For Cooperate Organizations</h6>
+        <h6 className='heroheading_one my-1'>Nello For Corporate Organizations</h6>
 
         <h1 className='heroheading_two my-2'>
 Offer your employees wellness packages for their well-being.</h1>
@@ -167,7 +167,7 @@ Explore our exclusive wellness packages designed for every individual in your te
 
         <section className='testimonies_partnerss'>
 
-<h1 className='heading_two my-3 text-center'>Testimonials From Cooperate Organizations</h1>
+<h1 className='heading_two my-3 text-center'>Testimonials From Corporate Organizations</h1>
 
 
 
@@ -184,7 +184,7 @@ Explore our exclusive wellness packages designed for every individual in your te
                             </p>
                         </div>
                         <a href="" className="ccard-4-more mt-3">
-                            <span className='font-weight-bold mt-3'>Lauren Parker</span>
+                            <span className='font-weight-bold mt-4'>Lauren Parker</span>
                             
                         </a>
                     </div>
@@ -202,7 +202,7 @@ Explore our exclusive wellness packages designed for every individual in your te
                                "I've been using Asknello for a few months now, and I'm impressed with its diagnostic tools. It has made the process of diagnosing medical conditions  much more streamlined, and my patients appreciate the convenience and flexibility it provides."                         </p>
                         </div>
                         <Link to="" className="ccard-4-more mt-3">
-                            <span className='font-weight-bold'>SISA</span>
+                            <span className='font-weight-bold mt-4'>SISA</span>
                            
                         </Link>
                     </div>
@@ -220,7 +220,7 @@ Explore our exclusive wellness packages designed for every individual in your te
                                 "Asknello has helped me expand my healthcare services beyond traditional in-person consultations. It has enabled me to provide care to patients remotely, and medical history has helped me make more informed diagnoses. "    </p>
                         </div>
                         <a href="" className="ccard-4-more mt-3">
-                            <span className='font-weight-bold'>Famacare</span>
+                            <span className='font-weight-bold mt-4'>Famacare</span>
                             
                         </a>
                     </div>

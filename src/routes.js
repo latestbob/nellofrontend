@@ -362,12 +362,12 @@ const routes = [
 
 	{
 		id: 28,
-		path: '/business/cooperate',
+		path: '/business/corporate',
 		component: Companies,
 		auth: false,
 		exact: true,
 		route: true,
-		pageTitle: 'Cooperate Organizations',
+		pageTitle: 'Corporate Organizations',
 	},
 
 	{
