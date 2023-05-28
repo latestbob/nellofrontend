@@ -1,0 +1,58 @@
+
+p{
+    font-weight: 400;
+    font-family: 'Lato', sans-serif;
+    color: #122C47;
+    font-size: 16px;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: #122C47;
+}
+
+
+.onboarding{
+    min-height: 700px;
+    background-color: aliceblue;
+    padding:50px 60px 50px 60px;
+}
+
+.infoimage{
+    width: 100%;
+    text-align: left;
+}
+
+.textdiv{
+    margin-left:30px;
+}
+.textdivheading{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.formdivcard{
+    background:white;
+    padding:50px 30px 40px 30px;
+    min-height: 600px;
+    
+}
+
+.searchedList{
+    max-height: 400px;
+    overflow-y: auto;
+    
+
+    position: relative;
+    z-index: 3;
+    
+}
+
+
+
+.searchItem{
+    
+    padding:7px;
+    font-size:13px;
+    
+}

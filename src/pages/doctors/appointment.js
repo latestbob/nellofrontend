@@ -781,7 +781,7 @@ else {
                                 <img src={doctor?.picture} alt="" />
                             </div>
                             <div class="dmc-content-box">
-                                <div class="dmc-1">{doctor.title}. {doctor?.firstname} {doctor?.lastname}</div>
+                                <div class="dmc-1">{doctor?.title}. {doctor?.firstname} {doctor?.lastname}</div>
                                 <div class="dmc-2">{doctor?.aos}</div>
                                 <div class="dmc-3">{doctor?.vendor?.name}</div>
                                 <div class="dmc-4">

@@ -64,7 +64,7 @@ export default function DoctorAppointment({ medicalCenters, initAppointment, val
                 <select id="mycenter" class="form-control" {...register('medical_center', {
                     required: "Select medical center"
                 })}  >
-                    <option value={data.uuid}>{data.name}</option>
+                    <option value={data?.uuid}>{data?.name}</option>
                     {/* {medicalCenters && medicalCenters.map((row, index) =>
                         <option key={row.id} value={row.uuid}>{row.name}</option>)} */}
                 </select>

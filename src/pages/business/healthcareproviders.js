@@ -19,7 +19,7 @@ function HealthCareProviders(){
 
         <p className='heropara'>Nello offers a convenient solution for managing your healthcare services.</p>
 
-        <Link to='' class="btn btn-primary btn-lg text-center my-4"style={{
+        <Link to='/join' class="btn btn-primary btn-lg text-center my-4"style={{
                       
                     }} >JOIN NELLO TODAY</Link> 
 
@@ -69,7 +69,7 @@ function HealthCareProviders(){
                   </div>
 
                   <div className="text-center">
-                       <Link to={''} class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
+                       <Link to='/join' class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
                           
                         }} >JOIN NELLO TODAY</Link> 
 
@@ -104,7 +104,7 @@ function HealthCareProviders(){
                   </div>
 
                   <div className="text-center">
-                       <Link to={''} class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
+                       <Link to='/join' class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
                           
                         }} >JOIN NELLO TODAY</Link> 
 
@@ -149,7 +149,7 @@ function HealthCareProviders(){
           </div>
 
           <div className="text-center">
-               <Link to={''} class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
+               <Link to='/join' class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
                   
                 }} >JOIN NELLO TODAY</Link> 
 
@@ -184,7 +184,7 @@ function HealthCareProviders(){
           </div>
 
           <div className="text-center">
-               <Link to={''} class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
+               <Link to='/join'class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
                   
                 }} >JOIN NELLO TODAY</Link> 
 
@@ -227,7 +227,7 @@ function HealthCareProviders(){
                   </div>
 
                   <div className="text-center">
-                       <Link to={''} class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
+                       <Link to='/join' class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
                           
                         }} >JOIN NELLO TODAY</Link> 
 
@@ -263,7 +263,7 @@ By joining Asknello, diagnostics centers can collaborate with doctors, hospitals
                   </div>
 
                   <div className="text-center">
-                       <Link to={''} class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
+                       <Link to='/join' class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
                           
                         }} >JOIN NELLO TODAY</Link> 
 
@@ -293,7 +293,7 @@ By joining Asknello, diagnostics centers can collaborate with doctors, hospitals
 
                 <p className='feature_para'>Effortlessly retrieve patient vital signs and medical history through a streamlined and fast process.</p>
 
-                <Link to='' class="btn btn-primary btn-lg text-center my-4"style={{
+                <Link to='/join' class="btn btn-primary btn-lg text-center my-4"style={{
                       
                     }} >JOIN NELLO TODAY</Link> 
 

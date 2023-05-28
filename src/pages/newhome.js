@@ -185,7 +185,7 @@ const filteredService = fetchedServices.filter((item) =>
               "care_type":"Antenatal",
           } }}className='servicess'>Antenatal</Link> <Link  to={{ pathname: '/medcenters', state: {
             "care_type":"Ultrasound Scan",
-        } }} className='servicess'>Ultrasound Scan</Link> <a href='/doctors?specialization=General%20Practitioner(GP)'className='servicess'>General Practictioner</a> <a href=''className='servicess'>Gynacologist</a> <Link  to={{ pathname: '/medcenters', state: {
+        } }} className='servicess'>Ultrasound Scan</Link> <a href='/doctors?specialization=General%20Practitioner(GP)'className='servicess'>General Practitioner</a> <a href=''className='servicess'>Gynecologist</a> <Link  to={{ pathname: '/medcenters', state: {
           "care_type":"Immunisation",
       } }}className='servicess'>Immunisation</Link> <a href='/doctors?specialization=Nurse'className='servicess'>Nurses</a> <Link to={{ pathname: '/medcenters', state: {
         "care_type":"Preventive Cancer Screening",

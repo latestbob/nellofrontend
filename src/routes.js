@@ -42,6 +42,8 @@ import Pharmacies from './pages/business/pharmacies';
 import Diagnostic from './pages/business/diagnostic_center';
 import Consultation from './pages/medical_report/consultation';
 import SearchPage from './pages/searchpage';
+import Pharmacist from './pages/onboarding/pharmacist';
+
 
 const routes = [
 	{
@@ -200,7 +202,7 @@ const routes = [
 		id: 12,
 		path: '/appointment',
 		component: medicalCenterAppointment,
-		auth: false,
+		auth: true,
 		exact: true,
 		route: true,
 		pageTitle: 'Appointment',
@@ -409,6 +411,19 @@ const routes = [
 		route: true,
 		pageTitle: 'Search Results',
 	},
+
+
+	{
+		id: 33,
+		path: '/join',
+		component: Pharmacist,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Join Nello Business',
+	},
+
+	
 
 
 

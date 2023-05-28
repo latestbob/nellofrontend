@@ -21,7 +21,7 @@ Offer your employees wellness packages for their well-being.</h1>
         <p className='heropara'>
 Explore our exclusive wellness packages designed for every individual in your team.</p>
 
-        <Link to='' class="btn btn-primary btn-lg text-center my-4"style={{
+        <Link to='/join' class="btn btn-primary btn-lg text-center my-4"style={{
                       
                     }} >JOIN NELLO TODAY</Link> 
 
@@ -71,7 +71,7 @@ Explore our exclusive wellness packages designed for every individual in your te
                   </div>
 
                   <div className="text-center">
-                       <Link to={''} class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
+                       <Link to='/join' class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
                           
                         }} >JOIN NELLO TODAY</Link> 
 
@@ -106,7 +106,7 @@ Explore our exclusive wellness packages designed for every individual in your te
                   </div>
 
                   <div className="text-center">
-                       <Link to={''} class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
+                       <Link to='/join' class="btn btn-primary w-100 font-weight-bold  text-center my-2"style={{
                           
                         }} >JOIN NELLO TODAY</Link> 
 
@@ -140,7 +140,7 @@ Explore our exclusive wellness packages designed for every individual in your te
                     }
                 }>Improve your employees' performance with Nello's tailored wellness packages. Investing in your employees' health not only promotes a positive work culture, but also attracts and retains top talent while improving productivity and work-life balance. Nello is committed to helping you build a happier, healthier, and more productive team.</p>
 
-                <Link to='' class="btn btn-primary btn-lg text-center my-4"style={{
+                <Link to='/join' class="btn btn-primary btn-lg text-center my-4"style={{
                       
                     }} >JOIN NELLO TODAY</Link> 
 
