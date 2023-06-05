@@ -3,8 +3,7 @@ import React from 'react';
 import './contact.css';
 import { useState } from 'react';
 import axios from 'axios';
-import NotificationManager from 'react-notifications/lib/NotificationManager';
-import { showLoader, hideLoader } from '../helper/loader';
+
 
 
 function Contact (){
@@ -14,11 +13,91 @@ function Contact (){
     const[type , setType] = useState("");
     const[message , setMessage] = useState();
 
+    const[selectedSla , setSelectedSla] = useState(null);
+
     const Swal = require('sweetalert2')
+
+    const[sla, setSla] = useState([
+        {
+            "name": "General customer enquiry and complaint",
+            "priority": 1,
+            "resolution_time" : "30 mins",
+            "dependencies":"N/A"
+        },
+
+        {
+            "name": "Product Delivery",
+            "priority": 1,
+            "resolution_time" : "4 hours",
+            "dependencies":"Service provider, Dispatch"
+        },
+
+        {
+            "name": "Product is unavailable",
+            "priority": 1,
+            "resolution_time" : "24 hours",
+            "dependencies":"Service Provider"
+        },
+
+        {
+            "name": "Product undelivered",
+            "priority": 1,
+            "resolution_time" : "30 mins",
+            "dependencies":"Service Provider , Dispatch"
+        },
+
+        {
+            "name": "Wrong prescription & Product mismatch",
+            "priority": 2,
+            "resolution_time" : "4 hours",
+            "dependencies":"Service Provider"
+        },
+
+        {
+            "name": "Side effect from drugs",
+            "priority": 2,
+            "resolution_time" : "4 hours",
+            "dependencies":"Service Provider"
+        },
+
+        {
+            "name": "Expired, broken and unsealed drug",
+            "priority": 1,
+            "resolution_time" : "4 hours",
+            "dependencies":"Service Provider, Dispatch"
+        },
+
+
+        {
+            "name": "Delayed appointment",
+            "priority": 2,
+            "resolution_time" : "4 hours",
+            "dependencies":"Service Provider"
+        },
+
+
+        {
+            "name": "Delay in uploading test results",
+            "priority": 2,
+            "resolution_time" : "4 hours",
+            "dependencies":"Service Provider"
+        },
+
+        {
+            "name": "Misconduct",
+            "priority": 2,
+            "resolution_time" : "4 hours",
+            "dependencies":"Service Provider"
+        },
+
+
+    ])
 
 
   function handleSubmitFeedback (e){
     e.preventDefault();
+
+   // console.log(sla[selectedSla].name);
 
  
     axios.post(`https://mw.asknello.com/api/customerfeedback`,{
@@ -28,7 +107,13 @@ function Contact (){
                 name : name,
                 email: email,
                
-                 type:type,
+                //  type:type,
+
+                type:sla[selectedSla].name,
+                priority:sla[selectedSla].priority,
+                resolution_time : sla[selectedSla].resolution_time,
+                dependencies: sla[selectedSla].dependencies,
+
                    
                 message:message
                     
@@ -105,15 +190,14 @@ function Contact (){
 				<div className="wrap-input1 validate-input" data-validate = "Subject is required">
 					
                     <select onChange={function(e){
-                        setType(e.target.value);
+                        setSelectedSla(e.target.value);
                         console.log(e.target.value);
                     }} className=' form-control 'required>
                       <option value="">Select Feedback Type</option>
 
-                      <option value="Issues">Issues</option>
-                      <option value="Complaints ">Complaints </option>
-                      <option value="Enquiry ">Enquiry </option>
-
+                      {sla.map((item, index) => (
+                          <option key={index} value={index}>{item.name}</option>
+                    ))}
                       
 
                     </select>
@@ -130,7 +214,7 @@ function Contact (){
 				<div className="container-contact1-form-btn">
 
                     {
-                        name && email && type && message && <button className="contact1-form-btn">
+                        name && email && selectedSla && message && <button className="contact1-form-btn">
 						<span>
 							Send Feedback
 							
