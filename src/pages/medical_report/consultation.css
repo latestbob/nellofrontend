@@ -73,3 +73,45 @@ h1,h2,h3,h4,h5,h6 {
     color: #122C47;
     
 }
+
+
+@media (max-width: 768px) {
+    .container-contact1 {
+      padding: 90px 80px 88px 80px;
+    }
+
+
+    .allergiesadd{
+        width: 40%;
+        height:40px;
+       
+        margin: auto;
+        font-size: 30px;
+    }
+
+    .drow{
+        padding-left: 50px;
+    }
+
+    .diagnosisbatch{
+        width:70%;
+        height: 25px;
+        
+    }
+
+    input[type="checkbox"] {
+        -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        transform: scale(1.5);
+        margin-top: 5px;
+      }
+
+      .introheading{
+        color:white;
+        font-size: 17px;
+        text-align: left;
+    }
+      
+
+}
+

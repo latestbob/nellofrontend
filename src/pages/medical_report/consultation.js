@@ -237,7 +237,7 @@ function Consultation(){
     const[historyOfCompliants , setHistoryOfCompliants] = useState("");
 
     const[allergies , setAllergies] = useState([]);
-    const[diagnosesList , setDiagnosesList]= useState({ name: '', isSuspected: false });;
+    const[diagnosesList , setDiagnosesList]= useState({ name: '', isSuspected: false });
     const[otherDiagnosis , setOtherDiagnosis] = useState({ name: '', isSuspected: false });
     const[procedureList , setProcedureList] = useState([]);
     const[comments , setComment] = useState('');
@@ -824,36 +824,36 @@ function addToPrescription(){
 
         <h5 className='personalheading'>Symptoms and Medical History</h5>
                     <div class="form-group row">
-                <label for="inputPassword" class="col-sm-3 col-form-label">Main Symptom(s) <span className='text-danger font-weight-bold'>*</span> </label>
-                <div class="col-sm-9">
-                <input onChange={handleInputChange} value={searchTerm} type="text" class="form-control" id="inputPassword" placeholder="Enter Main Symptoms"/>
+                        <label for="inputPassword" class="col-sm-3 col-form-label">Main Symptom(s) <span className='text-danger font-weight-bold'>*</span> </label>
+                        <div class="col-sm-9">
+                         <input onChange={handleInputChange} value={searchTerm} type="text" class="form-control" id="inputPassword" placeholder="Enter Main Symptoms"/>
                 
-                {searchTerm && filteredSymptoms.length > 0 && 
-                <ul className=''>
-                    {filteredSymptoms.map((item, index) => (
-                    <li onClick={function(e){
+                            {searchTerm && filteredSymptoms.length > 0 && 
+                            <ul className=''>
+                                {filteredSymptoms.map((item, index) => (
+                                <li onClick={function(e){
 
-                        setSymptomsList([...symptomsList , item]);
-                        setSearchTerm('');
-                    }} className='searchItem font-weight-bold' key={index}>{item}</li>
-                    ))}
-                </ul>
+                                    setSymptomsList([...symptomsList , item]);
+                                    setSearchTerm('');
+                                }} className='searchItem font-weight-bold' key={index}>{item}</li>
+                                ))}
+                            </ul>
 
-                    }
+                            }
 
-                    {symptomsList.map((list, index) => (
-                        <p className='badge badge-info mx-1'key={index}>{list} <a onClick={function(e){
-                            e.preventDefault();
-                            const updatedSymptoms = [...symptomsList];
-                            updatedSymptoms.splice(index, 1);
-                            setSymptomsList(updatedSymptoms);
-                        }} href='' className='symptomscancel text-light px-2 font-weight-bold'>x</a></p>
-                    ))}
-                </div>
+                            {symptomsList.map((list, index) => (
+                                <p className='badge badge-info mx-1'key={index}>{list} <a onClick={function(e){
+                                    e.preventDefault();
+                                    const updatedSymptoms = [...symptomsList];
+                                    updatedSymptoms.splice(index, 1);
+                                    setSymptomsList(updatedSymptoms);
+                                }} href='' className='symptomscancel text-light px-2 font-weight-bold'>x</a></p>
+                            ))}
+                        </div>
 
                    
                 
-            </div>
+                    </div>
 
             {/* <div class="form-group row">
                 <label for="inputPassword" class="col-sm-3 col-form-label">Other Symptoms</label>
@@ -894,7 +894,7 @@ function addToPrescription(){
                     clearAllergies()
                     }
 
-                }} className='col-sm-1 buttoncolor font-weight-bold rounded'>+
+                }} className='col-sm-1 allergiesadd buttoncolor font-weight-bold rounded'>+
 
                 </button>
 
@@ -953,9 +953,9 @@ function addToPrescription(){
                         }} href='' className='symptomscancel text-light px-2 font-weight-bold'>x</a></p>
                     ))} */}
 
-                    {diagnosesList.name !== '' &&  <div className='row'> <p className='col-md-6 badge badge-info mx-1'>{diagnosesList.name} </p>
+                    {diagnosesList.name !== '' &&  <div className='row pl-3'> <p className='col-md-6 diagnosisbatch badge badge-info mx-1'>{diagnosesList.name} </p>
                     
-                    <input className='' type='checkbox'onChange={function(e){
+                    <input className='mycheck' type='checkbox'onChange={function(e){
                         let SuspectedStatus = diagnosesList.isSuspected;
                             setDiagnosesList({...diagnosesList, isSuspected:!SuspectedStatus});
                             console.log("checked");
@@ -997,16 +997,9 @@ function addToPrescription(){
 
                     }
 
-                    {/* {diagnosesList.map((list, index) => (
-                        <p className='badge badge-info mx-1'key={index}>{list} <a onClick={function(e){
-                            e.preventDefault();
-                            const updatedDiagnoses = [...diagnosesList];
-                            updatedDiagnoses.splice(index, 1);
-                            setDiagnosesList(updatedDiagnoses);
-                        }} href='' className='symptomscancel text-light px-2 font-weight-bold'>x</a></p>
-                    ))} */}
+                    
 
-                    {otherDiagnosis.name !== '' &&  <div className='row'> <p className='col-md-6 badge badge-info mx-1'>{otherDiagnosis.name} </p>
+                    {otherDiagnosis.name !== '' &&  <div className='row pl-3'> <p className='col-md-6 diagnosisbatch badge badge-info mx-1'>{otherDiagnosis.name} </p>
                     
                     <input className='' type='checkbox'onChange={function(e){
                         let SuspectedStatus = otherDiagnosis.isSuspected;
