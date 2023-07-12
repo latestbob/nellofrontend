@@ -43,6 +43,8 @@ import Diagnostic from './pages/business/diagnostic_center';
 import Consultation from './pages/medical_report/consultation';
 import SearchPage from './pages/searchpage';
 import Pharmacist from './pages/onboarding/pharmacist';
+import ReportSummary from './pages/medical_report/reportsummary';
+import ConsultationSummary from './pages/account/consultation_summary';
 
 
 const routes = [
@@ -421,6 +423,26 @@ const routes = [
 		exact: true,
 		route: true,
 		pageTitle: 'Join Nello Business',
+	},
+
+	{
+		id: 34,
+		path: '/summary/:ref',
+		component: ReportSummary,
+		auth: false,
+		exact: true,
+		route: true,
+		pageTitle: 'Consultation Summary',
+	},
+
+	{
+		id: 35,
+		path: '/consultation/summary/:ref',
+		component: ConsultationSummary,
+		auth: true,
+		exact: true,
+		route: true,
+		pageTitle: 'Consultation Summary',
 	},
 
 	

@@ -209,7 +209,7 @@ export default function Appointments() {
                 </>} */}
 
                 {row.type == "doctor_appointment" ? <>
-                  <h4>Dr. {row.doctor_name}</h4>
+                  <h4>{row.doctor_name}</h4>
                   <div class="c5c-1">{row.doctor_aos}</div>
                   <div class="c5c-1">{row.ref_no}</div>
 
@@ -224,7 +224,9 @@ export default function Appointments() {
 
                       <div className='row'>
                          <a href={row.link} className="btn btn-primary btn-sm btn-main">Appointment Link</a> 
-                         <a href=""className="btn btn-success mx-2 btn-sm btn-main">View Medical Report</a> 
+
+                         {row.healthrecord && <a href={`/consultation/summary/${row.healthrecord}`} className="btn btn-info btn-sm btn-main mx-2">Consultation Summary</a>}
+                        
                       </div>
 
                   }
@@ -257,7 +259,7 @@ export default function Appointments() {
                         }} href="" style={{
                           color:"white",
                         }} className="btn btn-info btn-sm btn-main">Download Appointment Slip</a>
-                         <a href=""className="btn btn-success mx-2 btn-sm btn-main">View Medical Report</a> 
+                        
                       </div>
 
                     }
