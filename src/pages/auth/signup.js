@@ -361,12 +361,12 @@ export default function SignUp() {
                       </Checkbox>
                     </div>
 
-                    <button
+                    {passed && <button
                       type="submit"
                       class="btn btn-primary btn-block btn-lg mb-3 btn-main"
                     >
                       Continue
-                    </button>
+                    </button>}
                   </form>
 
                   <div class="text-center">
